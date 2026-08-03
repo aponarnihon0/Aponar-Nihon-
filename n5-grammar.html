@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#081426">
+  <meta name="description" content="Minna no Nihongo I অনুসারে N5 Grammar Lesson 1–25। বাংলা নির্দেশনা, দ্রুত search, filter এবং learning progress সহ সম্পূর্ণ lesson directory।">
+  <title>N5 Grammar | আপনার নিহোন</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&family=Noto+Sans+Bengali:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+:root{
+  color-scheme:light;
+  --navy:#081426;
+  --navy-2:#10233e;
+  --ink:#132238;
+  --muted:#63728a;
+  --surface:#ffffff;
+  --soft:#f4f7fb;
+  --line:rgba(20,42,72,.11);
+  --success:#16a36a;
+  --shadow-sm:0 10px 30px rgba(12,31,58,.08);
+  --shadow-lg:0 28px 80px rgba(12,31,58,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{min-height:100vh;font-family:'Noto Sans Bengali','Noto Sans JP',Inter,system-ui,-apple-system,sans-serif;color:var(--ink);line-height:1.65;background:
+  radial-gradient(circle at 7% 18%,rgba(var(--accent-rgb),.10),transparent 25rem),
+  radial-gradient(circle at 92% 42%,rgba(var(--accent2-rgb),.10),transparent 28rem),
+  linear-gradient(180deg,#f9fbff 0%,#f3f7fb 52%,#fbfcff 100%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.42;background-image:linear-gradient(rgba(10,32,58,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(10,32,58,.025) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(to bottom,#000,transparent 72%)}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+button{color:inherit}
+.container{width:min(1220px,calc(100% - 34px));margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;left:16px;top:-70px;z-index:999;background:#fff;color:var(--navy);padding:12px 18px;border-radius:14px;font-weight:900;box-shadow:var(--shadow-lg);transition:top .2s}
+.skip-link:focus{top:16px}
+:focus-visible{outline:3px solid rgba(var(--accent2-rgb),.65);outline-offset:3px}
+
+.site-nav{position:sticky;top:0;z-index:80;background:rgba(248,251,255,.84);backdrop-filter:blur(20px) saturate(160%);border-bottom:1px solid rgba(22,48,79,.09)}
+.nav-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;flex:none}
+.brand img{width:46px;height:46px;object-fit:contain;border-radius:15px;background:#fff;box-shadow:0 9px 25px rgba(10,32,58,.12)}
+.brand-copy{display:grid;line-height:1.08}
+.brand-name{font-size:21px;font-weight:1000;color:var(--navy);letter-spacing:-.4px}
+.brand-tagline{margin-top:5px;color:#75849a;font:800 9px/1 Inter,sans-serif;letter-spacing:1.55px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:6px;overflow:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-link{white-space:nowrap;padding:9px 12px;border-radius:12px;color:#52647b;font:800 13px/1.2 Inter,'Noto Sans Bengali',sans-serif;transition:.2s ease}
+.nav-link:hover{color:var(--ink);background:#fff}
+.nav-link.active{color:var(--accent);background:rgba(var(--accent-rgb),.10);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.10)}
+.home-link{display:inline-flex;align-items:center;gap:7px}
+
+.hero{position:relative;isolation:isolate;color:#fff;overflow:hidden;background:
+  radial-gradient(circle at 78% 20%,rgba(var(--accent2-rgb),.24),transparent 24rem),
+  radial-gradient(circle at 18% 100%,rgba(var(--accent-rgb),.34),transparent 28rem),
+  linear-gradient(128deg,#071426 0%,#102743 54%,#0a1930 100%)}
+.hero:before{content:"";position:absolute;z-index:-1;inset:0;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(120deg,#000,transparent 75%)}
+.hero:after{content:"";position:absolute;z-index:-1;width:410px;height:410px;right:-120px;bottom:-250px;border:90px solid rgba(255,255,255,.045);border-radius:50%}
+.hero-grid{min-height:510px;padding:62px 0 88px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);align-items:center;gap:54px}
+.breadcrumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:rgba(255,255,255,.72);font:800 12px/1.2 Inter,'Noto Sans Bengali',sans-serif;letter-spacing:.5px;text-transform:uppercase;margin-bottom:20px}
+.breadcrumb span{color:rgba(255,255,255,.32)}
+.course-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.10)}
+.course-pill:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 18px var(--accent2)}
+.hero h1{max-width:760px;font-size:clamp(42px,7vw,82px);line-height:.98;letter-spacing:-2.8px;font-weight:1000}
+.hero h1 .latin{display:block;font-family:Inter,'Noto Sans Bengali',sans-serif}
+.hero h1 em{display:block;margin-top:13px;font-size:.46em;line-height:1.18;letter-spacing:-1px;font-style:normal;background:linear-gradient(90deg,#fff,var(--accent2),var(--warm));background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero-lead{max-width:720px;margin-top:21px;color:rgba(255,255,255,.78);font-size:clamp(16px,2vw,19px);font-weight:600}
+.hero-actions{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-top:28px}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:12px 18px;border:0;border-radius:15px;font-weight:950;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.button:hover{transform:translateY(-3px)}
+.button-primary{color:#071426;background:linear-gradient(135deg,#fff,var(--accent2));box-shadow:0 18px 42px rgba(var(--accent2-rgb),.20)}
+.button-secondary{color:#fff;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.15)}
+.button-secondary:hover{background:rgba(255,255,255,.15)}
+.button .arrow{font-size:18px;transition:transform .2s}
+.button:hover .arrow{transform:translateX(4px)}
+
+.hero-dashboard{position:relative;padding:22px;border:1px solid rgba(255,255,255,.15);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.07));box-shadow:0 32px 90px rgba(0,0,0,.24);backdrop-filter:blur(18px)}
+.dashboard-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.dashboard-head strong{font-size:19px}
+.dashboard-head span{padding:6px 10px;border-radius:999px;color:var(--accent2);background:rgba(var(--accent2-rgb),.12);font:900 11px/1.2 Inter,sans-serif;letter-spacing:.7px;text-transform:uppercase}
+.progress-overview{display:grid;grid-template-columns:136px 1fr;gap:20px;align-items:center}
+.progress-ring{--progress:0;position:relative;width:132px;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--accent2) calc(var(--progress)*1%),rgba(255,255,255,.11) 0);box-shadow:0 0 0 1px rgba(255,255,255,.10),0 18px 38px rgba(0,0,0,.16)}
+.progress-ring:before{content:"";position:absolute;inset:11px;border-radius:50%;background:#10233e;box-shadow:inset 0 0 24px rgba(0,0,0,.24)}
+.ring-content{position:relative;display:grid;text-align:center;line-height:1}
+.ring-content b{font:1000 28px/1 Inter,sans-serif}
+.ring-content small{margin-top:6px;color:rgba(255,255,255,.62);font-size:11px;font-weight:800}
+.progress-copy h2{font-size:22px;line-height:1.25}
+.progress-copy p{margin-top:8px;color:rgba(255,255,255,.66);font-size:13px}
+.dashboard-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:19px}
+.dashboard-stat{padding:12px 10px;border-radius:16px;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.08)}
+.dashboard-stat b{display:block;font:1000 19px/1 Inter,sans-serif}
+.dashboard-stat span{display:block;margin-top:6px;color:rgba(255,255,255,.58);font-size:10px;font-weight:850}
+
+.finder-section{position:relative;z-index:10;margin-top:-48px}
+.finder-panel{position:sticky;top:82px;padding:18px;border:1px solid rgba(18,43,73,.10);border-radius:26px;background:rgba(255,255,255,.92);box-shadow:0 24px 70px rgba(9,30,56,.14);backdrop-filter:blur(18px)}
+.finder-row{display:grid;grid-template-columns:minmax(260px,1fr) minmax(230px,.42fr) auto;gap:11px;align-items:stretch}
+.search-box{position:relative;display:flex;align-items:center;min-height:56px;border:1px solid rgba(20,47,78,.12);border-radius:17px;background:#f7f9fc;transition:.2s}
+.search-box:focus-within{border-color:rgba(var(--accent-rgb),.38);box-shadow:0 0 0 4px rgba(var(--accent-rgb),.08);background:#fff}
+.search-icon{display:grid;place-items:center;width:48px;flex:none;color:var(--accent);font-size:19px}
+.search-box input{width:100%;height:54px;border:0;outline:0;background:transparent;color:var(--ink);font-weight:750;padding-right:44px}
+.search-box input::placeholder{color:#8b98aa;font-weight:650}
+.clear-search{position:absolute;right:8px;width:36px;height:36px;border:0;border-radius:11px;background:transparent;color:#7d8ba0;cursor:pointer;opacity:0;pointer-events:none;transition:.2s}
+.clear-search.show{opacity:1;pointer-events:auto}
+.clear-search:hover{background:#e9eef5;color:var(--ink)}
+.jump-box{display:grid;grid-template-columns:1fr auto;min-height:56px;border:1px solid rgba(20,47,78,.12);border-radius:17px;background:#f7f9fc;overflow:hidden}
+.jump-box select{min-width:0;border:0;outline:0;background:transparent;color:var(--ink);font-weight:800;padding:0 12px;cursor:pointer}
+.jump-box button{border:0;border-left:1px solid rgba(20,47,78,.10);padding:0 14px;background:rgba(var(--accent-rgb),.09);color:var(--accent);font-weight:950;cursor:pointer;transition:.2s}
+.jump-box button:hover{background:var(--accent);color:#fff}
+.view-switch{display:flex;padding:5px;border-radius:16px;background:#f0f4f8;border:1px solid rgba(20,47,78,.08)}
+.view-button{width:47px;border:0;border-radius:11px;background:transparent;color:#7c8a9e;font-size:17px;cursor:pointer;transition:.2s}
+.view-button.active{color:#fff;background:var(--navy);box-shadow:0 7px 17px rgba(8,20,38,.18)}
+.filters{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.filter-block{min-width:0}
+.filter-label{display:block;margin-bottom:8px;color:#8592a5;font:900 10px/1 Inter,sans-serif;letter-spacing:1px;text-transform:uppercase}
+.range-chips,.status-chips{display:flex;gap:7px;flex-wrap:wrap}
+.range-chip,.status-chip{border:1px solid rgba(20,47,78,.10);border-radius:13px;background:#f7f9fc;color:#53657b;padding:8px 10px;font-size:12px;font-weight:900;cursor:pointer;transition:.2s}
+.range-chip{display:grid;line-height:1.15;text-align:left}
+.range-chip span{color:var(--accent);font:1000 11px/1.1 Inter,sans-serif;margin-bottom:4px}
+.range-chip:hover,.status-chip:hover{transform:translateY(-2px);border-color:rgba(var(--accent-rgb),.24);background:#fff}
+.range-chip.active,.status-chip.active{color:#fff;background:var(--navy);border-color:var(--navy);box-shadow:0 9px 22px rgba(8,20,38,.15)}
+.range-chip.active span{color:var(--accent2)}
+
+.lesson-area{padding:48px 0 76px}
+.lesson-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font:1000 11px/1 Inter,sans-serif;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px}
+.eyebrow:before{content:"";width:22px;height:3px;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.lesson-heading h2{font-size:clamp(28px,4.6vw,46px);line-height:1.1;letter-spacing:-1.2px}
+.lesson-heading p{max-width:700px;margin-top:8px;color:var(--muted);font-weight:650}
+.results-summary{flex:none;padding:10px 13px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#65758b;font-size:12px;font-weight:850;box-shadow:var(--shadow-sm)}
+.results-summary b{color:var(--accent);font-size:15px}
+.lesson-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.lesson-card{position:relative;isolation:isolate;min-height:320px;display:flex;flex-direction:column;padding:20px;border:1px solid rgba(21,48,80,.10);border-radius:25px;background:rgba(255,255,255,.94);box-shadow:0 15px 45px rgba(11,32,60,.075);overflow:hidden;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s;animation:cardIn .55s both;animation-delay:min(calc(var(--order)*24ms),420ms)}
+.lesson-card:before{content:"";position:absolute;z-index:-1;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--warm))}
+.lesson-card:after{content:attr(data-lesson);position:absolute;z-index:-1;right:-10px;top:25px;color:rgba(var(--accent-rgb),.045);font:1000 116px/1 Inter,sans-serif;letter-spacing:-9px}
+.lesson-card:hover{transform:translateY(-7px);border-color:rgba(var(--accent-rgb),.24);box-shadow:0 27px 75px rgba(11,32,60,.14)}
+.lesson-card.is-complete{border-color:rgba(22,163,106,.23);background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(232,250,242,.92))}
+.lesson-card.is-complete:before{background:linear-gradient(90deg,#16a36a,#4ade80)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.lesson-identity{display:grid;gap:7px}
+.lesson-number{display:inline-grid;place-items:center;width:52px;height:42px;border-radius:14px;color:#fff;background:linear-gradient(135deg,var(--navy-2),var(--accent));font:1000 17px/1 Inter,sans-serif;box-shadow:0 10px 25px rgba(var(--accent-rgb),.20)}
+.stage-name{color:#718097;font-size:11px;font-weight:900}
+.done-control{position:relative;display:grid;place-items:center;width:42px;height:42px;flex:none;cursor:pointer}
+.done-control input{position:absolute;opacity:0;pointer-events:none}
+.checkmark{display:grid;place-items:center;width:38px;height:38px;border:2px solid #d7dee8;border-radius:13px;background:#fff;color:transparent;font-weight:1000;transition:.2s}
+.done-control:hover .checkmark{border-color:#16a36a;transform:scale(1.05)}
+.done-control input:focus-visible + .checkmark{outline:3px solid rgba(var(--accent2-rgb),.5);outline-offset:3px}
+.done-control input:checked + .checkmark{border-color:transparent;color:#fff;background:linear-gradient(135deg,#16a36a,#4ade80);box-shadow:0 9px 20px rgba(22,163,106,.22)}
+.card-body{margin-top:22px}
+.title-link{display:inline-block}
+.lesson-card h3{color:var(--navy);font-size:21px;line-height:1.25;letter-spacing:-.25px;transition:color .2s}
+.title-link:hover h3{color:var(--accent)}
+.japanese{display:inline-flex;margin-top:10px;padding:7px 10px;border-radius:10px;color:var(--accent);background:rgba(var(--accent-rgb),.075);font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:900;line-height:1.45}
+.description{margin-top:12px;color:var(--muted);font-size:14px;font-weight:650}
+.card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:18px;border-top:1px dashed rgba(20,47,78,.14)}
+.type-pill{color:#718197;font:900 10px/1 Inter,'Noto Sans Bengali',sans-serif;letter-spacing:.4px;text-transform:uppercase}
+.open-lesson{display:inline-flex;align-items:center;gap:8px;padding:9px 11px;border-radius:12px;color:#fff;background:var(--navy);font-size:12px;font-weight:950;transition:.2s}
+.open-lesson:hover{background:var(--accent);transform:translateX(2px);box-shadow:0 9px 22px rgba(var(--accent-rgb),.20)}
+.lesson-card.hidden{display:none}
+.lesson-grid.list-view{grid-template-columns:1fr}
+.lesson-grid.list-view .lesson-card{min-height:0;display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:18px;align-items:center;padding:17px 19px}
+.lesson-grid.list-view .card-top{align-items:center}
+.lesson-grid.list-view .lesson-identity{display:flex;align-items:center}
+.lesson-grid.list-view .stage-name{max-width:78px}
+.lesson-grid.list-view .card-body{margin:0}
+.lesson-grid.list-view .description{margin-top:7px}
+.lesson-grid.list-view .card-footer{margin:0;padding:0 0 0 16px;border:0;border-left:1px dashed rgba(20,47,78,.14)}
+.lesson-grid.list-view .type-pill{display:none}
+.lesson-grid.list-view .lesson-card:after{font-size:75px;top:3px}
+.empty-state{display:none;text-align:center;padding:54px 20px;border:1px dashed rgba(20,47,78,.18);border-radius:25px;background:rgba(255,255,255,.7)}
+.empty-state.show{display:block}
+.empty-icon{display:grid;place-items:center;width:66px;height:66px;margin:0 auto 16px;border-radius:22px;background:rgba(var(--accent-rgb),.09);color:var(--accent);font-size:28px}
+.empty-state h3{font-size:22px}
+.empty-state p{margin:7px 0 16px;color:var(--muted)}
+.reset-button{border:0;border-radius:13px;background:var(--accent);color:#fff;padding:11px 15px;font-weight:900;cursor:pointer}
+
+.study-guide{padding:0 0 76px}
+.guide-panel{position:relative;overflow:hidden;padding:30px;border-radius:30px;color:#fff;background:linear-gradient(125deg,#0a172a,#142e4e);box-shadow:var(--shadow-lg)}
+.guide-panel:after{content:"学";position:absolute;right:28px;top:-32px;color:rgba(255,255,255,.04);font:1000 190px/1 'Noto Sans JP',sans-serif}
+.guide-head{position:relative;z-index:1;max-width:680px}
+.guide-head span{color:var(--accent2);font-size:12px;font-weight:950;letter-spacing:1px;text-transform:uppercase}
+.guide-head h2{margin-top:8px;font-size:clamp(26px,4vw,38px);line-height:1.15}
+.guide-steps{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.guide-step{padding:17px;border:1px solid rgba(255,255,255,.11);border-radius:18px;background:rgba(255,255,255,.07)}
+.guide-step b{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));font:1000 13px/1 Inter,sans-serif}
+.guide-step strong{display:block;margin-top:12px;font-size:15px}
+.guide-step p{margin-top:5px;color:rgba(255,255,255,.62);font-size:12px}
+
+.site-footer{padding:30px 0 54px;color:#738198;font-size:13px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:24px;border-top:1px solid var(--line)}
+.footer-brand{font-weight:950;color:var(--navy)}
+.footer-links{display:flex;gap:14px;flex-wrap:wrap}
+.footer-links a:hover{color:var(--accent)}
+
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseCard{0%,100%{box-shadow:0 15px 45px rgba(11,32,60,.075)}50%{box-shadow:0 0 0 5px rgba(var(--accent-rgb),.18),0 25px 65px rgba(11,32,60,.15)}}
+.lesson-card.pulse{animation:pulseCard .8s ease}
+
+@media(max-width:1020px){
+  .hero-grid{grid-template-columns:1fr;min-height:auto;gap:35px;padding:52px 0 90px}
+  .hero-copy{max-width:850px}
+  .hero-dashboard{max-width:650px}
+  .lesson-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .finder-row{grid-template-columns:1fr minmax(220px,.55fr)}
+  .view-switch{display:none}
+  .filters{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:760px){
+  html{scroll-padding-top:76px}
+  .container{width:min(100% - 24px,1220px)}
+  .nav-inner{min-height:64px;gap:14px}
+  .brand img{width:40px;height:40px;border-radius:12px}
+  .brand-name{font-size:18px}
+  .brand-tagline{display:none}
+  .nav-links{margin-right:-12px;padding-right:12px}
+  .nav-link{padding:8px 10px;font-size:12px}
+  .home-link span:last-child{display:none}
+  .hero-grid{padding:42px 0 80px}
+  .hero h1{font-size:clamp(39px,13vw,62px);letter-spacing:-2px}
+  .hero h1 em{font-size:.48em}
+  .hero-lead{font-size:15px}
+  .hero-actions .button{flex:1}
+  .hero-dashboard{padding:18px;border-radius:24px}
+  .progress-overview{grid-template-columns:108px 1fr;gap:15px}
+  .progress-ring{width:106px}
+  .ring-content b{font-size:23px}
+  .progress-copy h2{font-size:18px}
+  .dashboard-stats{gap:6px}
+  .dashboard-stat{padding:10px 7px}
+  .dashboard-stat b{font-size:16px}
+  .finder-section{margin-top:-40px}
+  .finder-panel{position:relative;top:auto;padding:13px;border-radius:21px}
+  .finder-row{grid-template-columns:1fr}
+  .search-box,.jump-box{min-height:52px}
+  .jump-box{grid-template-columns:minmax(0,1fr) auto}
+  .filters{gap:14px;margin-top:12px;padding-top:12px}
+  .range-chips,.status-chips{flex-wrap:nowrap;max-width:calc(100vw - 50px);overflow-x:auto;padding:1px 1px 7px;scrollbar-width:none}
+  .range-chips::-webkit-scrollbar,.status-chips::-webkit-scrollbar{display:none}
+  .range-chip,.status-chip{flex:none}
+  .lesson-area{padding-top:38px}
+  .lesson-heading{align-items:flex-start;flex-direction:column}
+  .lesson-grid{grid-template-columns:1fr;gap:14px}
+  .lesson-card{min-height:292px;border-radius:21px}
+  .lesson-grid.list-view .lesson-card{min-height:292px;display:flex;gap:0;align-items:stretch;padding:20px}
+  .lesson-grid.list-view .card-top{align-items:flex-start}
+  .lesson-grid.list-view .lesson-identity{display:grid}
+  .lesson-grid.list-view .stage-name{max-width:none}
+  .lesson-grid.list-view .card-body{margin-top:22px}
+  .lesson-grid.list-view .description{margin-top:12px}
+  .lesson-grid.list-view .card-footer{margin-top:auto;padding:18px 0 0;border:0;border-top:1px dashed rgba(20,47,78,.14)}
+  .lesson-grid.list-view .type-pill{display:inline}
+  .lesson-grid.list-view .lesson-card:after{font-size:116px;top:25px}
+  .guide-steps{grid-template-columns:1fr}
+  .footer-inner{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:410px){
+  .brand-name{font-size:16px}
+  .nav-link{font-size:11px}
+  .hero-actions{align-items:stretch;flex-direction:column}
+  .progress-copy p{display:none}
+  .dashboard-stats{grid-template-columns:1fr 1fr}
+  .dashboard-stat:last-child{grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body data-page="n5-grammar" style="--accent:#7c3aed;--accent-rgb:124,58,237;--accent2:#22d3ee;--accent2-rgb:34,211,238;--warm:#fb7185">
+  <a class="skip-link" href="#lessons">Lesson তালিকায় যান</a>
+  <nav class="site-nav" aria-label="প্রধান নেভিগেশন">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="আপনার নিহোন হোম">
+        <img src="logo.png" alt="" width="46" height="46">
+        <span class="brand-copy"><span class="brand-name">আপনার নিহোন</span><span class="brand-tagline">Japanese Learning Hub</span></span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link home-link" href="index.html#n5"><span aria-hidden="true">⌂</span><span>হোম</span></a>
+        <a class="nav-link" href="n5-vocabulary.html">N5 Vocabulary</a>
+        <a class="nav-link active" href="n5-grammar.html" aria-current="page">N5 Grammar</a>
+        <a class="nav-link" href="n4-vocabulary.html">N4 Vocabulary</a>
+        <a class="nav-link" href="n4-grammar.html">N4 Grammar</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="breadcrumb"><span class="course-pill">JLPT N5</span><span>›</span><span>Minna no Nihongo I</span><span>›</span><span>Grammar</span></div>
+        <h1><span class="latin">N5 Grammar</span><em>ভিত্তি থেকে আত্মবিশ্বাস</em></h1>
+        <p class="hero-lead">২৫টি ধাপে জাপানি বাক্য গঠন, particle, verb form ও প্রয়োজনীয় grammar বাংলা ব্যাখ্যায় আয়ত্ত করুন।</p>
+        <div class="hero-actions">
+          <a class="button button-primary" id="continueButton" href="n5-grammar-lesson-01-real.html"><span class="continue-copy">প্রথম Lesson শুরু করুন</span><span class="arrow" aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#lessons"><span aria-hidden="true">⌕</span> Lesson খুঁজুন</a>
+        </div>
+      </div>
+      <aside class="hero-dashboard" aria-label="কোর্সের অগ্রগতি">
+        <div class="dashboard-head"><strong>আমার অগ্রগতি</strong><span>Auto saved</span></div>
+        <div class="progress-overview">
+          <div class="progress-ring" id="progressRing"><span class="ring-content"><b id="ringNumber">0%</b><small>সম্পন্ন</small></span></div>
+          <div class="progress-copy"><h2 id="progressCopy">0/25 lesson সম্পন্ন</h2><p>শেষ করা lesson-এ ✓ দিন। এই device-এ আপনার progress স্বয়ংক্রিয়ভাবে সংরক্ষিত থাকবে।</p></div>
+        </div>
+        <div class="dashboard-stats">
+          <div class="dashboard-stat"><b>25</b><span>মোট LESSON</span></div>
+          <div class="dashboard-stat"><b id="completeStat">0</b><span>সম্পন্ন</span></div>
+          <div class="dashboard-stat"><b id="remainingStat">25</b><span>বাকি</span></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <section class="finder-section" id="lessons" aria-label="Lesson finder">
+    <div class="container">
+      <div class="finder-panel">
+        <div class="finder-row">
+          <label class="search-box">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <span class="sr-only">Lesson খুঁজুন</span>
+            <input id="lessonSearch" type="search" autocomplete="off" placeholder="Lesson 14, て-form অথবা বাংলা বিষয় লিখুন">
+            <button class="clear-search" id="clearSearch" type="button" aria-label="Search মুছুন">×</button>
+          </label>
+          <div class="jump-box">
+            <label class="sr-only" for="lessonJump">Lesson নম্বর বেছে নিন</label>
+            <select id="lessonJump"><option value="1">Lesson 01 — N1 は N2 です</option>
+                <option value="2">Lesson 02 — これ・それ・あれ</option>
+                <option value="3">Lesson 03 — ここ・そこ・あそこ</option>
+                <option value="4">Lesson 04 — Time &amp; ます Form</option>
+                <option value="5">Lesson 05 — Movement Verbs</option>
+                <option value="6">Lesson 06 — Object Particle を</option>
+                <option value="7">Lesson 07 — Means &amp; Giving</option>
+                <option value="8">Lesson 08 — Adjectives Basics</option>
+                <option value="9">Lesson 09 — Likes, Skills, Reason</option>
+                <option value="10">Lesson 10 — Existence &amp; Location</option>
+                <option value="11">Lesson 11 — Counters &amp; Frequency</option>
+                <option value="12">Lesson 12 — Past &amp; Comparison</option>
+                <option value="13">Lesson 13 — Desire &amp; Purpose</option>
+                <option value="14">Lesson 14 — て-form Requests</option>
+                <option value="15">Lesson 15 — Permission &amp; Rules</option>
+                <option value="16">Lesson 16 — Connecting Actions</option>
+                <option value="17">Lesson 17 — ない-form</option>
+                <option value="18">Lesson 18 — Dictionary Form</option>
+                <option value="19">Lesson 19 — た-form Experience</option>
+                <option value="20">Lesson 20 — Plain Form</option>
+                <option value="21">Lesson 21 — Thoughts &amp; Quotations</option>
+                <option value="22">Lesson 22 — Noun Modification</option>
+                <option value="23">Lesson 23 — When &amp; If</option>
+                <option value="24">Lesson 24 — Giving Favors</option>
+                <option value="25">Lesson 25 — Conditional Review</option></select>
+            <button id="jumpButton" type="button">দেখুন</button>
+          </div>
+          <div class="view-switch" aria-label="Lesson দেখার ধরন">
+            <button class="view-button active" type="button" data-view="grid" aria-label="Grid view" aria-pressed="true">▦</button>
+            <button class="view-button" type="button" data-view="list" aria-label="List view" aria-pressed="false">☷</button>
+          </div>
+        </div>
+        <div class="filters">
+          <div class="filter-block">
+            <span class="filter-label">Lesson range</span>
+            <div class="range-chips">
+              <button class="range-chip active" type="button" data-stage="all"><span>সব</span>পুরো কোর্স</button>
+              <button class="range-chip" type="button" data-stage="1"><span>01–05</span>পরিচয় ও ভিত্তি</button>
+              <button class="range-chip" type="button" data-stage="2"><span>06–10</span>দৈনন্দিন বাক্য</button>
+              <button class="range-chip" type="button" data-stage="3"><span>11–15</span>রূপ ও নিয়ম</button>
+              <button class="range-chip" type="button" data-stage="4"><span>16–20</span>Verb forms</button>
+              <button class="range-chip" type="button" data-stage="5"><span>21–25</span>প্রয়োগ ও সংযোগ</button>
+            </div>
+          </div>
+          <div class="filter-block">
+            <span class="filter-label">Progress</span>
+            <div class="status-chips">
+              <button class="status-chip active" type="button" data-status="all">সব</button>
+              <button class="status-chip" type="button" data-status="todo">বাকি</button>
+              <button class="status-chip" type="button" data-status="done">সম্পন্ন</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="lesson-area">
+    <div class="container">
+      <div class="lesson-heading">
+        <div>
+          <span class="eyebrow">Minna no Nihongo I · Grammar</span>
+          <h2>আপনার Lesson বেছে নিন</h2>
+          <p>নম্বর, Japanese pattern অথবা বাংলা বিষয় দিয়ে search করুন। Range ও progress filter ব্যবহার করে প্রয়োজনীয় lesson দ্রুত খুলুন।</p>
+        </div>
+        <div class="results-summary" aria-live="polite"><b id="resultNumber">25</b> <span id="resultText">টি lesson দেখানো হচ্ছে</span></div>
+      </div>
+      <div class="lesson-grid" id="lessonGrid">
+        
+        <article class="lesson-card" data-lesson="1" data-stage="1" data-href="n5-grammar-lesson-01-real.html" data-search="lesson 1 lesson 01 N1 は N2 です は・です・じゃありません・か・も・の নিজের পরিচয় ও basic statement/question তৈরি। Grammar ব্যাকরণ পরিচয় ও ভিত্তি" style="--order:0">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">01</span>
+              <span class="stage-name">ধাপ 1 · পরিচয় ও ভিত্তি</span>
+            </div>
+            <label class="done-control" title="Lesson 01 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="1" aria-label="Lesson 01 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-01-real.html">
+              <h3>N1 は N2 です</h3>
+            </a>
+            <p class="japanese">は・です・じゃありません・か・も・の</p>
+            <p class="description">নিজের পরিচয় ও basic statement/question তৈরি।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-01-real.html" aria-label="Lesson 01 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="2" data-stage="1" data-href="n5-grammar-lesson-02-real.html" data-search="lesson 2 lesson 02 これ・それ・あれ この・その・あの・そうです জিনিস দেখিয়ে বলা, জিজ্ঞাসা করা ও ownership। Grammar ব্যাকরণ পরিচয় ও ভিত্তি" style="--order:1">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">02</span>
+              <span class="stage-name">ধাপ 1 · পরিচয় ও ভিত্তি</span>
+            </div>
+            <label class="done-control" title="Lesson 02 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="2" aria-label="Lesson 02 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-02-real.html">
+              <h3>これ・それ・あれ</h3>
+            </a>
+            <p class="japanese">この・その・あの・そうです</p>
+            <p class="description">জিনিস দেখিয়ে বলা, জিজ্ঞাসা করা ও ownership।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-02-real.html" aria-label="Lesson 02 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="3" data-stage="1" data-href="n5-grammar-lesson-03-real.html" data-search="lesson 3 lesson 03 ここ・そこ・あそこ 場所です・どこ・いくら স্থান, দিক, ভবন ও দাম নিয়ে বাক্য। Grammar ব্যাকরণ পরিচয় ও ভিত্তি" style="--order:2">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">03</span>
+              <span class="stage-name">ধাপ 1 · পরিচয় ও ভিত্তি</span>
+            </div>
+            <label class="done-control" title="Lesson 03 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="3" aria-label="Lesson 03 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-03-real.html">
+              <h3>ここ・そこ・あそこ</h3>
+            </a>
+            <p class="japanese">場所です・どこ・いくら</p>
+            <p class="description">স্থান, দিক, ভবন ও দাম নিয়ে বাক্য।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-03-real.html" aria-label="Lesson 03 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="4" data-stage="1" data-href="n5-grammar-lesson-04-real.html" data-search="lesson 4 lesson 04 Time &amp; ます Form 〜時〜分・に・から/まで সময়, তারিখ ও polite verb present/past। Grammar ব্যাকরণ পরিচয় ও ভিত্তি" style="--order:3">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">04</span>
+              <span class="stage-name">ধাপ 1 · পরিচয় ও ভিত্তি</span>
+            </div>
+            <label class="done-control" title="Lesson 04 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="4" aria-label="Lesson 04 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-04-real.html">
+              <h3>Time &amp; ます Form</h3>
+            </a>
+            <p class="japanese">〜時〜分・に・から/まで</p>
+            <p class="description">সময়, তারিখ ও polite verb present/past।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-04-real.html" aria-label="Lesson 04 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="5" data-stage="1" data-href="n5-grammar-lesson-05-real.html" data-search="lesson 5 lesson 05 Movement Verbs へ・で・と・いつ যাওয়া/আসা/ফেরা, যানবাহন ও সঙ্গী। Grammar ব্যাকরণ পরিচয় ও ভিত্তি" style="--order:4">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">05</span>
+              <span class="stage-name">ধাপ 1 · পরিচয় ও ভিত্তি</span>
+            </div>
+            <label class="done-control" title="Lesson 05 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="5" aria-label="Lesson 05 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-05-real.html">
+              <h3>Movement Verbs</h3>
+            </a>
+            <p class="japanese">へ・で・と・いつ</p>
+            <p class="description">যাওয়া/আসা/ফেরা, যানবাহন ও সঙ্গী।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-05-real.html" aria-label="Lesson 05 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="6" data-stage="2" data-href="n5-grammar-lesson-06-real.html" data-search="lesson 6 lesson 06 Object Particle を 場所で・ませんか・ましょう কাজ করা, invitation ও suggestion। Grammar ব্যাকরণ দৈনন্দিন বাক্য" style="--order:5">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">06</span>
+              <span class="stage-name">ধাপ 2 · দৈনন্দিন বাক্য</span>
+            </div>
+            <label class="done-control" title="Lesson 06 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="6" aria-label="Lesson 06 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-06-real.html">
+              <h3>Object Particle を</h3>
+            </a>
+            <p class="japanese">場所で・ませんか・ましょう</p>
+            <p class="description">কাজ করা, invitation ও suggestion।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-06-real.html" aria-label="Lesson 06 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="7" data-stage="2" data-href="n5-grammar-lesson-07-real.html" data-search="lesson 7 lesson 07 Means &amp; Giving で・あげます・もらいます উপকরণ/ভাষা দিয়ে কাজ ও দেওয়া-নেওয়া। Grammar ব্যাকরণ দৈনন্দিন বাক্য" style="--order:6">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">07</span>
+              <span class="stage-name">ধাপ 2 · দৈনন্দিন বাক্য</span>
+            </div>
+            <label class="done-control" title="Lesson 07 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="7" aria-label="Lesson 07 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-07-real.html">
+              <h3>Means &amp; Giving</h3>
+            </a>
+            <p class="japanese">で・あげます・もらいます</p>
+            <p class="description">উপকরণ/ভাষা দিয়ে কাজ ও দেওয়া-নেওয়া।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-07-real.html" aria-label="Lesson 07 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="8" data-stage="2" data-href="n5-grammar-lesson-08-real.html" data-search="lesson 8 lesson 08 Adjectives Basics い形容詞・な形容詞・とても adjective দিয়ে মানুষ/জিনিস বর্ণনা। Grammar ব্যাকরণ দৈনন্দিন বাক্য" style="--order:7">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">08</span>
+              <span class="stage-name">ধাপ 2 · দৈনন্দিন বাক্য</span>
+            </div>
+            <label class="done-control" title="Lesson 08 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="8" aria-label="Lesson 08 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-08-real.html">
+              <h3>Adjectives Basics</h3>
+            </a>
+            <p class="japanese">い形容詞・な形容詞・とても</p>
+            <p class="description">adjective দিয়ে মানুষ/জিনিস বর্ণনা।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-08-real.html" aria-label="Lesson 08 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="9" data-stage="2" data-href="n5-grammar-lesson-09-real.html" data-search="lesson 9 lesson 09 Likes, Skills, Reason 好き・嫌い・上手・から পছন্দ, দক্ষতা, বোঝা ও কারণ বলা। Grammar ব্যাকরণ দৈনন্দিন বাক্য" style="--order:8">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">09</span>
+              <span class="stage-name">ধাপ 2 · দৈনন্দিন বাক্য</span>
+            </div>
+            <label class="done-control" title="Lesson 09 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="9" aria-label="Lesson 09 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-09-real.html">
+              <h3>Likes, Skills, Reason</h3>
+            </a>
+            <p class="japanese">好き・嫌い・上手・から</p>
+            <p class="description">পছন্দ, দক্ষতা, বোঝা ও কারণ বলা।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-09-real.html" aria-label="Lesson 09 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="10" data-stage="2" data-href="n5-grammar-lesson-10-real.html" data-search="lesson 10 lesson 10 Existence &amp; Location あります・います・位置詞 কোথায় কী আছে—existence sentence। Grammar ব্যাকরণ দৈনন্দিন বাক্য" style="--order:9">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">10</span>
+              <span class="stage-name">ধাপ 2 · দৈনন্দিন বাক্য</span>
+            </div>
+            <label class="done-control" title="Lesson 10 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="10" aria-label="Lesson 10 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-10-real.html">
+              <h3>Existence &amp; Location</h3>
+            </a>
+            <p class="japanese">あります・います・位置詞</p>
+            <p class="description">কোথায় কী আছে—existence sentence।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-10-real.html" aria-label="Lesson 10 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="11" data-stage="3" data-href="n5-grammar-lesson-11-real.html" data-search="lesson 11 lesson 11 Counters &amp; Frequency 〜つ・〜人・期間に〜回 গণনা, সময়কাল ও frequency। Grammar ব্যাকরণ রূপ ও নিয়ম" style="--order:10">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">11</span>
+              <span class="stage-name">ধাপ 3 · রূপ ও নিয়ম</span>
+            </div>
+            <label class="done-control" title="Lesson 11 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="11" aria-label="Lesson 11 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-11-real.html">
+              <h3>Counters &amp; Frequency</h3>
+            </a>
+            <p class="japanese">〜つ・〜人・期間に〜回</p>
+            <p class="description">গণনা, সময়কাল ও frequency।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-11-real.html" aria-label="Lesson 11 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="12" data-stage="3" data-href="n5-grammar-lesson-12-real.html" data-search="lesson 12 lesson 12 Past &amp; Comparison でした・かった・より・一番 past tense adjective/noun এবং comparison। Grammar ব্যাকরণ রূপ ও নিয়ম" style="--order:11">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">12</span>
+              <span class="stage-name">ধাপ 3 · রূপ ও নিয়ম</span>
+            </div>
+            <label class="done-control" title="Lesson 12 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="12" aria-label="Lesson 12 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-12-real.html">
+              <h3>Past &amp; Comparison</h3>
+            </a>
+            <p class="japanese">でした・かった・より・一番</p>
+            <p class="description">past tense adjective/noun এবং comparison।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-12-real.html" aria-label="Lesson 12 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="13" data-stage="3" data-href="n5-grammar-lesson-13-real.html" data-search="lesson 13 lesson 13 Desire &amp; Purpose ほしい・〜たい・Vに行きます ইচ্ছা ও উদ্দেশ্য নিয়ে বাক্য। Grammar ব্যাকরণ রূপ ও নিয়ম" style="--order:12">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">13</span>
+              <span class="stage-name">ধাপ 3 · রূপ ও নিয়ম</span>
+            </div>
+            <label class="done-control" title="Lesson 13 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="13" aria-label="Lesson 13 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-13-real.html">
+              <h3>Desire &amp; Purpose</h3>
+            </a>
+            <p class="japanese">ほしい・〜たい・Vに行きます</p>
+            <p class="description">ইচ্ছা ও উদ্দেশ্য নিয়ে বাক্য।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-13-real.html" aria-label="Lesson 13 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="14" data-stage="3" data-href="n5-grammar-lesson-14-real.html" data-search="lesson 14 lesson 14 て-form Requests Vてください・Vています অনুরোধ, চলমান কাজ ও offer। Grammar ব্যাকরণ রূপ ও নিয়ম" style="--order:13">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">14</span>
+              <span class="stage-name">ধাপ 3 · রূপ ও নিয়ম</span>
+            </div>
+            <label class="done-control" title="Lesson 14 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="14" aria-label="Lesson 14 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-14-real.html">
+              <h3>て-form Requests</h3>
+            </a>
+            <p class="japanese">Vてください・Vています</p>
+            <p class="description">অনুরোধ, চলমান কাজ ও offer।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-14-real.html" aria-label="Lesson 14 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="15" data-stage="3" data-href="n5-grammar-lesson-15-real.html" data-search="lesson 15 lesson 15 Permission &amp; Rules てもいい・てはいけません অনুমতি, নিষেধ ও ongoing state। Grammar ব্যাকরণ রূপ ও নিয়ম" style="--order:14">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">15</span>
+              <span class="stage-name">ধাপ 3 · রূপ ও নিয়ম</span>
+            </div>
+            <label class="done-control" title="Lesson 15 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="15" aria-label="Lesson 15 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-15-real.html">
+              <h3>Permission &amp; Rules</h3>
+            </a>
+            <p class="japanese">てもいい・てはいけません</p>
+            <p class="description">অনুমতি, নিষেধ ও ongoing state।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-15-real.html" aria-label="Lesson 15 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="16" data-stage="4" data-href="n5-grammar-lesson-16-real.html" data-search="lesson 16 lesson 16 Connecting Actions Vてから・Adj connection পরপর কাজ ও adjective/noun সংযোগ। Grammar ব্যাকরণ Verb forms" style="--order:15">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">16</span>
+              <span class="stage-name">ধাপ 4 · Verb forms</span>
+            </div>
+            <label class="done-control" title="Lesson 16 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="16" aria-label="Lesson 16 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-16-real.html">
+              <h3>Connecting Actions</h3>
+            </a>
+            <p class="japanese">Vてから・Adj connection</p>
+            <p class="description">পরপর কাজ ও adjective/noun সংযোগ।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-16-real.html" aria-label="Lesson 16 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="17" data-stage="4" data-href="n5-grammar-lesson-17-real.html" data-search="lesson 17 lesson 17 ない-form ないでください・なければなりません নিষেধ, বাধ্যতা ও না করলেও চলে। Grammar ব্যাকরণ Verb forms" style="--order:16">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">17</span>
+              <span class="stage-name">ধাপ 4 · Verb forms</span>
+            </div>
+            <label class="done-control" title="Lesson 17 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="17" aria-label="Lesson 17 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-17-real.html">
+              <h3>ない-form</h3>
+            </a>
+            <p class="japanese">ないでください・なければなりません</p>
+            <p class="description">নিষেধ, বাধ্যতা ও না করলেও চলে।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-17-real.html" aria-label="Lesson 17 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="18" data-stage="4" data-href="n5-grammar-lesson-18-real.html" data-search="lesson 18 lesson 18 Dictionary Form ことができます・前に ability, hobby এবং before structure। Grammar ব্যাকরণ Verb forms" style="--order:17">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">18</span>
+              <span class="stage-name">ধাপ 4 · Verb forms</span>
+            </div>
+            <label class="done-control" title="Lesson 18 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="18" aria-label="Lesson 18 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-18-real.html">
+              <h3>Dictionary Form</h3>
+            </a>
+            <p class="japanese">ことができます・前に</p>
+            <p class="description">ability, hobby এবং before structure।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-18-real.html" aria-label="Lesson 18 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="19" data-stage="4" data-href="n5-grammar-lesson-19-real.html" data-search="lesson 19 lesson 19 た-form Experience たことがあります・たり〜たり অভিজ্ঞতা, multiple actions ও change। Grammar ব্যাকরণ Verb forms" style="--order:18">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">19</span>
+              <span class="stage-name">ধাপ 4 · Verb forms</span>
+            </div>
+            <label class="done-control" title="Lesson 19 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="19" aria-label="Lesson 19 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-19-real.html">
+              <h3>た-form Experience</h3>
+            </a>
+            <p class="japanese">たことがあります・たり〜たり</p>
+            <p class="description">অভিজ্ঞতা, multiple actions ও change।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-19-real.html" aria-label="Lesson 19 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="20" data-stage="4" data-href="n5-grammar-lesson-20-real.html" data-search="lesson 20 lesson 20 Plain Form 普通形・casual speech formal থেকে casual speech-এর foundation। Grammar ব্যাকরণ Verb forms" style="--order:19">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">20</span>
+              <span class="stage-name">ধাপ 4 · Verb forms</span>
+            </div>
+            <label class="done-control" title="Lesson 20 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="20" aria-label="Lesson 20 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-20-real.html">
+              <h3>Plain Form</h3>
+            </a>
+            <p class="japanese">普通形・casual speech</p>
+            <p class="description">formal থেকে casual speech-এর foundation।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-20-real.html" aria-label="Lesson 20 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="21" data-stage="5" data-href="n5-grammar-lesson-21-real.html" data-search="lesson 21 lesson 21 Thoughts &amp; Quotations と思います・と言います・でしょう মতামত, quote ও confirmation। Grammar ব্যাকরণ প্রয়োগ ও সংযোগ" style="--order:20">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">21</span>
+              <span class="stage-name">ধাপ 5 · প্রয়োগ ও সংযোগ</span>
+            </div>
+            <label class="done-control" title="Lesson 21 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="21" aria-label="Lesson 21 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-21-real.html">
+              <h3>Thoughts &amp; Quotations</h3>
+            </a>
+            <p class="japanese">と思います・と言います・でしょう</p>
+            <p class="description">মতামত, quote ও confirmation।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-21-real.html" aria-label="Lesson 21 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="22" data-stage="5" data-href="n5-grammar-lesson-22-real.html" data-search="lesson 22 lesson 22 Noun Modification 修飾節・着ている人 clause দিয়ে noun বর্ণনা। Grammar ব্যাকরণ প্রয়োগ ও সংযোগ" style="--order:21">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">22</span>
+              <span class="stage-name">ধাপ 5 · প্রয়োগ ও সংযোগ</span>
+            </div>
+            <label class="done-control" title="Lesson 22 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="22" aria-label="Lesson 22 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-22-real.html">
+              <h3>Noun Modification</h3>
+            </a>
+            <p class="japanese">修飾節・着ている人</p>
+            <p class="description">clause দিয়ে noun বর্ণনা।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-22-real.html" aria-label="Lesson 22 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="23" data-stage="5" data-href="n5-grammar-lesson-23-real.html" data-search="lesson 23 lesson 23 When &amp; If とき・と সময় ও automatic condition। Grammar ব্যাকরণ প্রয়োগ ও সংযোগ" style="--order:22">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">23</span>
+              <span class="stage-name">ধাপ 5 · প্রয়োগ ও সংযোগ</span>
+            </div>
+            <label class="done-control" title="Lesson 23 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="23" aria-label="Lesson 23 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-23-real.html">
+              <h3>When &amp; If</h3>
+            </a>
+            <p class="japanese">とき・と</p>
+            <p class="description">সময় ও automatic condition।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-23-real.html" aria-label="Lesson 23 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="24" data-stage="5" data-href="n5-grammar-lesson-24-real.html" data-search="lesson 24 lesson 24 Giving Favors てあげます・てもらいます・てくれます কারো জন্য কিছু করা/পাওয়া। Grammar ব্যাকরণ প্রয়োগ ও সংযোগ" style="--order:23">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">24</span>
+              <span class="stage-name">ধাপ 5 · প্রয়োগ ও সংযোগ</span>
+            </div>
+            <label class="done-control" title="Lesson 24 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="24" aria-label="Lesson 24 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-24-real.html">
+              <h3>Giving Favors</h3>
+            </a>
+            <p class="japanese">てあげます・てもらいます・てくれます</p>
+            <p class="description">কারো জন্য কিছু করা/পাওয়া।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-24-real.html" aria-label="Lesson 24 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="lesson-card" data-lesson="25" data-stage="5" data-href="n5-grammar-lesson-25-real.html" data-search="lesson 25 lesson 25 Conditional Review たら・ても if/when এবং even if structure। Grammar ব্যাকরণ প্রয়োগ ও সংযোগ" style="--order:24">
+          <div class="card-top">
+            <div class="lesson-identity">
+              <span class="lesson-number">25</span>
+              <span class="stage-name">ধাপ 5 · প্রয়োগ ও সংযোগ</span>
+            </div>
+            <label class="done-control" title="Lesson 25 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <input class="complete" type="checkbox" data-lesson="25" aria-label="Lesson 25 সম্পন্ন হিসেবে চিহ্নিত করুন">
+              <span class="checkmark" aria-hidden="true">✓</span>
+            </label>
+          </div>
+          <div class="card-body">
+            <a class="title-link lesson-open" href="n5-grammar-lesson-25-real.html">
+              <h3>Conditional Review</h3>
+            </a>
+            <p class="japanese">たら・ても</p>
+            <p class="description">if/when এবং even if structure।</p>
+          </div>
+          <div class="card-footer">
+            <span class="type-pill">文法 · ব্যাকরণ</span>
+            <a class="open-lesson lesson-open" href="n5-grammar-lesson-25-real.html" aria-label="Lesson 25 খুলুন">
+              <span>Lesson খুলুন</span><span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </article>
+      </div>
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon" aria-hidden="true">⌕</div>
+        <h3>কোনো Lesson পাওয়া যায়নি</h3>
+        <p>অন্য শব্দ লিখুন অথবা filter মুছে আবার চেষ্টা করুন।</p>
+        <button class="reset-button" id="resetFilters" type="button">সব Lesson দেখুন</button>
+      </div>
+    </div>
+  </main>
+
+  <section class="study-guide" aria-labelledby="studyGuideTitle">
+    <div class="container">
+      <div class="guide-panel">
+        <div class="guide-head"><span>Smart study flow</span><h2 id="studyGuideTitle">প্রতিটি Lesson থেকে সর্বোচ্চ ফল নিন</h2></div>
+        <div class="guide-steps">
+          <div class="guide-step"><b>01</b><strong>বিষয় দেখে Lesson খুলুন</strong><p>কার্ডের Japanese pattern ও বাংলা সারাংশ দেখে প্রয়োজনীয় lesson বেছে নিন।</p></div>
+          <div class="guide-step"><b>02</b><strong>উদাহরণসহ অনুশীলন করুন</strong><p>ব্যাখ্যা পড়ুন, audio শুনুন এবং quiz দিয়ে নিজের বোঝাপড়া যাচাই করুন।</p></div>
+          <div class="guide-step"><b>03</b><strong>শেষ হলে ✓ দিন</strong><p>সম্পন্ন lesson আলাদা থাকবে এবং Continue button পরের lesson দেখাবে।</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><span class="footer-brand">আপনার নিহোন</span> · বাংলা ভাষাভাষীদের জন্য জাপানি শেখার প্ল্যাটফর্ম</div>
+      <div class="footer-links"><a href="index.html#n5">হোম</a><a href="contact.html">যোগাযোগ</a><a href="privacy-policy.html">Privacy</a></div>
+    </div>
+  </footer>
+  <script>
+(function(){
+  'use strict';
+  var body = document.body;
+  var pageKey = body.dataset.page || location.pathname;
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lesson-card'));
+  var search = document.getElementById('lessonSearch');
+  var clearSearch = document.getElementById('clearSearch');
+  var rangeButtons = Array.prototype.slice.call(document.querySelectorAll('.range-chip'));
+  var statusButtons = Array.prototype.slice.call(document.querySelectorAll('.status-chip'));
+  var grid = document.getElementById('lessonGrid');
+  var gridButtons = Array.prototype.slice.call(document.querySelectorAll('.view-button'));
+  var resultNumber = document.getElementById('resultNumber');
+  var resultText = document.getElementById('resultText');
+  var emptyState = document.getElementById('emptyState');
+  var progressRing = document.getElementById('progressRing');
+  var ringNumber = document.getElementById('ringNumber');
+  var progressCopy = document.getElementById('progressCopy');
+  var completeStat = document.getElementById('completeStat');
+  var remainingStat = document.getElementById('remainingStat');
+  var continueButton = document.getElementById('continueButton');
+  var jumpSelect = document.getElementById('lessonJump');
+  var jumpButton = document.getElementById('jumpButton');
+  var resetButton = document.getElementById('resetFilters');
+  var selectedStage = 'all';
+  var selectedStatus = 'all';
+
+  function storeGet(key){
+    try{return localStorage.getItem(key);}catch(error){return null;}
+  }
+  function storeSet(key,value){
+    try{localStorage.setItem(key,value);}catch(error){}
+  }
+  function progressKey(lesson){return 'aponarnihon:' + pageKey + ':' + lesson;}
+  function toEnglishDigits(value){
+    var bn = '০১২৩৪৫৬৭৮৯';
+    return String(value).replace(/[০-৯]/g,function(digit){return String(bn.indexOf(digit));});
+  }
+  function normalize(value){
+    return toEnglishDigits(value || '').normalize('NFKC').toLocaleLowerCase().replace(/\s+/g,' ').trim();
+  }
+  function isDone(card){
+    var checkbox = card.querySelector('.complete');
+    return Boolean(checkbox && checkbox.checked);
+  }
+  function setActive(buttons,active){
+    buttons.forEach(function(button){
+      var isActive = button === active;
+      button.classList.toggle('active',isActive);
+      button.setAttribute('aria-pressed',isActive ? 'true' : 'false');
+    });
+  }
+  function updateProgress(){
+    var done = cards.filter(isDone).length;
+    var total = cards.length;
+    var remaining = total - done;
+    var percent = total ? Math.round(done / total * 100) : 0;
+    progressRing.style.setProperty('--progress',percent);
+    ringNumber.textContent = percent + '%';
+    progressCopy.textContent = done + '/' + total + ' lesson সম্পন্ন';
+    completeStat.textContent = done;
+    remainingStat.textContent = remaining;
+    cards.forEach(function(card){card.classList.toggle('is-complete',isDone(card));});
+    var next = cards.find(function(card){return !isDone(card);}) || cards[0];
+    var lastLesson = storeGet('aponarnihon:last:' + pageKey);
+    var lastCard = lastLesson ? document.querySelector('.lesson-card[data-lesson="' + lastLesson + '"]') : null;
+    var target = lastCard && !isDone(lastCard) ? lastCard : next;
+    if(target){
+      continueButton.href = target.dataset.href;
+      continueButton.dataset.lesson = target.dataset.lesson;
+      continueButton.querySelector('.continue-copy').textContent = done ? 'শেখা চালিয়ে যান' : 'প্রথম Lesson শুরু করুন';
+    }
+  }
+  function applyFilters(){
+    var query = normalize(search.value);
+    var shown = 0;
+    cards.forEach(function(card){
+      var matchesQuery = !query || normalize(card.dataset.search).indexOf(query) !== -1;
+      var matchesStage = selectedStage === 'all' || card.dataset.stage === selectedStage;
+      var completed = isDone(card);
+      var matchesStatus = selectedStatus === 'all' || (selectedStatus === 'done' && completed) || (selectedStatus === 'todo' && !completed);
+      var visible = matchesQuery && matchesStage && matchesStatus;
+      card.classList.toggle('hidden',!visible);
+      if(visible){shown += 1;}
+    });
+    resultNumber.textContent = shown;
+    resultText.textContent = shown === 1 ? 'টি lesson পাওয়া গেছে' : 'টি lesson দেখানো হচ্ছে';
+    emptyState.classList.toggle('show',shown === 0);
+    clearSearch.classList.toggle('show',Boolean(query));
+  }
+  function resetFilters(){
+    search.value = '';
+    selectedStage = 'all';
+    selectedStatus = 'all';
+    setActive(rangeButtons,rangeButtons[0]);
+    setActive(statusButtons,statusButtons[0]);
+    applyFilters();
+    search.focus();
+  }
+
+  cards.forEach(function(card){
+    var checkbox = card.querySelector('.complete');
+    checkbox.checked = storeGet(progressKey(card.dataset.lesson)) === '1';
+    checkbox.addEventListener('change',function(){
+      storeSet(progressKey(card.dataset.lesson),checkbox.checked ? '1' : '0');
+      updateProgress();
+      applyFilters();
+    });
+    card.querySelectorAll('.lesson-open').forEach(function(link){
+      link.addEventListener('click',function(){storeSet('aponarnihon:last:' + pageKey,card.dataset.lesson);});
+    });
+  });
+
+  search.addEventListener('input',applyFilters);
+  clearSearch.addEventListener('click',function(){search.value='';applyFilters();search.focus();});
+  rangeButtons.forEach(function(button){
+    button.setAttribute('aria-pressed',button.classList.contains('active') ? 'true' : 'false');
+    button.addEventListener('click',function(){selectedStage=button.dataset.stage;setActive(rangeButtons,button);applyFilters();});
+  });
+  statusButtons.forEach(function(button){
+    button.setAttribute('aria-pressed',button.classList.contains('active') ? 'true' : 'false');
+    button.addEventListener('click',function(){selectedStatus=button.dataset.status;setActive(statusButtons,button);applyFilters();});
+  });
+  gridButtons.forEach(function(button){
+    button.addEventListener('click',function(){
+      var view=button.dataset.view;
+      grid.classList.toggle('list-view',view==='list');
+      setActive(gridButtons,button);
+      storeSet('aponarnihon:view:' + pageKey,view);
+    });
+  });
+  jumpButton.addEventListener('click',function(){
+    var card=document.querySelector('.lesson-card[data-lesson="'+jumpSelect.value+'"]');
+    if(!card){return;}
+    selectedStage='all';selectedStatus='all';search.value='';
+    setActive(rangeButtons,rangeButtons[0]);setActive(statusButtons,statusButtons[0]);applyFilters();
+    card.scrollIntoView({behavior:'smooth',block:'center'});
+    card.classList.remove('pulse');
+    void card.offsetWidth;
+    card.classList.add('pulse');
+    setTimeout(function(){card.classList.remove('pulse');},900);
+  });
+  jumpSelect.addEventListener('keydown',function(event){if(event.key==='Enter'){jumpButton.click();}});
+  resetButton.addEventListener('click',resetFilters);
+  continueButton.addEventListener('click',function(){if(continueButton.dataset.lesson){storeSet('aponarnihon:last:' + pageKey,continueButton.dataset.lesson);}});
+  document.addEventListener('keydown',function(event){
+    var tag=document.activeElement && document.activeElement.tagName;
+    if(event.key==='/' && tag!=='INPUT' && tag!=='SELECT' && tag!=='TEXTAREA'){
+      event.preventDefault();search.focus();
+    }
+    if(event.key==='Escape' && document.activeElement===search){search.value='';applyFilters();search.blur();}
+  });
+
+  var savedView=storeGet('aponarnihon:view:' + pageKey);
+  if(savedView==='list'){
+    grid.classList.add('list-view');
+    var listButton=gridButtons.find(function(button){return button.dataset.view==='list';});
+    if(listButton){setActive(gridButtons,listButton);}
+  }
+  updateProgress();
+  applyFilters();
+})();
+</script>
+</body>
+</html>
