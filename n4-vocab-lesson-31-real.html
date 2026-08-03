@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="JLPT N4 / Minna no Nihongo Lesson 31 vocabulary: Japanese, furigana, বাংলা উচ্চারণ, বাংলা অর্থ, audio, search, progress and quiz.">
+  <meta name="theme-color" content="#4f46e5">
+  <title>N4 Vocabulary Lesson 31 | আপনার নিহোন</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg:#f4f7ff; --surface:#ffffff; --surface-2:#f8faff; --text:#172033;
+      --muted:#65708a; --line:#e2e8f4; --primary:#4f46e5; --primary-2:#7c3aed;
+      --mint:#0f9f82; --amber:#f59e0b; --danger:#dc2626; --shadow:0 18px 60px rgba(36,46,82,.12);
+      --soft-shadow:0 8px 28px rgba(36,46,82,.08); --radius:24px;
+    }
+    html[data-theme="dark"] {
+      color-scheme:dark; --bg:#0c1220; --surface:#141d2e; --surface-2:#101827;
+      --text:#edf2ff; --muted:#a9b4ca; --line:#26344c; --primary:#8b83ff;
+      --primary-2:#a56cff; --mint:#35d0ac; --amber:#ffc45b;
+      --shadow:0 22px 70px rgba(0,0,0,.38); --soft-shadow:0 10px 32px rgba(0,0,0,.24);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; color:var(--text); background:
+      radial-gradient(circle at 8% 0%,rgba(79,70,229,.16),transparent 31rem),
+      radial-gradient(circle at 95% 8%,rgba(15,159,130,.12),transparent 28rem),var(--bg);
+      font-family:"Noto Sans Bengali","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+      line-height:1.65; -webkit-font-smoothing:antialiased;
+    }
+    button,input,a { font:inherit; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    a { color:inherit; text-decoration:none; }
+    .container { width:min(1180px,calc(100% - 30px)); margin-inline:auto; }
+    .topbar {
+      position:sticky; top:0; z-index:50; border-bottom:1px solid var(--line);
+      background:color-mix(in srgb,var(--surface) 88%,transparent); backdrop-filter:blur(18px);
+    }
+    .topbar-inner { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .brand { display:flex; align-items:center; gap:11px; min-width:0; font-weight:900; }
+    .brand-mark { width:43px; height:43px; flex:0 0 auto; border-radius:15px; display:grid; place-items:center;
+      color:#fff; background:linear-gradient(135deg,var(--primary),var(--mint)); box-shadow:var(--soft-shadow); }
+    .brand-copy { line-height:1.15; white-space:nowrap; }
+    .brand-copy small { display:block; color:var(--muted); font-size:10px; letter-spacing:.08em; margin-top:4px; }
+    .nav-actions { display:flex; gap:8px; align-items:center; }
+    .nav-btn,.button {
+      min-height:42px; border:1px solid var(--line); border-radius:14px; padding:8px 13px;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px; color:var(--text);
+      background:var(--surface); font-weight:800; cursor:pointer; transition:.2s ease;
+    }
+    .nav-btn:hover,.button:hover { transform:translateY(-1px); border-color:color-mix(in srgb,var(--primary) 42%,var(--line)); }
+    .nav-btn.icon { width:42px; padding:0; }
+    .button.primary { border-color:transparent; color:#fff; background:linear-gradient(135deg,#4f46e5,#7c3aed); }
+    .hero { padding:34px 0 25px; }
+    .hero-card {
+      position:relative; overflow:hidden; min-height:380px; padding:clamp(25px,5vw,58px); border-radius:36px;
+      display:grid; grid-template-columns:minmax(0,1.22fr) minmax(260px,.78fr); align-items:center; gap:32px;
+      color:#fff; background:linear-gradient(135deg,#111b35 0%,#4038b8 54%,#087f70 125%); box-shadow:var(--shadow);
+    }
+    .hero-card::before,.hero-card::after { content:""; position:absolute; border-radius:50%; pointer-events:none; }
+    .hero-card::before { width:330px; height:330px; right:-100px; top:-170px; background:rgba(255,255,255,.12); }
+    .hero-card::after { width:260px; height:260px; left:34%; bottom:-210px; background:rgba(45,212,191,.28); filter:blur(10px); }
+    .hero-main,.hero-side { position:relative; z-index:1; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border:1px solid rgba(255,255,255,.2);
+      border-radius:999px; background:rgba(255,255,255,.1); font-size:12px; font-weight:850; }
+    h1 { margin:16px 0 14px; font-size:clamp(38px,7vw,72px); line-height:.98; letter-spacing:-.045em; }
+    h1 span { display:block; margin-top:9px; color:#bdf9e9; font-size:.42em; letter-spacing:0; }
+    .hero-lead { max-width:690px; margin:0 0 22px; color:rgba(255,255,255,.82); font-size:clamp(15px,2vw,18px); font-weight:600; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:10px; }
+    .hero-actions .button:not(.primary) { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.2); color:#fff; }
+    .hero-side { padding:18px; border:1px solid rgba(255,255,255,.17); border-radius:26px; background:rgba(255,255,255,.1); backdrop-filter:blur(12px); }
+    .stat { display:grid; grid-template-columns:42px 1fr; gap:12px; align-items:center; padding:11px 8px; }
+    .stat + .stat { border-top:1px solid rgba(255,255,255,.12); }
+    .stat-icon { width:42px; height:42px; display:grid; place-items:center; border-radius:14px; background:rgba(255,255,255,.11); font-size:19px; }
+    .stat strong { display:block; font-size:17px; }
+    .stat small { color:rgba(255,255,255,.68); font-weight:650; }
+    .progress-track { height:9px; margin-top:12px; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.14); }
+    .progress-fill { width:0; height:100%; border-radius:inherit; background:linear-gradient(90deg,#5eead4,#fde68a); transition:width .3s ease; }
+    .toolbar-wrap { position:relative; z-index:4; margin-top:-2px; }
+    .toolbar {
+      display:grid; grid-template-columns:minmax(220px,1fr) auto auto; gap:12px; align-items:center;
+      padding:14px; border:1px solid var(--line); border-radius:22px; background:color-mix(in srgb,var(--surface) 94%,transparent); box-shadow:var(--soft-shadow);
+    }
+    .search { position:relative; display:flex; align-items:center; }
+    .search span { position:absolute; left:16px; color:var(--muted); pointer-events:none; }
+    .search input { width:100%; min-height:50px; padding:10px 16px 10px 46px; color:var(--text); border:1px solid var(--line);
+      border-radius:16px; outline:none; background:var(--surface-2); }
+    .search input:focus { border-color:var(--primary); box-shadow:0 0 0 4px color-mix(in srgb,var(--primary) 16%,transparent); }
+    .filter-group { display:flex; gap:7px; flex-wrap:wrap; }
+    .filter-btn { min-height:42px; padding:7px 12px; border:1px solid var(--line); border-radius:13px; color:var(--muted); background:var(--surface); font-weight:800; cursor:pointer; }
+    .filter-btn.active { color:#fff; border-color:transparent; background:var(--primary); }
+    .toolbar-status { min-width:116px; text-align:right; color:var(--muted); font-size:13px; font-weight:800; }
+    .section { padding:34px 0; scroll-margin-top:86px; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:18px; }
+    .section-head h2 { margin:0; font-size:clamp(27px,4vw,40px); line-height:1.18; }
+    .section-head p { margin:5px 0 0; color:var(--muted); font-weight:650; }
+    .word-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .word-card {
+      position:relative; overflow:hidden; min-width:0; display:flex; flex-direction:column; padding:18px;
+      border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--soft-shadow); transition:.22s ease;
+    }
+    .word-card::before { content:""; position:absolute; inset:0 auto 0 0; width:4px; background:linear-gradient(180deg,var(--primary),var(--mint)); opacity:.75; }
+    .word-card:hover { transform:translateY(-3px); border-color:color-mix(in srgb,var(--primary) 34%,var(--line)); box-shadow:var(--shadow); }
+    .word-card.is-learned { border-color:color-mix(in srgb,var(--mint) 55%,var(--line)); background:linear-gradient(155deg,var(--surface),color-mix(in srgb,var(--mint) 8%,var(--surface))); }
+    .word-card[hidden] { display:none; }
+    .card-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+    .number { padding:4px 9px; border-radius:999px; color:var(--primary); background:color-mix(in srgb,var(--primary) 10%,transparent); font-size:12px; font-weight:900; }
+    .edition { color:var(--muted); font-size:11px; font-weight:800; }
+    .jp-main { font-family:"Noto Sans JP","Yu Gothic",sans-serif; font-size:clamp(25px,3vw,32px); font-weight:900; line-height:1.28; word-break:break-word; }
+    .reading { margin-top:7px; color:var(--muted); font-family:"Noto Sans JP","Yu Gothic",sans-serif; font-size:14px; font-weight:650; word-break:break-word; }
+    .label { display:inline-block; margin-right:7px; color:var(--primary); font-family:"Noto Sans Bengali",system-ui,sans-serif; font-size:10px; font-weight:900; letter-spacing:.03em; }
+    .pronunciation { margin:12px 0 10px; padding:9px 11px; border-radius:13px; color:#087966; background:color-mix(in srgb,var(--mint) 11%,var(--surface)); font-weight:850; }
+    html[data-theme="dark"] .pronunciation { color:#73efd1; }
+    .meaning { min-height:56px; margin:0; color:var(--text); font-size:16px; font-weight:750; }
+    details { margin-top:10px; color:var(--muted); font-size:12px; }
+    summary { cursor:pointer; font-weight:800; }
+    details p { margin:7px 0 0; }
+    .card-actions { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:auto; padding-top:15px; }
+    .action { min-height:40px; border:1px solid var(--line); border-radius:13px; color:var(--text); background:var(--surface-2); font-size:13px; font-weight:850; cursor:pointer; }
+    .action:hover { border-color:var(--primary); }
+    .learn-btn[aria-pressed="true"] { color:#fff; border-color:transparent; background:var(--mint); }
+    .empty { display:none; padding:42px 20px; border:1px dashed var(--line); border-radius:24px; color:var(--muted); text-align:center; background:var(--surface); }
+    .empty.show { display:block; }
+    .quiz-shell { position:relative; overflow:hidden; padding:clamp(21px,5vw,42px); border-radius:32px; color:#fff; background:linear-gradient(135deg,#111827,#312e81 58%,#0f766e); box-shadow:var(--shadow); }
+    .quiz-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:24px; align-items:start; }
+    .quiz-intro h2 { margin:10px 0; font-size:clamp(28px,4vw,42px); line-height:1.12; }
+    .quiz-intro p { color:rgba(255,255,255,.72); }
+    .quiz-panel { min-height:300px; padding:20px; border:1px solid rgba(255,255,255,.15); border-radius:24px; background:rgba(255,255,255,.1); backdrop-filter:blur(12px); }
+    .quiz-meta { display:flex; justify-content:space-between; gap:12px; color:rgba(255,255,255,.7); font-size:12px; font-weight:850; }
+    .quiz-question { min-height:68px; margin:17px 0 15px; font-size:clamp(20px,3vw,27px); font-weight:900; line-height:1.42; }
+    .quiz-options { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+    .quiz-option { min-height:51px; padding:9px 11px; border:1px solid rgba(255,255,255,.18); border-radius:14px; color:#fff; background:rgba(255,255,255,.08); text-align:left; font-weight:750; cursor:pointer; }
+    .quiz-option:hover:not(:disabled) { background:rgba(255,255,255,.16); }
+    .quiz-option.correct { color:#073d33; border-color:#5eead4; background:#99f6e4; }
+    .quiz-option.wrong { color:#5f1010; border-color:#fca5a5; background:#fecaca; }
+    .quiz-feedback { min-height:28px; margin-top:13px; font-weight:800; }
+    .quiz-controls { display:flex; gap:9px; margin-top:12px; }
+    .quiz-controls .button:not(.primary) { color:#fff; border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.09); }
+    .source-note { padding:18px; border:1px solid var(--line); border-radius:20px; color:var(--muted); background:var(--surface); font-size:13px; }
+    .lesson-nav { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:stretch; padding:22px 0 42px; }
+    .lesson-link { min-height:64px; padding:10px 15px; border:1px solid var(--line); border-radius:18px; display:flex; align-items:center; gap:10px; background:var(--surface); box-shadow:var(--soft-shadow); font-weight:850; }
+    .lesson-link.next { justify-content:flex-end; text-align:right; }
+    .lesson-link.hub { justify-content:center; min-width:145px; color:#fff; border-color:transparent; background:linear-gradient(135deg,var(--primary),var(--primary-2)); }
+    .lesson-link small { display:block; color:var(--muted); font-size:10px; }
+    .lesson-link.hub small { color:rgba(255,255,255,.74); }
+    footer { padding:0 0 34px; color:var(--muted); text-align:center; font-size:12px; font-weight:700; }
+    .toast { position:fixed; left:50%; bottom:22px; z-index:100; max-width:calc(100% - 28px); padding:11px 16px; border-radius:999px;
+      color:#fff; background:#111827; box-shadow:var(--shadow); font-weight:800; opacity:0; pointer-events:none; transform:translate(-50%,15px); transition:.2s ease; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    @media (max-width:930px) {
+      .hero-card,.quiz-grid { grid-template-columns:1fr; }
+      .hero-card { min-height:0; }
+      .word-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .toolbar { grid-template-columns:1fr; }
+      .toolbar-status { text-align:left; }
+    }
+    @media (max-width:620px) {
+      .container { width:min(100% - 20px,1180px); }
+      .topbar-inner { min-height:61px; }
+      .brand-mark { width:39px; height:39px; }
+      .nav-actions .hub-text { display:none; }
+      .hero { padding-top:18px; }
+      .hero-card { border-radius:27px; padding:25px 20px; }
+      .word-grid,.quiz-options { grid-template-columns:1fr; }
+      .section-head { align-items:start; flex-direction:column; }
+      .word-card { border-radius:20px; }
+      .lesson-nav { grid-template-columns:1fr 1fr; }
+      .lesson-link.hub { grid-column:1/-1; grid-row:1; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; } }
+    @media print {
+      .topbar,.hero-actions,.toolbar-wrap,.card-actions,.quiz-shell,.lesson-nav,.toast { display:none!important; }
+      body { background:#fff; color:#000; }
+      .hero { padding:0 0 18px; }
+      .hero-card { min-height:0; padding:20px; color:#000; background:#fff; border:2px solid #222; box-shadow:none; }
+      .hero-side { display:none; }
+      .word-grid { grid-template-columns:repeat(2,1fr); }
+      .word-card { break-inside:avoid; box-shadow:none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar" aria-label="প্রধান নেভিগেশন">
+    <div class="container topbar-inner">
+      <a class="brand" href="n4-vocabulary.html" aria-label="N4 Vocabulary তালিকা">
+        <span class="brand-mark" aria-hidden="true">あ</span>
+        <span class="brand-copy">আপনার নিহোন<small>N4 VOCABULARY • LESSON 31</small></span>
+      </a>
+      <div class="nav-actions">
+        <a class="nav-btn" href="n4-vocabulary.html"><span aria-hidden="true">☷</span><span class="hub-text">সব লেসন</span></a>
+        <button class="nav-btn icon" id="themeToggle" type="button" aria-label="রঙের থিম বদলান" title="রঙের থিম বদলান">◐</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-card">
+        <div class="hero-main">
+          <span class="eyebrow">JLPT N4 • みんなの日本語 初級Ⅱ</span>
+          <h1>Lesson 31<span>জাপানিজ শব্দভাণ্ডার</span></h1>
+          <p class="hero-lead">প্রথমবার পড়া শিক্ষার্থীর জন্য—জাপানিজ, ふりがな, বাংলা উচ্চারণ ও সহজ বাংলা অর্থ একই কার্ডে। সার্চ, অডিও, শেখা মার্ক ও কুইজও আছে।</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#words">শব্দ শেখা শুরু</a>
+            <a class="button" href="#quiz">কুইজ দিন</a>
+          </div>
+        </div>
+        <aside class="hero-side" aria-label="লেসনের তথ্য">
+          <div class="stat"><span class="stat-icon" aria-hidden="true">語</span><div><strong>44টি শব্দ</strong><small>১ম সংস্করণ অনুযায়ী সাজানো</small></div></div>
+          <div class="stat"><span class="stat-icon" aria-hidden="true">音</span><div><strong>জাপানিজ অডিও</strong><small>ডিভাইসের Japanese voice ব্যবহার করে</small></div></div>
+          <div class="stat"><span class="stat-icon" aria-hidden="true">✓</span><div><strong id="progressText">০ / 44 শেখা</strong><small>এই browser-এ progress সংরক্ষিত থাকবে</small></div></div>
+          <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <div class="container toolbar-wrap">
+    <div class="toolbar" role="search">
+      <label class="search"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" autocomplete="off" placeholder="জাপানিজ / বাংলা / উচ্চারণ দিয়ে খুঁজুন…" aria-label="শব্দ খুঁজুন"></label>
+      <div class="filter-group" aria-label="শেখার অবস্থা">
+        <button class="filter-btn active" type="button" data-filter="all">সব</button>
+        <button class="filter-btn" type="button" data-filter="learned">শেখা হয়েছে</button>
+        <button class="filter-btn" type="button" data-filter="unlearned">বাকি</button>
+      </div>
+      <div class="toolbar-status" id="resultCount" aria-live="polite">44টি দেখানো হচ্ছে</div>
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="words">
+      <div class="container">
+        <div class="section-head">
+          <div><h2>Lesson 31-এর শব্দ</h2><p>「—」 চিহ্ন মানে আগের স্বরটি একটু লম্বা করে পড়বেন।</p></div>
+          <button class="button" type="button" id="randomWord">↻ একটি random শব্দ</button>
+        </div>
+        <div class="word-grid" id="wordGrid">
+          <article class="word-card" data-word data-id="31-1" data-japanese="始まります［式が～］" data-reading="はじまります［しきが～］" data-pronunciation="হাজিমারিমাসু" data-meaning="অনুষ্ঠান শুরু হবে" data-english="[a ceremony] begin, start" data-speak="はじまります">
+            <div class="card-top"><span class="number">#1</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">始まります［式が～］</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>はじまります［しきが～］</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>হাজিমারিমাসু</div>
+            <p class="meaning">অনুষ্ঠান শুরু হবে</p>
+            <details><summary>English source meaning</summary><p lang="en">[a ceremony] begin, start</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="はじまります শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-2" data-japanese="続けます" data-reading="つづけます" data-pronunciation="ৎসুজুকেমাসু" data-meaning="চালিয়ে যাব" data-english="continue" data-speak="つづけます">
+            <div class="card-top"><span class="number">#2</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">続けます</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>つづけます</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ৎসুজুকেমাসু</div>
+            <p class="meaning">চালিয়ে যাব</p>
+            <details><summary>English source meaning</summary><p lang="en">continue</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="つづけます শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-3" data-japanese="見つけます" data-reading="みつけます" data-pronunciation="মিৎসুকেমাসু" data-meaning="খুঁজে পাব" data-english="find" data-speak="みつけます">
+            <div class="card-top"><span class="number">#3</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">見つけます</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>みつけます</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>মিৎসুকেমাসু</div>
+            <p class="meaning">খুঁজে পাব</p>
+            <details><summary>English source meaning</summary><p lang="en">find</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="みつけます শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-4" data-japanese="受けます［試験を～］" data-reading="うけます［しけんを～］" data-pronunciation="উকেমাসু" data-meaning="পরীক্ষা দেব" data-english="take [an examination]" data-speak="うけます">
+            <div class="card-top"><span class="number">#4</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">受けます［試験を～］</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>うけます［しけんを～］</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>উকেমাসু</div>
+            <p class="meaning">পরীক্ষা দেব</p>
+            <details><summary>English source meaning</summary><p lang="en">take [an examination]</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="うけます শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-5" data-japanese="入学します［大学に～］" data-reading="にゅうがくします［だいがくに～］" data-pronunciation="ন্যু—গাকুশিমাসু" data-meaning="ভর্তি হব" data-english="enter [a university]" data-speak="にゅうがくします">
+            <div class="card-top"><span class="number">#5</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">入学します［大学に～］</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>にゅうがくします［だいがくに～］</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ন্যু—গাকুশিমাসু</div>
+            <p class="meaning">ভর্তি হব</p>
+            <details><summary>English source meaning</summary><p lang="en">enter [a university]</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="にゅうがくします শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-6" data-japanese="卒業します" data-reading="そつぎょうします" data-pronunciation="সোৎসুগ্যো—শিমাসু" data-meaning="স্নাতক হব, শেষ করব" data-english="graduate" data-speak="そつぎょうします">
+            <div class="card-top"><span class="number">#6</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">卒業します</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>そつぎょうします</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>সোৎসুগ্যো—শিমাসু</div>
+            <p class="meaning">স্নাতক হব, শেষ করব</p>
+            <details><summary>English source meaning</summary><p lang="en">graduate</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="そつぎょうします শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-7" data-japanese="出席します［会議に～］" data-reading="しゅっせきします［かいぎに～］" data-pronunciation="শুস্সেকিশিমাসু" data-meaning="উপস্থিত থাকব" data-english="attend [a meeting]" data-speak="しゅっせきします">
+            <div class="card-top"><span class="number">#7</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">出席します［会議に～］</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>しゅっせきします［かいぎに～］</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>শুস্সেকিশিমাসু</div>
+            <p class="meaning">উপস্থিত থাকব</p>
+            <details><summary>English source meaning</summary><p lang="en">attend [a meeting]</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="しゅっせきします শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-8" data-japanese="休憩します" data-reading="きゅうけいします" data-pronunciation="ক্যু—কে—শিমাসু" data-meaning="বিশ্রাম নেব" data-english="take a break, take a rest" data-speak="きゅうけいします">
+            <div class="card-top"><span class="number">#8</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">休憩します</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>きゅうけいします</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ক্যু—কে—শিমাসু</div>
+            <p class="meaning">বিশ্রাম নেব</p>
+            <details><summary>English source meaning</summary><p lang="en">take a break, take a rest</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="きゅうけいします শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-9" data-japanese="連休" data-reading="れんきゅう" data-pronunciation="রেনক্যু—" data-meaning="টানা ছুটি" data-english="consecutive holidays" data-speak="れんきゅう">
+            <div class="card-top"><span class="number">#9</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">連休</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>れんきゅう</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>রেনক্যু—</div>
+            <p class="meaning">টানা ছুটি</p>
+            <details><summary>English source meaning</summary><p lang="en">consecutive holidays</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="れんきゅう শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-10" data-japanese="作文" data-reading="さくぶん" data-pronunciation="সাকুবুন" data-meaning="রচনা" data-english="essay, composition" data-speak="さくぶん">
+            <div class="card-top"><span class="number">#10</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">作文</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>さくぶん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>সাকুবুন</div>
+            <p class="meaning">রচনা</p>
+            <details><summary>English source meaning</summary><p lang="en">essay, composition</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="さくぶん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-11" data-japanese="展覧会" data-reading="てんらんかい" data-pronunciation="তেনরানকাই" data-meaning="প্রদর্শনী" data-english="exhibition" data-speak="てんらんかい">
+            <div class="card-top"><span class="number">#11</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">展覧会</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>てんらんかい</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>তেনরানকাই</div>
+            <p class="meaning">প্রদর্শনী</p>
+            <details><summary>English source meaning</summary><p lang="en">exhibition</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="てんらんかい শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-12" data-japanese="結婚式" data-reading="けっこんしき" data-pronunciation="কেক্কোনশিকি" data-meaning="বিয়ের অনুষ্ঠান" data-english="wedding ceremony" data-speak="けっこんしき">
+            <div class="card-top"><span class="number">#12</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">結婚式</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>けっこんしき</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>কেক্কোনশিকি</div>
+            <p class="meaning">বিয়ের অনুষ্ঠান</p>
+            <details><summary>English source meaning</summary><p lang="en">wedding ceremony</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="けっこんしき শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-13" data-japanese="［お］葬式" data-reading="［お］そうしき" data-pronunciation="" data-meaning="অন্ত্যেষ্টিক্রিয়া" data-english="funeral" data-speak="">
+            <div class="card-top"><span class="number">#13</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">［お］葬式</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>［お］そうしき</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span></div>
+            <p class="meaning">অন্ত্যেষ্টিক্রিয়া</p>
+            <details><summary>English source meaning</summary><p lang="en">funeral</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label=" শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-14" data-japanese="式" data-reading="しき" data-pronunciation="শিকি" data-meaning="অনুষ্ঠান" data-english="ceremony" data-speak="しき">
+            <div class="card-top"><span class="number">#14</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">式</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>しき</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>শিকি</div>
+            <p class="meaning">অনুষ্ঠান</p>
+            <details><summary>English source meaning</summary><p lang="en">ceremony</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="しき শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-15" data-japanese="本社" data-reading="ほんしゃ" data-pronunciation="হোনশা" data-meaning="প্রধান কার্যালয়" data-english="head office" data-speak="ほんしゃ">
+            <div class="card-top"><span class="number">#15</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">本社</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>ほんしゃ</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>হোনশা</div>
+            <p class="meaning">প্রধান কার্যালয়</p>
+            <details><summary>English source meaning</summary><p lang="en">head office</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="ほんしゃ শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-16" data-japanese="支店" data-reading="してん" data-pronunciation="শিতেন" data-meaning="শাখা অফিস" data-english="branch office" data-speak="してん">
+            <div class="card-top"><span class="number">#16</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">支店</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>してん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>শিতেন</div>
+            <p class="meaning">শাখা অফিস</p>
+            <details><summary>English source meaning</summary><p lang="en">branch office</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="してん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-17" data-japanese="教会" data-reading="きょうかい" data-pronunciation="ক্যো—কাই" data-meaning="গির্জা" data-english="church" data-speak="きょうかい">
+            <div class="card-top"><span class="number">#17</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">教会</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>きょうかい</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ক্যো—কাই</div>
+            <p class="meaning">গির্জা</p>
+            <details><summary>English source meaning</summary><p lang="en">church</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="きょうかい শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-18" data-japanese="大学院" data-reading="だいがくいん" data-pronunciation="দাইগাকুইন" data-meaning="গ্র্যাজুয়েট স্কুল" data-english="graduate school" data-speak="だいがくいん">
+            <div class="card-top"><span class="number">#18</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">大学院</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>だいがくいん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>দাইগাকুইন</div>
+            <p class="meaning">গ্র্যাজুয়েট স্কুল</p>
+            <details><summary>English source meaning</summary><p lang="en">graduate school</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="だいがくいん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-19" data-japanese="動物園" data-reading="どうぶつえん" data-pronunciation="দো—বুৎসুএন" data-meaning="চিড়িয়াখানা" data-english="zoo" data-speak="どうぶつえん">
+            <div class="card-top"><span class="number">#19</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">動物園</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>どうぶつえん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>দো—বুৎসুএন</div>
+            <p class="meaning">চিড়িয়াখানা</p>
+            <details><summary>English source meaning</summary><p lang="en">zoo</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="どうぶつえん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-20" data-japanese="温泉" data-reading="おんせん" data-pronunciation="ওনসেন" data-meaning="উষ্ণ প্রস্রবণ" data-english="hot spring, spa" data-speak="おんせん">
+            <div class="card-top"><span class="number">#20</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">温泉</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>おんせん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ওনসেন</div>
+            <p class="meaning">উষ্ণ প্রস্রবণ</p>
+            <details><summary>English source meaning</summary><p lang="en">hot spring, spa</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="おんせん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-21" data-japanese="お客［さん］" data-reading="おきゃく［さん］" data-pronunciation="ওক্যাকু" data-meaning="অতিথি, গ্রাহক" data-english="visitor, guest, customer, client" data-speak="おきゃく">
+            <div class="card-top"><span class="number">#21</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">お客［さん］</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>おきゃく［さん］</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ওক্যাকু</div>
+            <p class="meaning">অতিথি, গ্রাহক</p>
+            <details><summary>English source meaning</summary><p lang="en">visitor, guest, customer, client</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="おきゃく শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-22" data-japanese="誰か" data-reading="だれか" data-pronunciation="দারেকা" data-meaning="কেউ একজন" data-english="somebody" data-speak="だれか">
+            <div class="card-top"><span class="number">#22</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">誰か</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>だれか</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>দারেকা</div>
+            <p class="meaning">কেউ একজন</p>
+            <details><summary>English source meaning</summary><p lang="en">somebody</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="だれか শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-23" data-japanese="～の 方" data-reading="～の ほう" data-pronunciation="～নো হো—" data-meaning="~ দিক" data-english="place toward ～, direction of ～" data-speak="～の ほう">
+            <div class="card-top"><span class="number">#23</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">～の 方</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>～の ほう</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>～নো হো—</div>
+            <p class="meaning">~ দিক</p>
+            <details><summary>English source meaning</summary><p lang="en">place toward ～, direction of ～</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="～の ほう শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-24" data-japanese="ずっと" data-reading="ずっと" data-pronunciation="জুত্তো" data-meaning="অনেক বেশি, পুরো সময়" data-english="the whole time" data-speak="ずっと">
+            <div class="card-top"><span class="number">#24</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">ずっと</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>ずっと</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>জুত্তো</div>
+            <p class="meaning">অনেক বেশি, পুরো সময়</p>
+            <details><summary>English source meaning</summary><p lang="en">the whole time</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="ずっと শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-25" data-japanese="残ります" data-reading="のこります" data-pronunciation="নোকোরিমাসু" data-meaning="থাকবে, বাকি থাকবে" data-english="remain, be left, stay behind" data-speak="のこります">
+            <div class="card-top"><span class="number">#25</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">残ります</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>のこります</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>নোকোরিমাসু</div>
+            <p class="meaning">থাকবে, বাকি থাকবে</p>
+            <details><summary>English source meaning</summary><p lang="en">remain, be left, stay behind</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="のこります শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-26" data-japanese="月に" data-reading="つきに" data-pronunciation="ৎসুকিনি" data-meaning="প্রতি মাসে" data-english="per month" data-speak="つきに">
+            <div class="card-top"><span class="number">#26</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">月に</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>つきに</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ৎসুকিনি</div>
+            <p class="meaning">প্রতি মাসে</p>
+            <details><summary>English source meaning</summary><p lang="en">per month</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="つきに শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-27" data-japanese="普通の" data-reading="ふつうの" data-pronunciation="ফুৎসু—নো" data-meaning="সাধারণ" data-english="ordinary, common, usual" data-speak="ふつうの">
+            <div class="card-top"><span class="number">#27</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">普通の</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>ふつうの</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ফুৎসু—নো</div>
+            <p class="meaning">সাধারণ</p>
+            <details><summary>English source meaning</summary><p lang="en">ordinary, common, usual</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="ふつうの শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-28" data-japanese="インターネット" data-reading="インターネット" data-pronunciation="ইনতা—নেত্তো" data-meaning="ইন্টারনেট" data-english="Internet" data-speak="インターネット">
+            <div class="card-top"><span class="number">#28</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">インターネット</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>インターネット</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ইনতা—নেত্তো</div>
+            <p class="meaning">ইন্টারনেট</p>
+            <details><summary>English source meaning</summary><p lang="en">Internet</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="インターネット শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-29" data-japanese="村" data-reading="むら" data-pronunciation="মুরা" data-meaning="গ্রাম" data-english="village" data-speak="むら">
+            <div class="card-top"><span class="number">#29</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">村</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>むら</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>মুরা</div>
+            <p class="meaning">গ্রাম</p>
+            <details><summary>English source meaning</summary><p lang="en">village</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="むら শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-30" data-japanese="映画館" data-reading="えいがかん" data-pronunciation="এ—গাকান" data-meaning="সিনেমা হল" data-english="movie theater, cinema" data-speak="えいがかん">
+            <div class="card-top"><span class="number">#30</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">映画館</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>えいがかん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>এ—গাকান</div>
+            <p class="meaning">সিনেমা হল</p>
+            <details><summary>English source meaning</summary><p lang="en">movie theater, cinema</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="えいがかん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-31" data-japanese="嫌［な］" data-reading="いや［な］" data-pronunciation="ইইয়া" data-meaning="অপছন্দনীয়" data-english="hateful, disagreeable" data-speak="いや">
+            <div class="card-top"><span class="number">#31</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">嫌［な］</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>いや［な］</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>ইইয়া</div>
+            <p class="meaning">অপছন্দনীয়</p>
+            <details><summary>English source meaning</summary><p lang="en">hateful, disagreeable</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="いや শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-32" data-japanese="空" data-reading="そら" data-pronunciation="সোরা" data-meaning="আকাশ" data-english="sky" data-speak="そら">
+            <div class="card-top"><span class="number">#32</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">空</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>そら</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>সোরা</div>
+            <p class="meaning">আকাশ</p>
+            <details><summary>English source meaning</summary><p lang="en">sky</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="そら শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-33" data-japanese="閉じます" data-reading="とじます" data-pronunciation="তোজিমাসু" data-meaning="বন্ধ করব" data-english="close" data-speak="とじます">
+            <div class="card-top"><span class="number">#33</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">閉じます</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>とじます</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>তোজিমাসু</div>
+            <p class="meaning">বন্ধ করব</p>
+            <details><summary>English source meaning</summary><p lang="en">close</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="とじます শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-34" data-japanese="都会" data-reading="とかい" data-pronunciation="তোকাই" data-meaning="শহর, নগর" data-english="city" data-speak="とかい">
+            <div class="card-top"><span class="number">#34</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">都会</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>とかい</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>তোকাই</div>
+            <p class="meaning">শহর, নগর</p>
+            <details><summary>English source meaning</summary><p lang="en">city</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="とかい শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-35" data-japanese="子どもたち" data-reading="こどもたち" data-pronunciation="কোদোমোতাচি" data-meaning="শিশুরা" data-english="children" data-speak="こどもたち">
+            <div class="card-top"><span class="number">#35</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">子どもたち</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>こどもたち</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>কোদোমোতাচি</div>
+            <p class="meaning">শিশুরা</p>
+            <details><summary>English source meaning</summary><p lang="en">children</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="こどもたち শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-36" data-japanese="自由に" data-reading="じゆうに" data-pronunciation="জিইউ—নি" data-meaning="স্বাধীনভাবে" data-english="freely" data-speak="じゆうに">
+            <div class="card-top"><span class="number">#36</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">自由に</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>じゆうに</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>জিইউ—নি</div>
+            <p class="meaning">স্বাধীনভাবে</p>
+            <details><summary>English source meaning</summary><p lang="en">freely</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="じゆうに শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-37" data-japanese="世界中" data-reading="せかいじゅう" data-pronunciation="সেকাইজু—" data-meaning="সারা বিশ্ব" data-english="all over the world" data-speak="せかいじゅう">
+            <div class="card-top"><span class="number">#37</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">世界中</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>せかいじゅう</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>সেকাইজু—</div>
+            <p class="meaning">সারা বিশ্ব</p>
+            <details><summary>English source meaning</summary><p lang="en">all over the world</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="せかいじゅう শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-38" data-japanese="集まります" data-reading="あつまります" data-pronunciation="আৎসুমারিমাসু" data-meaning="জড়ো হবে" data-english="gather" data-speak="あつまります">
+            <div class="card-top"><span class="number">#38</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">集まります</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>あつまります</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>আৎসুমারিমাসু</div>
+            <p class="meaning">জড়ো হবে</p>
+            <details><summary>English source meaning</summary><p lang="en">gather</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="あつまります শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-39" data-japanese="美しい" data-reading="うつくしい" data-pronunciation="উৎসুকুশিই" data-meaning="সুন্দর" data-english="beautiful" data-speak="うつくしい">
+            <div class="card-top"><span class="number">#39</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">美しい</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>うつくしい</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>উৎসুকুশিই</div>
+            <p class="meaning">সুন্দর</p>
+            <details><summary>English source meaning</summary><p lang="en">beautiful</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="うつくしい শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-40" data-japanese="自然" data-reading="しぜん" data-pronunciation="শিজেন" data-meaning="প্রকৃতি" data-english="nature" data-speak="しぜん">
+            <div class="card-top"><span class="number">#40</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">自然</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>しぜん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>শিজেন</div>
+            <p class="meaning">প্রকৃতি</p>
+            <details><summary>English source meaning</summary><p lang="en">nature</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="しぜん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-41" data-japanese="すばらしさ" data-reading="すばらしさ" data-pronunciation="সুবারাশিসা" data-meaning="অসাধারণত্ব, চমৎকার দিক" data-english="goodness, virtue" data-speak="すばらしさ">
+            <div class="card-top"><span class="number">#41</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">すばらしさ</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>すばらしさ</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>সুবারাশিসা</div>
+            <p class="meaning">অসাধারণত্ব, চমৎকার দিক</p>
+            <details><summary>English source meaning</summary><p lang="en">goodness, virtue</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="すばらしさ শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-42" data-japanese="気が つきます" data-reading="きが つきます" data-pronunciation="কিগা ৎসুকিমাসু" data-meaning="লক্ষ্য করব, খেয়াল করব" data-english="notice, become aware of" data-speak="きが つきます">
+            <div class="card-top"><span class="number">#42</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">気が つきます</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>きが つきます</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>কিগা ৎসুকিমাসু</div>
+            <p class="meaning">লক্ষ্য করব, খেয়াল করব</p>
+            <details><summary>English source meaning</summary><p lang="en">notice, become aware of</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="きが つきます শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-43" data-japanese="ピカソ" data-reading="ピカソ" data-pronunciation="পিকাসো" data-meaning="পাবলো পিকাসো" data-english="Pablo Picasso, Spanish painter (1881-1973)" data-speak="ピカソ">
+            <div class="card-top"><span class="number">#43</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">ピカソ</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>ピカソ</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>পিকাসো</div>
+            <p class="meaning">পাবলো পিকাসো</p>
+            <details><summary>English source meaning</summary><p lang="en">Pablo Picasso, Spanish painter (1881-1973)</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="ピカソ শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+          <article class="word-card" data-word data-id="31-44" data-japanese="上野公園" data-reading="うえのこうえん" data-pronunciation="উএনোকো—এন" data-meaning="চিড়িয়াখানা" data-english="Ueno Park (in Tokyo)" data-speak="うえのこうえん">
+            <div class="card-top"><span class="number">#44</span><span class="edition">১ম সংস্করণ</span></div>
+            <div class="jp-main" lang="ja">上野公園</div>
+            <div class="reading" lang="ja"><span class="label">よみ</span>うえのこうえん</div>
+            <div class="pronunciation"><span class="label">উচ্চারণ</span>উএনোকো—এন</div>
+            <p class="meaning">চিড়িয়াখানা</p>
+            <details><summary>English source meaning</summary><p lang="en">Ueno Park (in Tokyo)</p></details>
+            <div class="card-actions">
+              <button class="action speak-btn" type="button" aria-label="うえのこうえん শুনুন">🔊 শুনুন</button>
+              <button class="action copy-btn" type="button" aria-label="শব্দটি কপি করুন">⧉ কপি</button>
+              <button class="action learn-btn" type="button" aria-pressed="false" style="grid-column:1/-1">○ শেখা বাকি</button>
+            </div>
+          </article>
+        </div>
+        <div class="empty" id="emptyState"><strong>কোনো শব্দ পাওয়া যায়নি।</strong><br>অন্য বানান বা বাংলা অর্থ দিয়ে চেষ্টা করুন।</div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <div class="container">
+        <div class="quiz-shell">
+          <div class="quiz-grid">
+            <div class="quiz-intro">
+              <span class="eyebrow">১০ প্রশ্ন • দুই ধরনের অনুশীলন</span>
+              <h2>নিজেকে পরীক্ষা করুন</h2>
+              <p>কখনো জাপানিজ দেখে বাংলা অর্থ, আবার কখনো বাংলা দেখে সঠিক জাপানিজ বেছে নিন। প্রতিবার নতুন random প্রশ্ন আসবে।</p>
+              <button class="button primary" type="button" id="restartQuiz">নতুন কুইজ শুরু</button>
+            </div>
+            <div class="quiz-panel">
+              <div class="quiz-meta"><span id="quizStep">প্রশ্ন ১ / ১০</span><span id="quizScore">স্কোর ০</span></div>
+              <div class="quiz-question" id="quizQuestion" aria-live="polite"></div>
+              <div class="quiz-options" id="quizOptions"></div>
+              <div class="quiz-feedback" id="quizFeedback" aria-live="polite"></div>
+              <div class="quiz-controls"><button class="button primary" type="button" id="nextQuestion" hidden>পরের প্রশ্ন</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="তথ্যসূত্র নোট">
+      <div class="container"><div class="source-note"><strong>তালিকা নোট:</strong> আপনার দেওয়া পুরোনো ফাইলের সঙ্গে মিল রেখে Minna no Nihongo Shokyu II-এর ১ম সংস্করণের lesson order ব্যবহার করা হয়েছে। OCR-এ ভাঙা কানা, duplicate example এবং ভুল বাংলা অর্থ বাদ দিয়ে entry-গুলো নতুন করে তৈরি করা হয়েছে। এটি শিক্ষার্থীর সহায়ক free resource; মূল বইয়ের বিকল্প নয়।</div></div>
+    </section>
+  </main>
+
+  <div class="container">
+    <nav class="lesson-nav" aria-label="লেসন পরিবর্তন">
+      <a class="lesson-link" href="n4-vocab-lesson-30-real.html"><span>←</span><span>Lesson 30<small>আগের লেসন</small></span></a>
+      <a class="lesson-link hub" href="n4-vocabulary.html"><span>☷</span><span>সব N4 লেসন<small>Vocabulary hub</small></span></a>
+      <a class="lesson-link next" href="n4-vocab-lesson-32-real.html"><span>Lesson 32<small>পরের লেসন</small></span><span>→</span></a>
+    </nav>
+  </div>
+  <footer class="container">আপনার নিহোন • শিক্ষার্থীদের জন্য সহজ বাংলা জাপানিজ শিক্ষা</footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    'use strict';
+    const LESSON = 31;
+    const STORAGE_KEY = 'aponar-nihon-n4-vocab-ed1-l' + LESSON;
+    const THEME_KEY = 'aponar-nihon-theme';
+    const cards = Array.from(document.querySelectorAll('[data-word]'));
+    const words = cards.map((card) => ({
+      id: card.dataset.id,
+      japanese: card.dataset.japanese,
+      reading: card.dataset.reading,
+      pronunciation: card.dataset.pronunciation,
+      meaning: card.dataset.meaning,
+      english: card.dataset.english,
+      speak: card.dataset.speak,
+      card
+    }));
+    const searchInput = document.getElementById('searchInput');
+    const resultCount = document.getElementById('resultCount');
+    const emptyState = document.getElementById('emptyState');
+    const progressText = document.getElementById('progressText');
+    const progressFill = document.getElementById('progressFill');
+    const toast = document.getElementById('toast');
+    let activeFilter = 'all';
+    let toastTimer = 0;
+    let learned = new Set();
+
+    try { learned = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')); } catch (_) { learned = new Set(); }
+
+    function persistLearned() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(learned))); } catch (_) {}
+    }
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+    function updateProgress() {
+      const count = learned.size;
+      progressText.textContent = count.toLocaleString('bn-BD') + ' / ' + words.length.toLocaleString('bn-BD') + ' শেখা';
+      progressFill.style.width = (words.length ? (count / words.length) * 100 : 0) + '%';
+      words.forEach((word) => {
+        const isLearned = learned.has(word.id);
+        word.card.classList.toggle('is-learned', isLearned);
+        const button = word.card.querySelector('.learn-btn');
+        button.setAttribute('aria-pressed', String(isLearned));
+        button.textContent = isLearned ? '✓ শেখা হয়েছে' : '○ শেখা বাকি';
+      });
+    }
+    function applyFilters() {
+      const query = searchInput.value.trim().toLocaleLowerCase();
+      let visible = 0;
+      words.forEach((word) => {
+        const matchesText = !query || [word.japanese,word.reading,word.pronunciation,word.meaning,word.english].join(' ').toLocaleLowerCase().includes(query);
+        const isLearned = learned.has(word.id);
+        const matchesState = activeFilter === 'all' || (activeFilter === 'learned' ? isLearned : !isLearned);
+        const show = matchesText && matchesState;
+        word.card.hidden = !show;
+        if (show) visible += 1;
+      });
+      resultCount.textContent = visible.toLocaleString('bn-BD') + 'টি দেখানো হচ্ছে';
+      emptyState.classList.toggle('show', visible === 0);
+    }
+    function speakJapanese(text) {
+      if (!('speechSynthesis' in window) || !text) { showToast('এই browser-এ Japanese audio নেই'); return; }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ja-JP'; utterance.rate = 0.78; utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
+    async function copyWord(word) {
+      const text = word.japanese + '（' + word.reading + '） — ' + word.pronunciation + ' — ' + word.meaning;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('শব্দটি copy হয়েছে');
+      } catch (_) {
+        const area = document.createElement('textarea'); area.value = text; area.style.position = 'fixed'; area.style.opacity = '0';
+        document.body.appendChild(area); area.select(); document.execCommand('copy'); area.remove(); showToast('শব্দটি copy হয়েছে');
+      }
+    }
+
+    document.getElementById('wordGrid').addEventListener('click', (event) => {
+      const button = event.target.closest('button');
+      if (!button) return;
+      const card = button.closest('[data-word]');
+      const word = words.find((item) => item.card === card);
+      if (button.classList.contains('speak-btn')) speakJapanese(word.speak);
+      if (button.classList.contains('copy-btn')) copyWord(word);
+      if (button.classList.contains('learn-btn')) {
+        if (learned.has(word.id)) learned.delete(word.id); else learned.add(word.id);
+        persistLearned(); updateProgress(); applyFilters();
+      }
+    });
+    searchInput.addEventListener('input', applyFilters);
+    document.querySelectorAll('[data-filter]').forEach((button) => button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      document.querySelectorAll('[data-filter]').forEach((item) => item.classList.toggle('active', item === button));
+      applyFilters();
+    }));
+    document.getElementById('randomWord').addEventListener('click', () => {
+      const visible = words.filter((word) => !word.card.hidden);
+      if (!visible.length) { showToast('দেখানোর মতো কোনো শব্দ নেই'); return; }
+      const word = visible[Math.floor(Math.random() * visible.length)];
+      word.card.scrollIntoView({behavior:'smooth',block:'center'});
+      if (word.card.animate) word.card.animate([{outline:'4px solid rgba(245,158,11,.8)'},{outline:'0 solid transparent'}],{duration:1200});
+      speakJapanese(word.speak);
+    });
+
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = (() => { try { return localStorage.getItem(THEME_KEY); } catch (_) { return null; } })();
+    if (savedTheme === 'dark' || (!savedTheme && matchMedia('(prefers-color-scheme:dark)').matches)) document.documentElement.dataset.theme = 'dark';
+    themeToggle.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem(THEME_KEY,next); } catch (_) {}
+    });
+
+    const quizQuestion = document.getElementById('quizQuestion');
+    const quizOptions = document.getElementById('quizOptions');
+    const quizFeedback = document.getElementById('quizFeedback');
+    const quizStep = document.getElementById('quizStep');
+    const quizScore = document.getElementById('quizScore');
+    const nextQuestion = document.getElementById('nextQuestion');
+    let quizWords = [], quizIndex = 0, score = 0, answered = false;
+    const shuffle = (array) => {
+      const copy = array.slice();
+      for (let i = copy.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [copy[i],copy[j]] = [copy[j],copy[i]]; }
+      return copy;
+    };
+    function startQuiz() {
+      quizWords = shuffle(words).slice(0,Math.min(10,words.length)); quizIndex = 0; score = 0; answered = false;
+      renderQuestion();
+    }
+    function renderQuestion() {
+      if (quizIndex >= quizWords.length) {
+        quizQuestion.textContent = 'কুইজ শেষ! আপনার স্কোর ' + score.toLocaleString('bn-BD') + ' / ' + quizWords.length.toLocaleString('bn-BD');
+        quizOptions.replaceChildren(); quizFeedback.textContent = score >= 8 ? 'দারুণ! এই লেসনটি ভালোভাবে আয়ত্ত হয়েছে।' : 'আরেকবার শব্দগুলো দেখে নতুন কুইজ দিন।';
+        quizStep.textContent = 'সম্পন্ন'; nextQuestion.hidden = true; return;
+      }
+      answered = false; nextQuestion.hidden = true; quizFeedback.textContent = ''; quizOptions.replaceChildren();
+      const current = quizWords[quizIndex]; const reverse = quizIndex % 2 === 1;
+      const answer = reverse ? current.japanese : current.meaning;
+      quizQuestion.textContent = reverse ? '“' + current.meaning + '” — সঠিক জাপানিজ কোনটি?' : '「' + current.japanese + '（' + current.reading + '）」 এর বাংলা অর্থ কী?';
+      const pool = shuffle(words.filter((word) => word.id !== current.id));
+      const choices = [answer];
+      for (const word of pool) {
+        const value = reverse ? word.japanese : word.meaning;
+        if (!choices.includes(value)) choices.push(value);
+        if (choices.length === 4) break;
+      }
+      shuffle(choices).forEach((choice) => {
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'quiz-option'; button.textContent = choice;
+        button.addEventListener('click', () => {
+          if (answered) return; answered = true;
+          quizOptions.querySelectorAll('button').forEach((item) => { item.disabled = true; if (item.textContent === answer) item.classList.add('correct'); });
+          if (choice === answer) { score += 1; button.classList.add('correct'); quizFeedback.textContent = 'সঠিক ✓  উচ্চারণ: ' + current.pronunciation; }
+          else { button.classList.add('wrong'); quizFeedback.textContent = 'সঠিক উত্তর: ' + answer + ' • উচ্চারণ: ' + current.pronunciation; }
+          quizScore.textContent = 'স্কোর ' + score.toLocaleString('bn-BD'); nextQuestion.hidden = false;
+        });
+        quizOptions.appendChild(button);
+      });
+      quizStep.textContent = 'প্রশ্ন ' + (quizIndex + 1).toLocaleString('bn-BD') + ' / ' + quizWords.length.toLocaleString('bn-BD');
+      quizScore.textContent = 'স্কোর ' + score.toLocaleString('bn-BD');
+    }
+    nextQuestion.addEventListener('click', () => { quizIndex += 1; renderQuestion(); });
+    document.getElementById('restartQuiz').addEventListener('click', startQuiz);
+
+    updateProgress(); applyFilters(); startQuiz();
+  })();
+  </script>
+</body>
+</html>
