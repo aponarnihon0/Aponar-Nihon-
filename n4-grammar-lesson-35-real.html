@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="শর্ত সত্য হলে ফল, কথোপকথনের topic ধরে recommendation, সঠিক উপায় জানতে প্রশ্ন এবং উন্মুক্ত পছন্দ।">
+  <meta name="color-scheme" content="light dark">
+  <title>Lesson 35: Conditional：〜ば・〜なら・疑問詞でも | N4 Grammar</title>
+  <style>
+:root{
+  --ink:#14233b;--muted:#607089;--paper:#f4f7fb;--card:#fff;--line:#dfe6ef;
+  --navy:#0c1d35;--navy2:#173555;--accent:#0f9f92;--accent-soft:#d9f7f2;
+  --danger:#c53a4c;--success:#087f5b;--warning:#b15c00;--shadow:0 18px 50px rgba(19,40,67,.10);
+  --radius:24px;--serif:Georgia,"Noto Serif Bengali",serif;
+  --sans:"Noto Sans Bengali Variable","Noto Sans JP Variable",Inter,"Noto Sans Bengali","Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:86px}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 var(--sans);text-rendering:optimizeLegibility}body.dark{--ink:#eaf1fb;--muted:#aebbd0;--paper:#08111f;--card:#101e31;--line:#283a52;--navy:#06101e;--navy2:#152b45;--shadow:0 22px 60px rgba(0,0,0,.28)}
+a{color:inherit;text-decoration:none}button,input{font:inherit}button{color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin-inline:auto}.skip{position:fixed;left:16px;top:-70px;z-index:999;padding:10px 15px;border-radius:12px;background:#fff;color:#08111f;font-weight:900}.skip:focus{top:16px}.topbar{position:sticky;top:0;z-index:80;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.topbar-inner{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:11px;font-weight:950}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#f5c94a);color:#071426;font-size:20px;box-shadow:0 9px 23px color-mix(in srgb,var(--accent) 30%,transparent)}.brand-copy{display:grid;line-height:1.15}.brand-copy small{color:var(--muted);font-size:10px;letter-spacing:.7px;text-transform:uppercase}.top-actions{display:flex;gap:8px}.icon-button,.soft-button{border:1px solid var(--line);background:var(--card);border-radius:13px;min-height:42px;padding:8px 12px;cursor:pointer;font-weight:850;box-shadow:0 5px 16px rgba(19,40,67,.05)}.icon-button:hover,.soft-button:hover{border-color:var(--accent);transform:translateY(-1px)}.icon-button{min-width:42px;padding:8px}.primary-button{border:0;border-radius:14px;background:var(--accent);color:#fff;padding:11px 15px;font-weight:900;cursor:pointer;box-shadow:0 12px 28px color-mix(in srgb,var(--accent) 28%,transparent)}.primary-button:hover{filter:brightness(.95);transform:translateY(-2px)}
+.badge{display:inline-flex;align-items:center;gap:7px;width:max-content;padding:7px 11px;border-radius:999px;background:var(--accent-soft);color:color-mix(in srgb,var(--accent) 75%,#071426);font-size:12px;font-weight:900}.badge:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}.jp{font-family:"Noto Sans JP Variable","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;letter-spacing:.02em}.muted{color:var(--muted)}.section-kicker{color:var(--accent);font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:1px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.source-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.source-links a{padding:7px 10px;border-radius:10px;background:var(--accent-soft);color:color-mix(in srgb,var(--accent) 70%,var(--ink));font-size:12px;font-weight:800}.source-links a:hover{text-decoration:underline}.footer{padding:42px 0 60px;color:var(--muted);font-size:13px}.footer-inner{display:flex;justify-content:space-between;gap:20px;padding-top:24px;border-top:1px solid var(--line)}.footer strong{color:var(--ink)}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,#fff);outline-offset:3px}@media(max-width:700px){.wrap{width:min(100% - 22px,1180px)}.brand-copy small{display:none}.top-actions .text{display:none}.footer-inner{flex-direction:column}.topbar-inner{min-height:62px}.brand-mark{width:38px;height:38px}}
+@media print{.topbar,.no-print,.footer{display:none!important}body{background:#fff;color:#111}.card{box-shadow:none}.wrap{width:100%}a{color:#111}}
+
+.lesson-hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:radial-gradient(circle at 82% 18%,color-mix(in srgb,var(--accent) 28%,transparent),transparent 23rem),linear-gradient(128deg,#071426,#102f4e)}.lesson-hero:after{content:attr(data-no);position:absolute;z-index:-1;right:-28px;bottom:-110px;color:rgba(255,255,255,.045);font:950 310px/1 var(--sans);letter-spacing:-20px}.lesson-hero-inner{min-height:445px;padding:60px 0 76px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:42px;align-items:center}.breadcrumb{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:rgba(255,255,255,.6);font-size:12px;font-weight:800}.breadcrumb a:hover{color:#fff}.lesson-hero h1{margin:16px 0 0;font-size:clamp(38px,6vw,67px);line-height:1.05;letter-spacing:-2px}.lesson-hero .jp-title{margin:16px 0 0;color:#f8d666;font-size:18px;font-weight:800;line-height:1.6}.lesson-hero .lead{max-width:760px;margin:18px 0 0;color:rgba(255,255,255,.76);font-size:17px;font-weight:600}.lesson-glance{padding:22px;border:1px solid rgba(255,255,255,.15);border-radius:26px;background:rgba(255,255,255,.09);backdrop-filter:blur(15px)}.glance-no{font-size:12px;font-weight:850;color:rgba(255,255,255,.62)}.glance-no b{display:block;color:#fff;font-size:52px;line-height:1}.glance-list{display:grid;gap:9px;margin:19px 0 0;padding:0;list-style:none}.glance-list li{display:flex;gap:9px;color:rgba(255,255,255,.78);font-size:12px}.glance-list li:before{content:"✓";display:grid;place-items:center;flex:none;width:20px;height:20px;border-radius:7px;background:var(--accent);color:#fff;font-size:10px;font-weight:950}.study-toolbar{position:sticky;top:70px;z-index:55;margin-top:-29px}.toolbar-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px}.toolbar-group{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.toolbar-status{font-size:12px;color:var(--muted);font-weight:800}.complete-button.done{background:#087f5b}.lesson-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px;align-items:start;padding:48px 0 75px}.lesson-main{min-width:0}.lesson-main>section{scroll-margin-top:132px}.intro-card{padding:27px}.intro-card h2,.content-section>h2{margin:5px 0 0;font-size:clamp(26px,4vw,38px);line-height:1.2}.intro-card>p{margin:15px 0 0;color:var(--muted)}.outcomes{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:20px 0 0;padding:0;list-style:none}.outcomes li{position:relative;padding:13px 13px 13px 39px;border-radius:14px;background:var(--paper);border:1px solid var(--line);font-size:13px;font-weight:700}.outcomes li:before{content:"✓";position:absolute;left:12px;top:13px;display:grid;place-items:center;width:19px;height:19px;border-radius:6px;background:var(--accent);color:#fff;font-size:10px;font-weight:950}.pattern-section{margin-top:22px;padding:27px}.pattern-head{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}.pattern-index{display:grid;place-items:center;width:43px;height:43px;border-radius:14px;background:var(--accent);color:#fff;font-weight:950}.pattern-head h2{margin:0;font-size:clamp(23px,3vw,31px);line-height:1.3}.pattern-meaning{margin:6px 0 0;color:var(--muted);font-weight:700}.subhead{display:flex;align-items:center;gap:9px;margin:25px 0 10px;font-size:16px}.subhead:before{content:"";width:4px;height:20px;border-radius:99px;background:var(--accent)}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}table{width:100%;border-collapse:collapse;min-width:620px}th,td{padding:12px 13px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:var(--paper);color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.6px}td{font-size:13px}tr:last-child td{border-bottom:0}.explain{display:grid;gap:10px}.explain p{margin:0;padding:13px 15px;border-left:3px solid var(--accent);border-radius:0 13px 13px 0;background:color-mix(in srgb,var(--accent) 6%,var(--card));color:var(--muted)}.key-list{margin:0;padding-left:22px}.key-list li{margin:7px 0}.example-grid{display:grid;gap:10px}.example{padding:15px;border:1px solid var(--line);border-radius:16px;background:var(--paper)}.example .sentence{margin:0;color:var(--ink);font-size:18px;font-weight:850;line-height:1.65}.example .reading{margin:5px 0 0;color:var(--accent);font-size:12px;font-weight:750}.example .translation{margin:7px 0 0;color:var(--muted);font-size:13px}.hide-readings .reading{display:none}.mistake{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px;padding:14px;border-radius:17px;background:color-mix(in srgb,#f05a69 7%,var(--card));border:1px solid color-mix(in srgb,#f05a69 25%,var(--line))}.wrong,.right{padding:11px;border-radius:12px;background:var(--card);font-size:13px}.wrong b{color:var(--danger)}.right b{color:var(--success)}.mistake-reason{grid-column:1/-1;margin:0;color:var(--muted);font-size:12px}.content-section{margin-top:22px;padding:27px}.compare-table{margin-top:18px}.dialogue{display:grid;gap:10px;margin-top:18px}.dialogue-line{display:grid;grid-template-columns:42px 1fr;gap:11px;align-items:start}.speaker{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:var(--accent);color:#fff;font-weight:950}.bubble{padding:13px 15px;border-radius:5px 17px 17px 17px;background:var(--paper);border:1px solid var(--line)}.bubble p{margin:0}.bubble .bn{margin-top:5px;color:var(--muted);font-size:12px}.practice-list{display:grid;gap:10px;margin-top:18px}.practice-item{border:1px solid var(--line);border-radius:16px;background:var(--paper);overflow:hidden}.practice-item summary{padding:14px 16px;cursor:pointer;font-weight:800;list-style:none}.practice-item summary::-webkit-details-marker{display:none}.practice-item summary:before{content:"Q";display:inline-grid;place-items:center;width:25px;height:25px;margin-right:9px;border-radius:8px;background:var(--accent);color:#fff;font-size:11px;font-weight:950}.answer{padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}.answer strong{display:block;color:var(--success)}.answer p{margin:6px 0 0;color:var(--muted);font-size:13px}.takeaway{margin-top:22px;padding:25px;border:0;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#173555));color:#fff}.takeaway h2{margin:0;font-size:23px}.takeaway p{margin:9px 0 0;color:rgba(255,255,255,.86);font-weight:650}.lesson-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.nav-card{padding:16px;border:1px solid var(--line);border-radius:17px;background:var(--card)}.nav-card.next{text-align:right}.nav-card small{display:block;color:var(--muted);font-size:10px;font-weight:850;text-transform:uppercase}.nav-card strong{display:block;margin-top:5px}.nav-card:hover{border-color:var(--accent)}.lesson-sidebar{position:sticky;top:132px}.toc{padding:18px}.toc h2{margin:0;font-size:15px}.toc-list{display:grid;gap:4px;margin:12px 0 0;padding:0;list-style:none}.toc-list a{display:block;padding:8px 10px;border-radius:10px;color:var(--muted);font-size:12px;font-weight:750}.toc-list a:hover{background:var(--accent-soft);color:var(--accent)}.sidebar-progress{margin-top:12px;padding:16px}.mini-track{height:8px;border-radius:99px;background:var(--paper);overflow:hidden}.mini-fill{height:100%;width:0;border-radius:inherit;background:var(--accent)}.sidebar-progress p{margin:9px 0 0;color:var(--muted);font-size:11px}.sources-note p{margin:12px 0 0;color:var(--muted);font-size:13px}
+@media(max-width:940px){.lesson-hero-inner{grid-template-columns:1fr}.lesson-glance{max-width:650px}.lesson-layout{grid-template-columns:1fr}.lesson-sidebar{display:none}}@media(max-width:690px){.lesson-hero-inner{min-height:auto;padding:44px 0 67px}.lesson-hero h1{font-size:38px}.lesson-hero .jp-title{font-size:15px}.toolbar-card{align-items:flex-start;flex-direction:column}.study-toolbar{position:relative;top:auto}.lesson-layout{padding-top:36px}.intro-card,.pattern-section,.content-section{padding:19px;border-radius:20px}.outcomes{grid-template-columns:1fr}.pattern-head{grid-template-columns:38px 1fr}.pattern-index{width:38px;height:38px}.mistake{grid-template-columns:1fr}.mistake-reason{grid-column:auto}.lesson-nav{grid-template-columns:1fr}.nav-card.next{text-align:left}.top-actions .print-control{display:none}}
+@media print{.lesson-hero{color:#111;background:#fff;border-bottom:2px solid #111}.lesson-hero .lead,.lesson-hero .jp-title,.breadcrumb{color:#333}.lesson-hero-inner{min-height:0;padding:20px 0}.lesson-glance,.lesson-hero:after{display:none}.lesson-layout{display:block;padding:20px 0}.pattern-section,.content-section,.intro-card{break-inside:avoid;box-shadow:none;margin-top:14px}.practice-item[open] .answer{display:block}.lesson-nav{display:none}}
+</style>
+  <style>:root{--accent:#7c3aed;--accent-soft:#eee7ff}</style>
+</head>
+<body data-lesson="35">
+<a class="skip" href="#main">মূল কনটেন্টে যান</a>
+<header class="topbar no-print">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="n4-grammar.html" aria-label="Grammar home">
+      <span class="brand-mark" aria-hidden="true">文</span>
+      <span class="brand-copy"><span>আপনার নিহোন</span><small>Lesson 35 · ইচ্ছা ও শর্ত</small></span>
+    </a>
+    <div class="top-actions">
+      <button class="icon-button theme-toggle" type="button" aria-label="রঙের থিম বদলান" title="Light/Dark">◐</button>
+      <a class="soft-button" href="n4-grammar.html"><span class="text">সব Lesson</span> <span aria-hidden="true">⌂</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <section class="lesson-hero" data-no="35">
+    <div class="wrap lesson-hero-inner">
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="n4-grammar.html">N4 Grammar</a><span>›</span><span>Lesson 35</span><span>›</span><span>ইচ্ছা ও শর্ত</span></nav>
+        <span class="badge" style="margin-top:20px">ধাপ ২ · 31–35</span>
+        <h1>Conditional：〜ば・〜なら・疑問詞でも</h1>
+        <p class="jp-title jp" lang="ja">条件形・N／なAなら・疑問詞＋ばいいですか・疑問詞＋でも</p>
+        <p class="lead">শর্ত সত্য হলে ফল, কথোপকথনের topic ধরে recommendation, সঠিক উপায় জানতে প্রশ্ন এবং উন্মুক্ত পছন্দ।</p>
+      </div>
+      <aside class="lesson-glance">
+        <div class="glance-no"><b>35</b> / 50 · JLPT N4</div>
+        <ul class="glance-list"><li>4টি বিস্তারিত grammar block</li><li>12টি Japanese example</li><li>5টি ব্যাখ্যাসহ practice</li><li>Offline, mobile ও print friendly</li></ul>
+      </aside>
+    </div>
+  </section>
+  <section class="study-toolbar no-print">
+    <div class="wrap"><div class="toolbar-card card">
+      <div class="toolbar-group"><button class="soft-button reading-toggle" type="button">あ Reading লুকান</button><button class="soft-button print-control" type="button" onclick="window.print()">⎙ Print</button></div>
+      <div class="toolbar-group"><span class="toolbar-status" id="lessonStatus">এখনো সম্পন্ন নয়</span><button class="primary-button complete-button" type="button">✓ সম্পন্ন করুন</button></div>
+    </div></div>
+  </section>
+  <div class="wrap lesson-layout">
+    <article class="lesson-main">
+      <section class="intro-card card" id="overview"><span class="section-kicker">Lesson 35 · লক্ষ্য</span><h2>এই Lesson শেষে যা পারবেন</h2><p>জাপানির conditional চারটি বড় রূপের একটি হলো 〜ば। এটি শর্ত ও ফলের যৌক্তিক সম্পর্ক দেখায়। なら আবার আগের তথ্যকে ধরে ‘যদি সেটাই হয়’ বলে পরামর্শ দেয়। Lesson 35-এ form বানানোর পাশাপাশি たら/と-এর সঙ্গে ব্যবহারগত সীমা বুঝতে হবে।</p><ul class="outcomes"><li>ক্রিয়া ও い-বিশেষণের ば-form বানাবেন</li><li>な-বিশেষণ/বিশেষ্যের なら condition ব্যবহার করবেন</li><li>controllable condition-এর পরে request/intention-এ ば-এর সীমাবদ্ধতা বুঝবেন</li><li>疑問詞＋ばいい এবং 疑問詞＋でも ব্যবহার করবেন</li></ul></section>
+      <section class="pattern-section card" id="pattern-1-条件形-ば">
+    <div class="pattern-head"><span class="pattern-index">1</span><div><h2 class="jp" lang="ja">条件形（〜ば）</h2><p class="pattern-meaning">শর্ত পূরণ হলে যৌক্তিক/স্বাভাবিকভাবে ফল ঘটবে</p></div></div>
+    <h3 class="subhead">গঠন</h3><div class="table-wrap"><table><thead><tr><th>ধরন</th><th>গঠন</th><th>উদাহরণ</th></tr></thead><tbody><tr><td>Group 1 verb</td><td class="jp" lang="ja">শেষ う-row → え-row＋ば</td><td class="jp" lang="ja">行く→行けば／読む→読めば／話す→話せば</td></tr><tr><td>Group 2 verb</td><td class="jp" lang="ja">る বাদ＋れば</td><td class="jp" lang="ja">食べる→食べれば／見る→見れば</td></tr><tr><td>Group 3</td><td class="jp" lang="ja">する→すれば／来る→来れば</td><td class="jp" lang="ja">勉強すれば／来れば（くれば）</td></tr><tr><td>い-বিশেষণ</td><td class="jp" lang="ja">শেষ い বাদ＋ければ</td><td class="jp" lang="ja">安い→安ければ／よい→よければ</td></tr><tr><td>Negative</td><td class="jp" lang="ja">ない→なければ</td><td class="jp" lang="ja">行かない→行かなければ／高くない→高くなければ</td></tr></tbody></table></div>
+    <h3 class="subhead">বিস্তারিত ব্যাখ্যা</h3><div class="explain"><p>〜ば condition-এর ওপর focus করে: শর্ত পূরণ হলেই ফল সম্ভব/সত্য। 春になれば桜が咲きます = বসন্ত হলে চেরি ফুল ফোটে।</p><p>পরামর্শ, নিয়ম, সাধারণ সত্য, প্রয়োজনীয় শর্তে খুব স্বাভাবিক। ボタンを押せば、ドアが開きます।</p><p>সতর্কতা: condition যদি বক্তার ইচ্ছাকৃত action হয়, main clause-এ সরাসরি command/request/intention সাধারণত ば-এর সঙ্গে অস্বাভাবিক: 東京へ来れば、電話してください ✕। এখানে 来たら、電話してください স্বাভাবিক। তবে condition stative/non-volitional হলে よければ、来てください ঠিক।</p></div>
+    <h3 class="subhead">যা মনে রাখবেন</h3><ul class="key-list"><li>いい-এর ば-form অনিয়মিতভাবে よければ।</li><li>না হলে: Vなければ; 食べない→食べなければ।</li><li>শুধু form নয়—main clause-এর ইচ্ছা/command পরীক্ষা করুন।</li></ul>
+    <h3 class="subhead">উদাহরণ</h3><div class="example-grid"><article class="example">
+    <p class="sentence jp" lang="ja">このボタンを押せば、ドアが開きます。</p>
+    <p class="reading jp" lang="ja">よみ：この ボタンを おせば、ドアが あきます。</p>
+    <p class="translation">এই বোতাম চাপলে দরজা খুলবে।</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">毎日練習すれば、上手になります。</p>
+    <p class="reading jp" lang="ja">よみ：まいにち れんしゅうすれば、じょうずに なります。</p>
+    <p class="translation">প্রতিদিন অনুশীলন করলে দক্ষ হবেন।</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">天気がよければ、山が見えます。</p>
+    <p class="reading jp" lang="ja">よみ：てんきが よければ、やまが みえます。</p>
+    <p class="translation">আবহাওয়া ভালো হলে পাহাড় দেখা যায়।</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">急がなければ、電車に間に合いません。</p>
+    <p class="reading jp" lang="ja">よみ：いそがなければ、でんしゃに まにあいません。</p>
+    <p class="translation">তাড়াতাড়ি না করলে ট্রেন ধরতে পারবেন না।</p>
+  </article></div>
+    <div class="mistake"><div class="wrong"><b>✕ ভুল</b><div class="jp" lang="ja">安いば、買います。</div></div><div class="right"><b>✓ সঠিক</b><div class="jp" lang="ja">安ければ、買います。</div></div><p class="mistake-reason"><strong>কেন:</strong> い-বিশেষণ: শেষ い→ければ।</p></div>
+  </section><section class="pattern-section card" id="pattern-2-n-なa-なら">
+    <div class="pattern-head"><span class="pattern-index">2</span><div><h2 class="jp" lang="ja">N／なA＋なら</h2><p class="pattern-meaning">‘যদি ওই বিষয়/পরিস্থিতিই হয়’—শোনা তথ্য ধরে শর্ত বা recommendation</p></div></div>
+    <h3 class="subhead">গঠন</h3><div class="table-wrap"><table><thead><tr><th>ধরন</th><th>গঠন</th><th>উদাহরণ</th></tr></thead><tbody><tr><td>বিশেষ্য</td><td class="jp" lang="ja">N＋なら</td><td class="jp" lang="ja">京都なら、秋がいいです</td></tr><tr><td>な-বিশেষণ</td><td class="jp" lang="ja">語幹＋なら</td><td class="jp" lang="ja">静かなら、ここで勉強します</td></tr><tr><td>ক্রিয়া/い-A plain</td><td class="jp" lang="ja">普通形＋なら</td><td class="jp" lang="ja">行くなら／安いなら</td></tr></tbody></table></div>
+    <h3 class="subhead">বিস্তারিত ব্যাখ্যা</h3><div class="explain"><p>なら প্রায়ই interlocutor-এর বলা topic তুলে নেয়: A: 日本へ行きたいです。 B: 日本へ行くなら、京都もおすすめです。 অর্থ ‘যদি জাপান যাওয়ার কথাই হয়…’।</p><p>ば-এর মতো condition ঘটার chronological অপেক্ষা সবসময় নেই। 日本へ行くなら、カメラを買います—ক্যামেরা কেনা জাপানে যাওয়ার আগেও হতে পারে। たら হলে সাধারণত condition সম্পন্ন হওয়ার পরে main event।</p><p>N/な-A-এর だ বাদ: 学生なら, 暇なら।</p></div>
+    <h3 class="subhead">যা মনে রাখবেন</h3><ul class="key-list"><li>কথোপকথনে recommendation দেওয়ার শক্তিশালী রূপ: Nなら、Xがいいです。</li></ul>
+    <h3 class="subhead">উদাহরণ</h3><div class="example-grid"><article class="example">
+    <p class="sentence jp" lang="ja">日本料理なら、この店がおすすめです。</p>
+    <p class="reading jp" lang="ja">よみ：にほんりょうりなら、この みせが おすすめです。</p>
+    <p class="translation">জাপানি খাবার হলে/চাইলে এই দোকান সুপারিশ করব।</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">明日暇なら、一緒に映画を見ませんか。</p>
+    <p class="reading jp" lang="ja">よみ：あした ひまなら、いっしょに えいがを みませんか。</p>
+    <p class="translation">কাল ফ্রি হলে একসঙ্গে সিনেমা দেখবেন?</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">駅へ行くなら、この道が近いですよ。</p>
+    <p class="reading jp" lang="ja">よみ：えきへ いくなら、この みちが ちかいですよ。</p>
+    <p class="translation">স্টেশনে গেলে এই পথ কাছের।</p>
+  </article></div>
+    <div class="mistake"><div class="wrong"><b>✕ ভুল</b><div class="jp" lang="ja">静かだなら、ここに住みたいです。</div></div><div class="right"><b>✓ সঠিক</b><div class="jp" lang="ja">静かなら、ここに住みたいです。</div></div><p class="mistake-reason"><strong>কেন:</strong> な-বিশেষণের だ বাদ দিয়ে なら।</p></div>
+  </section><section class="pattern-section card" id="pattern-3-疑問詞-ばいいですか">
+    <div class="pattern-head"><span class="pattern-index">3</span><div><h2 class="jp" lang="ja">疑問詞＋〜ばいいですか</h2><p class="pattern-meaning">কী/কোথায়/কীভাবে করলে সঠিক হবে—উপায় বা পরামর্শ চাওয়া</p></div></div>
+    <h3 class="subhead">গঠন</h3><div class="table-wrap"><table><thead><tr><th>ধরন</th><th>গঠন</th><th>উদাহরণ</th></tr></thead><tbody><tr><td>প্রশ্ন</td><td class="jp" lang="ja">疑問詞＋条件形＋いいですか</td><td class="jp" lang="ja">どこへ行けばいいですか</td></tr></tbody></table></div>
+    <h3 class="subhead">বিস্তারিত ব্যাখ্যা</h3><div class="explain"><p>Lesson 26-এর 疑問詞＋たらいいですか-এর খুব কাছাকাছি। ばいい শর্তকে ‘কোন কাজ করলে ভালো ফল পাওয়া যাবে’ হিসেবে ফ্রেম করে।</p><p>উত্তরে Vばいいです বা Vたらいいです—দুটিই সম্ভব: 駅員に聞けばいいですよ।</p></div>
+    <h3 class="subhead">যা মনে রাখবেন</h3><ul class="key-list"><li>Question word এবং ば-form দুটোই লাগবে: どうすればいいですか।</li></ul>
+    <h3 class="subhead">উদাহরণ</h3><div class="example-grid"><article class="example">
+    <p class="sentence jp" lang="ja">この書類はどこへ出せばいいですか。</p>
+    <p class="reading jp" lang="ja">よみ：この しょるいは どこへ だせば いいですか。</p>
+    <p class="translation">এই নথি কোথায় জমা দিলে হবে?</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">パスワードを忘れたとき、どうすればいいですか。</p>
+    <p class="reading jp" lang="ja">よみ：パスワードを わすれたとき、どうすれば いいですか。</p>
+    <p class="translation">পাসওয়ার্ড ভুললে কী করলে হবে?</p>
+  </article></div>
+    <div class="mistake"><div class="wrong"><b>✕ ভুল</b><div class="jp" lang="ja">どうしたばいいですか。</div></div><div class="right"><b>✓ সঠিক</b><div class="jp" lang="ja">どうすればいいですか。／どうしたらいいですか。</div></div><p class="mistake-reason"><strong>কেন:</strong> ば হলে する→すれば; たら হলে したら। দুই form মেশাবেন না।</p></div>
+  </section><section class="pattern-section card" id="pattern-4-疑問詞-でも">
+    <div class="pattern-head"><span class="pattern-index">4</span><div><h2 class="jp" lang="ja">疑問詞＋でも</h2><p class="pattern-meaning">যে-কেউ/যে-কোনো কিছু/যে-কোনো জায়গা—খোলা বা unrestricted choice</p></div></div>
+    <h3 class="subhead">গঠন</h3><div class="table-wrap"><table><thead><tr><th>ধরন</th><th>গঠন</th><th>উদাহরণ</th></tr></thead><tbody><tr><td>ব্যক্তি</td><td class="jp" lang="ja">だれでも</td><td class="jp" lang="ja">だれでも参加できます</td></tr><tr><td>বস্তু</td><td class="jp" lang="ja">何でも</td><td class="jp" lang="ja">何でも食べます</td></tr><tr><td>স্থান/সময়</td><td class="jp" lang="ja">どこでも／いつでも</td><td class="jp" lang="ja">どこでも勉強できます</td></tr><tr><td>পছন্দ</td><td class="jp" lang="ja">どれでも／どちらでも</td><td class="jp" lang="ja">どれでもいいです</td></tr></tbody></table></div>
+    <h3 class="subhead">বিস্তারিত ব্যাখ্যা</h3><div class="explain"><p>Question word-এর পরে でも বসে restriction তুলে দেয়: いつでも = যেকোনো সময়, 何でも = যেকোনো কিছু।</p><p>Negative predicate-এর সঙ্গে অর্থ প্রসঙ্গসাপেক্ষ: だれでもできません অস্পষ্ট/অস্বাভাবিক হতে পারে। ‘কেউ পারে না’ বলতে だれもできません; ‘সবাই পারে না’ বলতে だれでもできるわけではありません (উচ্চতর)। N4-এ affirmative usage আগে আয়ত্ত করুন।</p><p>Suggestion-এর Nでも (চা-টা) আলাদা usage: コーヒーでも飲みませんか। এখানে interrogative নয়।</p></div>
+    <h3 class="subhead">যা মনে রাখবেন</h3><ul class="key-list"><li>Question word＋も＋negative = কেউ/কিছুই নয়; question word＋でも＋affirmative = যে-কেউ/যে-কোনো।</li></ul>
+    <h3 class="subhead">উদাহরণ</h3><div class="example-grid"><article class="example">
+    <p class="sentence jp" lang="ja">このイベントはだれでも参加できます。</p>
+    <p class="reading jp" lang="ja">よみ：この イベントは だれでも さんかできます。</p>
+    <p class="translation">এই অনুষ্ঠানে যে-কেউ অংশ নিতে পারে।</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">分からないことは何でも聞いてください。</p>
+    <p class="reading jp" lang="ja">よみ：わからない ことは なんでも きいてください。</p>
+    <p class="translation">না-বোঝা যেকোনো বিষয় জিজ্ঞেস করুন।</p>
+  </article><article class="example">
+    <p class="sentence jp" lang="ja">私はどこでも寝られます。</p>
+    <p class="reading jp" lang="ja">よみ：わたしは どこでも ねられます。</p>
+    <p class="translation">আমি যেকোনো জায়গায় ঘুমাতে পারি।</p>
+  </article></div>
+    <div class="mistake"><div class="wrong"><b>✕ ভুল</b><div class="jp" lang="ja">だれも参加できます。</div></div><div class="right"><b>✓ সঠিক</b><div class="jp" lang="ja">だれでも参加できます。</div></div><p class="mistake-reason"><strong>কেন:</strong> Affirmative ‘যে-কেউ’ = だれでも; だれも সাধারণত negative-এর সঙ্গে ‘কেউই নয়’।</p></div>
+  </section>
+      <section class="content-section card" id="compare"><span class="section-kicker">এক নজরে পার্থক্য</span><h2>কোন পরিস্থিতিতে কোনটি?</h2><div class="table-wrap compare-table"><table><thead><tr><th>Conditional</th><th>মূল দৃষ্টি</th><th>স্বাভাবিক ক্ষেত্র</th></tr></thead><tbody><tr><td>〜ば</td><td>শর্ত পূরণ → যৌক্তিক ফল</td><td>নিয়ম, উপায়, প্রয়োজনীয় শর্ত</td></tr><tr><td>〜なら</td><td>উল্লেখিত topic/assumption</td><td>পরামর্শ, topic-based response</td></tr><tr><td>〜たら</td><td>condition সম্পন্ন হওয়ার পরে</td><td>এককালীন ঘটনা, request/intention</td></tr><tr><td>〜と</td><td>স্বয়ংক্রিয়/নিয়মিত ফল</td><td>machine, nature; ইচ্ছা নয়</td></tr></tbody></table></div></section>
+      <section class="content-section card" id="dialogue"><span class="section-kicker">বাস্তব কথোপকথন</span><h2>কিয়োতো ভ্রমণের পরামর্শ</h2><div class="dialogue"><div class="dialogue-line"><span class="speaker">A</span><div class="bubble"><p class="jp" lang="ja">来月、京都へ行きます。</p><p class="bn">আগামী মাসে কিয়োতো যাব।</p></div></div><div class="dialogue-line"><span class="speaker">B</span><div class="bubble"><p class="jp" lang="ja">京都なら、嵐山がおすすめです。</p><p class="bn">কিয়োতো হলে আরাশিয়ামা সুপারিশ করব।</p></div></div><div class="dialogue-line"><span class="speaker">A</span><div class="bubble"><p class="jp" lang="ja">どうやって行けばいいですか。</p><p class="bn">কীভাবে গেলে হবে?</p></div></div><div class="dialogue-line"><span class="speaker">B</span><div class="bubble"><p class="jp" lang="ja">京都駅で聞けば分かります。だれでも教えてくれますよ。</p><p class="bn">কিয়োতো স্টেশনে জিজ্ঞেস করলে জানতে পারবেন। যে-কেউ বলে দেবে।</p></div></div></div></section>
+      <section class="content-section card" id="practice"><span class="section-kicker">নিজে যাচাই করুন</span><h2>Practice ও ব্যাখ্যাসহ উত্তর</h2><p class="muted">আগে খাতায় উত্তর লিখুন, তারপর প্রশ্নে চাপ দিয়ে উত্তর ও কারণ মিলিয়ে নিন।</p><div class="practice-list"><details class="practice-item"><summary>1. 行く-এর ば-form বানান।</summary><div class="answer"><strong class="jp" lang="ja">行けば</strong><p>く→け＋ば।</p></div></details><details class="practice-item"><summary>2. 安い-এর ば-form বানান।</summary><div class="answer"><strong class="jp" lang="ja">安ければ</strong><p>শেষ い→ければ।</p></div></details><details class="practice-item"><summary>3. ‘জাপানি খাবার হলে সুশি ভালো’—なら ব্যবহার করুন।</summary><div class="answer"><strong class="jp" lang="ja">日本料理なら、すしがいいです。</strong><p>উল্লেখিত category/topic＋なら recommendation।</p></div></details><details class="practice-item"><summary>4. ‘কীভাবে আবেদন করলে হবে?’ বলুন।</summary><div class="answer"><strong class="jp" lang="ja">どう申し込めばいいですか。</strong><p>申し込む→申し込めば＋いいですか。</p></div></details><details class="practice-item"><summary>5. ‘যে-কেউ ব্যবহার করতে পারে’ বলুন।</summary><div class="answer"><strong class="jp" lang="ja">だれでも使えます。</strong><p>Unrestricted person: だれでも।</p></div></details></div></section>
+      <section class="takeaway card" id="takeaway"><h2>এক বাক্যে Master Key</h2><p>যৌক্তিক শর্তে ば, কথায় ওঠা topic ধরে পরামর্শে なら, সঠিক উপায় জানতে 疑問詞＋ばいい, আর restriction না থাকলে 疑問詞＋でも।</p></section>
+      <section class="content-section card sources-note" id="sources"><span class="section-kicker">বিশ্বস্ত রেফারেন্স</span><h2>সিলেবাস ও যাচাই</h2><p>এই স্বাধীন বাংলা lesson-টি Minna no Nihongo II-এর lesson sequence, official JLPT N4 scope এবং Japan Foundation-এর learner resources মিলিয়ে তৈরি। উদাহরণ ও বাংলা ব্যাখ্যা নতুনভাবে রচিত।</p><div class="source-links"><a href="https://www.3anet.co.jp/np/books/2400/" target="_blank" rel="noreferrer">みんなの日本語初級Ⅱ 第2版 本冊 — 3A Network</a><a href="https://www.3anet.co.jp/np/books/2402/" target="_blank" rel="noreferrer">みんなの日本語初級Ⅱ 第2版 翻訳・文法解説 — 3A Network</a><a href="https://www.jlpt.jp/e/about/levelsummary.html" target="_blank" rel="noreferrer">JLPT N4 level summary — Official JLPT</a><a href="https://www.jlpt.jp/e/samples/sampleindex.html" target="_blank" rel="noreferrer">JLPT N4 official sample questions</a><a href="https://www.irodori.jpf.go.jp/en/resources.html" target="_blank" rel="noreferrer">IRODORI grammar resources — The Japan Foundation</a></div></section>
+      <nav class="lesson-nav no-print" aria-label="Lesson navigation"><a class="nav-card" href="n4-grammar-lesson-34-real.html"><small>← আগের Lesson 34</small><strong>Procedure：とおりに・あとで・ないで</strong></a><a class="nav-card next" href="n4-grammar-lesson-36-real.html"><small>পরের Lesson 36 →</small><strong>〜ように：লক্ষ্য, পরিবর্তন ও নিয়মিত চেষ্টা</strong></a></nav>
+    </article>
+    <aside class="lesson-sidebar no-print">
+      <nav class="toc card" aria-label="এই Lesson-এর সূচি"><h2>Lesson সূচি</h2><ul class="toc-list"><li><a href="#overview">শেখার লক্ষ্য</a></li><li><a href="#pattern-1-条件形-ば">1. 条件形（〜ば）</a></li><li><a href="#pattern-2-n-なa-なら">2. N／なA＋なら</a></li><li><a href="#pattern-3-疑問詞-ばいいですか">3. 疑問詞＋〜ばいいですか</a></li><li><a href="#pattern-4-疑問詞-でも">4. 疑問詞＋でも</a></li><li><a href="#compare">পার্থক্য টেবিল</a></li><li><a href="#dialogue">কথোপকথন</a></li><li><a href="#practice">Practice</a></li><li><a href="#takeaway">Master Key</a></li></ul></nav>
+      <div class="sidebar-progress card"><div class="mini-track"><div class="mini-fill" id="miniFill"></div></div><p id="courseStatus">Course progress লোড হচ্ছে…</p></div>
+    </aside>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div><strong>আপনার নিহোন · N4 Grammar 26–50</strong><br>শিক্ষার্থীদের জন্য বিনামূল্যে, বিস্তারিত বাংলা self-study edition।</div>
+    <div>Offline-ready · Mobile-friendly · Print-friendly</div>
+  </div>
+</footer>
+<script>
+(function(){
+  const root=document.body;
+  const savedTheme=localStorage.getItem('n4GrammarTheme');
+  if(savedTheme==='dark'||(!savedTheme&&matchMedia('(prefers-color-scheme:dark)').matches))root.classList.add('dark');
+  document.querySelectorAll('.theme-toggle').forEach(btn=>btn.addEventListener('click',()=>{
+    root.classList.toggle('dark');localStorage.setItem('n4GrammarTheme',root.classList.contains('dark')?'dark':'light');
+  }));
+})();
+(function(){
+  const no=Number(document.body.dataset.lesson),button=document.querySelector('.complete-button'),status=document.getElementById('lessonStatus'),progressPrefix='aponarnihon:n4-grammar:',storageKey=progressPrefix+no;
+  function read(key){try{return localStorage.getItem(key)}catch{return null}}
+  function write(key,value){try{localStorage.setItem(key,value)}catch{}}
+  function completedCount(){let total=0;for(let lessonNo=26;lessonNo<=50;lessonNo++){if(read(progressPrefix+lessonNo)==='1')total++}return total}
+  function paint(){const yes=read(storageKey)==='1',done=completedCount();button.classList.toggle('done',yes);button.textContent=yes?'✓ সম্পন্ন হয়েছে':'✓ সম্পন্ন করুন';status.textContent=yes?'এই Lesson সম্পন্ন':'এখনো সম্পন্ন নয়';const pct=done/25*100;document.getElementById('miniFill').style.width=pct+'%';document.getElementById('courseStatus').textContent=done+'/25 lesson সম্পন্ন · '+Math.round(pct)+'%';}
+  button.addEventListener('click',()=>{write(storageKey,read(storageKey)==='1'?'0':'1');paint()});
+  write('aponarnihon:last:n4-grammar',String(no));
+  const readBtn=document.querySelector('.reading-toggle');readBtn.addEventListener('click',()=>{document.body.classList.toggle('hide-readings');readBtn.textContent=document.body.classList.contains('hide-readings')?'あ Reading দেখান':'あ Reading লুকান'});
+  addEventListener('storage',paint);paint();
+})();</script>
+</body></html>
