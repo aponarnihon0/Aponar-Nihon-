@@ -1,59 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://aponar-nihon.eu.cc/</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/Hiragana-Katagana.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/embassy-interview.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/skype%20sheet.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/japan-part-time-job-guide.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/study-in-japan.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/japan-student-visa.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/japanese-language-course.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/part-time-job-in-japan.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/cost-of-studying-in-japan.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part1.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part2.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part3.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part4.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part5.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part6.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part7.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part8.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part9.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Grammar-part10.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part1.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part2.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part3.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part4.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part5.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part6.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part7.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part8.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part9.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Kanji-part10.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part1.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part2.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part3.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part4.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part5.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part6.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part7.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part8.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part9.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Reading-part10.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part1.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part2.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part3.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part4.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part5.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part6.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part7.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part8.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part9.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/N5-Vocabulary-part10.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/Vocabulary-part1.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/Vocabulary-part2.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/about.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/contact.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/privacy-policy.html</loc></url>
-  <url><loc>https://aponar-nihon.eu.cc/terms.html</loc></url>
+  <!-- Primary -->
+  <url><loc>https://aponar-nihon.eu.cc/</loc><lastmod>2026-08-10</lastmod><priority>1.0</priority></url>
+
+  <!-- Japanese foundations -->
+  <url><loc>https://aponar-nihon.eu.cc/Hiragana-Katagana.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/daily-greetings.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/directions-emergency.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/shop-food-phrases.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+
+  <!-- JLPT N5 -->
+  <url><loc>https://aponar-nihon.eu.cc/n5-vocabulary.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n5-kanji.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n5-grammar.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+
+  <!-- JLPT N4 -->
+  <url><loc>https://aponar-nihon.eu.cc/n4-vocabulary.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n4-kanji.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n4-grammar.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+
+  <!-- JLPT N3 -->
+  <url><loc>https://aponar-nihon.eu.cc/n3-vocabulary.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n3-kanji.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n3-grammar.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n3-reading.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+
+  <!-- Quiz and mock tests -->
+  <url><loc>https://aponar-nihon.eu.cc/jlpt-quiz.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/mock-test.html</loc><lastmod>2026-08-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n5-mock-tests.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n4-mock-tests.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/n3-mock-tests.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+
+  <!-- Interview -->
+  <url><loc>https://aponar-nihon.eu.cc/embassy-interview.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/skype%20sheet.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/part-time-interview.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japan-part-time-job-guide.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+
+  <!-- Study in Japan -->
+  <url><loc>https://aponar-nihon.eu.cc/study-in-japan.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japan-student-visa.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japanese-language-course.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/part-time-job-in-japan.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/cost-of-studying-in-japan.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+
+  <!-- Japan life guides -->
+  <url><loc>https://aponar-nihon.eu.cc/japan-newcomer-guide.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japan-arrival-guide.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japan-home-life-guide.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japan-emergency-guide.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japan-google-maps-guide.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/japan-train-platform-guide.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+
+  <!-- SSW -->
+  <url><loc>https://aponar-nihon.eu.cc/ssw.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-overview.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-exam.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-interview.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-job.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-salary.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-visa-process.html</loc><lastmod>2026-08-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-documents.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/ssw-faq.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+
+  <!-- AI tutor -->
+  <url><loc>https://aponar-nihon.eu.cc/tutor-section.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+
+  <!-- Trust pages -->
+  <url><loc>https://aponar-nihon.eu.cc/about.html</loc><lastmod>2026-08-10</lastmod><priority>0.5</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/contact.html</loc><lastmod>2026-08-10</lastmod><priority>0.5</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/privacy-policy.html</loc><lastmod>2026-08-10</lastmod><priority>0.3</priority></url>
+  <url><loc>https://aponar-nihon.eu.cc/terms.html</loc><lastmod>2026-08-10</lastmod><priority>0.3</priority></url>
 </urlset>
