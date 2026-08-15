@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#244f72">
+<meta name="description" content="Aponar Nihon E‑Book Library — বাংলায় জাপানিজ শেখার ইন্টার‌্যাক্টিভ ইবুক ও অফিসিয়াল ফ্রি জাপানিজ স্টাডি রিসোর্স।">
+<title>E‑Book Library | আপনার নিহোন</title>
+<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#173152;--ink2:#2d4968;--muted:#6b7b8d;--line:#e3e9f0;--paper:#f7f9fc;
+  --white:#fff;--blue:#244f72;--blue2:#4f87ac;--red:#c85c49;--gold:#d69d45;
+  --teal:#237f7a;--shadow:0 20px 55px rgba(24,54,82,.11);--shadow2:0 10px 30px rgba(24,54,82,.08);
+  --r:24px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;min-width:320px;font-family:"Noto Sans Bengali","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:
+radial-gradient(circle at 8% 4%,rgba(200,92,73,.08),transparent 26rem),
+radial-gradient(circle at 95% 20%,rgba(79,135,172,.12),transparent 30rem),
+linear-gradient(#fbfcfe,#f4f7fa);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}.jp{font-family:"Noto Sans JP",sans-serif}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.88);backdrop-filter:blur(18px) saturate(150%);border-bottom:1px solid rgba(23,49,82,.08)}
+.nav{height:72px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}.brand img{width:44px;height:44px;border-radius:12px;object-fit:contain}
+.brand strong{display:block;font-size:18px;line-height:1.1}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-top:3px}
+.spacer{flex:1}.home{display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 13px;font-weight:800;font-size:12px;box-shadow:0 4px 14px rgba(23,49,82,.04)}
+.hero{padding:76px 0 52px}.hero-shell{position:relative;overflow:hidden;border-radius:34px;background:linear-gradient(135deg,#173b5e 0%,#275a82 48%,#5a91b2 100%);min-height:455px;color:#fff;box-shadow:0 30px 80px rgba(23,59,94,.24);display:grid;grid-template-columns:1.25fr .75fr}
+.hero-shell:before{content:"";position:absolute;width:420px;height:420px;border:78px solid rgba(255,255,255,.055);border-radius:50%;right:-130px;bottom:-190px}
+.hero-copy{padding:clamp(38px,6vw,72px);position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#ffd6b7;font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:2px;background:currentColor}
+.hero h1{font-size:clamp(38px,7vw,70px);line-height:1.05;letter-spacing:-.04em;margin:14px 0}.hero p{margin:0;max-width:700px;color:rgba(255,255,255,.82);font-size:clamp(14px,2vw,18px)}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.hero-tags span{font-size:10px;font-weight:800;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);border-radius:999px;padding:7px 10px}
+.hero-art{position:relative;display:grid;place-items:center;padding:40px;min-height:330px}.sun{width:230px;height:230px;border-radius:50%;background:linear-gradient(145deg,#e66c57,#b54339);box-shadow:0 26px 60px rgba(76,19,17,.24)}
+.vertical{position:absolute;writing-mode:vertical-rl;font-family:"Noto Sans JP";font-size:35px;font-weight:900;letter-spacing:.16em}
+.seal{position:absolute;right:35px;bottom:35px;border:3px double rgba(255,255,255,.75);padding:10px;font-size:13px;font-weight:900;transform:rotate(-5deg)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center;box-shadow:var(--shadow2)}.stat strong{display:block;font-size:24px;color:var(--red)}.stat span{font-size:10px;color:var(--muted)}
+section.content{padding:52px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}.kicker{color:var(--red);font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.head h2{font-size:clamp(28px,4vw,42px);line-height:1.16;margin:4px 0 0;letter-spacing:-.025em}.head p{max-width:470px;color:var(--muted);font-size:13px;margin:0}
+.books{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.book{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);display:grid;grid-template-columns:185px 1fr;min-height:330px}
+.cover{position:relative;margin:18px;border-radius:18px;overflow:hidden;color:#fff;display:flex;align-items:flex-end;padding:20px;box-shadow:0 20px 38px rgba(24,54,82,.18);min-height:280px}
+.cover.one{background:linear-gradient(155deg,#8f2f37,#df5d5e 58%,#e7a65a)}.cover.two{background:linear-gradient(155deg,#174e55,#237f7a 58%,#d7a64d)}
+.cover:before{content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.32);border-radius:12px}.cover:after{content:"日本語";position:absolute;right:18px;top:20px;writing-mode:vertical-rl;font-family:"Noto Sans JP";font-size:32px;font-weight:900;letter-spacing:.15em;color:rgba(255,255,255,.88)}
+.cover-copy{position:relative;z-index:2}.cover-copy small{font-size:9px;letter-spacing:.12em;text-transform:uppercase}.cover-copy strong{display:block;font-size:19px;line-height:1.25;margin-top:6px}
+.book-body{padding:28px 26px 26px 4px;display:flex;flex-direction:column}.badges{display:flex;flex-wrap:wrap;gap:6px}.badge{border-radius:999px;padding:5px 8px;font-size:9px;font-weight:850;background:#eef4f8;color:var(--blue)}.badge.hot{background:#fff0ec;color:#b84c3c}
+.book h3{font-size:24px;line-height:1.26;margin:13px 0 7px}.book p{font-size:12px;color:var(--muted);margin:0}.features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:18px 0 22px}.feature{font-size:10px;color:var(--ink2);display:flex;gap:6px;align-items:center}.feature:before{content:"✓";display:grid;place-items:center;width:17px;height:17px;border-radius:50%;background:#e7f4f2;color:var(--teal);font-weight:900}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}.read{display:inline-flex;justify-content:center;align-items:center;text-decoration:none;background:var(--blue);color:#fff;border-radius:12px;padding:10px 15px;font-size:11px;font-weight:900;box-shadow:0 8px 18px rgba(36,79,114,.18)}.read:hover{background:#173b5e}.meta{font-size:10px;color:var(--muted);display:inline-flex;align-items:center;padding:0 4px}
+.official{margin-top:24px;border:1px solid var(--line);background:rgba(255,255,255,.74);border-radius:28px;padding:clamp(22px,4vw,34px);box-shadow:var(--shadow2)}
+.official-top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.official-top h3{margin:0;font-size:21px}.official-top p{margin:4px 0 0;color:var(--muted);font-size:11px}.verified{white-space:nowrap;border-radius:999px;background:#e8f5f2;color:#1f716c;padding:7px 10px;font-size:9px;font-weight:900}
+.resources{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.resource{display:block;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:18px;padding:18px;transition:.2s transform,.2s box-shadow,.2s border-color}.resource:hover{transform:translateY(-3px);box-shadow:var(--shadow2);border-color:#a9bfd0}.resource span{display:inline-block;font-size:9px;color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.1em}.resource strong{display:block;font-size:17px;margin:7px 0 4px}.resource small{display:block;color:var(--muted);font-size:10.5px;line-height:1.55}.arrow{margin-top:12px;color:var(--blue);font-size:10px;font-weight:900}
+.note{margin-top:14px;color:var(--muted);font-size:10px;line-height:1.65}.note strong{color:var(--ink)}
+.cta{padding:20px 0 78px}.cta-box{border-radius:28px;padding:clamp(26px,5vw,48px);background:linear-gradient(135deg,#fff,#f4f8fb);border:1px solid var(--line);text-align:center;box-shadow:var(--shadow2)}.cta-box .jp{color:var(--red);font-size:18px;font-weight:900}.cta-box h2{font-size:clamp(25px,4vw,38px);margin:8px 0}.cta-box p{color:var(--muted);font-size:12px;max-width:650px;margin:0 auto 18px}
+footer{border-top:1px solid var(--line);background:#fff;padding:26px 0;color:var(--muted);font-size:10px}.foot{display:flex;justify-content:space-between;gap:15px;align-items:center}.foot strong{color:var(--ink)}
+@media(max-width:900px){.hero-shell{grid-template-columns:1fr}.hero-art{min-height:240px;border-top:1px solid rgba(255,255,255,.12)}.stats{grid-template-columns:repeat(2,1fr)}.books{grid-template-columns:1fr}.resources{grid-template-columns:1fr}.head{display:block}.head p{margin-top:9px}}
+@media(max-width:560px){.wrap{width:min(100% - 22px,1180px)}.nav{height:64px}.brand img{width:38px;height:38px}.brand strong{font-size:16px}.home{padding:8px 10px}.hero{padding:30px 0 34px}.hero-copy{padding:32px 24px}.hero h1{font-size:42px}.hero-art{min-height:205px}.sun{width:145px;height:145px}.vertical{font-size:23px}.seal{right:20px;bottom:20px}.stats{gap:7px}.stat{padding:13px 7px}.book{grid-template-columns:1fr}.cover{min-height:235px;margin:14px}.book-body{padding:7px 20px 22px}.features{grid-template-columns:1fr 1fr}.official{padding:19px}.official-top{display:block}.verified{display:inline-block;margin-top:10px}.foot{display:block;text-align:center}.foot span{display:block;margin-top:5px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="/logo.png" alt="আপনার নিহোন"><span><strong>আপনার নিহোন</strong><small>Japanese Learning Platform</small></span></a>
+    <div class="spacer"></div>
+    <a class="home" href="index.html">← হোমে ফিরুন</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-shell">
+      <div class="hero-copy">
+        <div class="eyebrow">Aponar Nihon Learning Library</div>
+        <div class="jp" style="font-weight:800;margin-top:14px">読む・聞く・話す</div>
+        <h1>E‑Book Library</h1>
+        <p>বাংলাভাষী জাপানিজ শিক্ষার্থীদের জন্য ইন্টার‌্যাক্টিভ বই—ফুরিগানা, বাংলা ব্যাখ্যা, সার্চ, প্রগ্রেস ও প্র্যাকটিস এক জায়গায়।</p>
+        <div class="hero-tags"><span>বাংলা ব্যাখ্যা</span><span>ふりがな</span><span>Mobile Friendly</span><span>Interactive Study</span></div>
+      </div>
+      <div class="hero-art"><div class="sun"></div><div class="vertical">日本語学習図書館</div><div class="seal">学<br>習</div></div>
+    </div>
+    <div class="stats"><div class="stat"><strong>2</strong><span>Featured eBooks</span></div><div class="stat"><strong>727</strong><span>Conversation Phrases</span></div><div class="stat"><strong>24</strong><span>Study Chapters</span></div><div class="stat"><strong>3</strong><span>Official Free Resources</span></div></div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="wrap">
+    <div class="head"><div><div class="kicker">Featured eBooks</div><h2>আপনার নিহোন স্টাডি এডিশন</h2></div><p>ব্রাউজারেই পড়ুন। আলাদা app লাগবে না; mobile ও desktop—দুই জায়গাতেই ব্যবহার করা যাবে।</p></div>
+    <div class="books">
+      <article class="book">
+        <div class="cover one"><div class="cover-copy"><small>Conversation Mastery</small><strong>জাপানিজ কথোপকথনের ৭২৭টি অপরিহার্য বাক্য</strong></div></div>
+        <div class="book-body">
+          <div class="badges"><span class="badge hot">Featured</span><span class="badge">727 বাক্য</span><span class="badge">91 ইউনিট</span></div>
+          <h3>জাপানিজ কথোপকথন — বাংলা স্টাডি ইবুক</h3>
+          <p>দৈনন্দিন কথোপকথনের বড় phrase collection। জাপানিজ, ফুরিগানা, বাংলা অর্থ ও ব্যবহার-ব্যাখ্যার সঙ্গে পড়া ও রিভিউ করার জন্য সাজানো।</p>
+          <div class="features"><span class="feature">ফুরিগানা</span><span class="feature">বাংলা অর্থ</span><span class="feature">বুকমার্ক/প্রগ্রেস</span><span class="feature">দ্রুত সার্চ</span></div>
+          <div class="actions"><a class="read" href="japanese-conversation-bangla-ebook.html">বইটি খুলুন →</a><span class="meta">Web-optimized edition</span></div>
+        </div>
+      </article>
+
+      <article class="book">
+        <div class="cover two"><div class="cover-copy"><small>Structured Self‑Study</small><strong>Speak Japanese Today — বাংলা স্টাডি ইবুক</strong></div></div>
+        <div class="book-body">
+          <div class="badges"><span class="badge hot">Interactive</span><span class="badge">24 অধ্যায়</span><span class="badge">Quiz + Progress</span></div>
+          <h3>Speak Japanese Today — বাংলা স্টাডি ইবুক</h3>
+          <p>lesson order ধরে conversation, vocabulary, grammar, practice ও quiz একসাথে। জাপানিজ reading-এর পাশে বাংলা ব্যাখ্যা দিয়ে self-study করার জন্য।</p>
+          <div class="features"><span class="feature">ফুরিগানা</span><span class="feature">ভোকাবুলারি</span><span class="feature">গ্রামার</span><span class="feature">কুইজ ও প্রগ্রেস</span></div>
+          <div class="actions"><a class="read" href="speak-japanese-today-bangla-ebook.html">বইটি খুলুন →</a><span class="meta">Interactive web ebook</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="official">
+      <div class="official-top"><div><h3>Official Free Japanese Resources</h3><p>Japan Foundation-এর IRODORI সিরিজ—জাপানে দৈনন্দিন জীবন ও কাজের জন্য ব্যবহারিক জাপানিজ।</p></div><span class="verified">✓ Official source</span></div>
+      <div class="resources">
+        <a class="resource" href="https://www.irodori.jpf.go.jp/en/starter/pdf.html" target="_blank" rel="noopener noreferrer"><span>Japan Foundation</span><strong>IRODORI Starter</strong><small>একেবারে শুরু থেকে everyday Japanese; lesson PDF ও audio materials অফিসিয়ালি পাওয়া যায়।</small><div class="arrow">Official page ↗</div></a>
+        <a class="resource" href="https://www.irodori.jpf.go.jp/en/elementary01/pdf.html" target="_blank" rel="noopener noreferrer"><span>Japan Foundation</span><strong>IRODORI Elementary 1</strong><small>A2 স্তরের ব্যবহারিক Japanese—কাজ, আবহাওয়া, দৈনন্দিন জীবন ও যোগাযোগভিত্তিক lesson।</small><div class="arrow">Official page ↗</div></a>
+        <a class="resource" href="https://www.irodori.jpf.go.jp/en/elementary02/pdf.html" target="_blank" rel="noopener noreferrer"><span>Japan Foundation</span><strong>IRODORI Elementary 2</strong><small>A2 স্তরের পরের ধাপ—service, relationship, environment ও Japan life-focused lesson।</small><div class="arrow">Official page ↗</div></a>
+      </div>
+      <p class="note"><strong>কপিরাইট নোট:</strong> IRODORI ফাইল Aponar Nihon-এ re-upload করা হয়নি; ব্যবহারকারীকে সরাসরি Japan Foundation-এর official page-এ পাঠানো হয়।</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap"><div class="cta-box"><div class="jp">毎日、少しずつ。</div><h2>প্রতিদিন একটু করে পড়ুন</h2><p>শুধু vocabulary মুখস্থ না করে, sentence ও situation ধরে পড়লে বাস্তব কথোপকথনে ব্যবহার করা সহজ হয়।</p><a class="read" href="index.html">Aponar Nihon Home →</a></div></div>
+</section>
+</main>
+
+<footer><div class="wrap foot"><strong>আপনার নিহোন · Aponar Nihon</strong><span>বাংলায় জাপানি শেখা, JLPT প্রস্তুতি ও Japan Life Guide</span></div></footer>
+</body></html>
