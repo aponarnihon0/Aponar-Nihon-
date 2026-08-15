@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v10";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v10";
+const STATIC_CACHE = "aponar-nihon-static-v11";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v11";
 
 const STATIC_ASSETS = [
   "/",
@@ -77,7 +77,7 @@ const COMPACT_HOME_STYLE = `
 </style>`;
 
 const MAZII_MENU_STYLE = `
-<style id="aponar-mazii-menu-v1">
+<style id="aponar-mazii-menu-v2">
 @media(max-width:1023px){
   .navbar.app-classic-header .nav-menu{
     display:block!important;
@@ -95,7 +95,7 @@ const MAZII_MENU_STYLE = `
     border:0!important;
     border-radius:0!important;
     background:linear-gradient(180deg,#1978dc 0%,#1268c3 52%,#0b579f 100%)!important;
-    box-shadow:18px 0 48px rgba(7,37,72,.30),0 0 0 100vmax rgba(7,18,34,.42)!important;
+    box-shadow:none!important;
     overflow-y:auto!important;
     overscroll-behavior:contain!important;
     scrollbar-width:none!important;
@@ -103,11 +103,14 @@ const MAZII_MENU_STYLE = `
     transition:left .34s cubic-bezier(.22,.8,.26,1)!important;
   }
   .navbar.app-classic-header .nav-menu::-webkit-scrollbar{display:none!important}
-  .navbar.app-classic-header .nav-menu.active{left:0!important;right:auto!important}
+  .navbar.app-classic-header .nav-menu.active{
+    left:0!important;
+    right:auto!important;
+    box-shadow:18px 0 48px rgba(7,37,72,.30),0 0 0 100vmax rgba(7,18,34,.42)!important;
+  }
 
   .navbar.app-classic-header .nav-menu::before{
-    content:"আপনার নিহোন\A JAPANESE LEARNING HUB";
-    white-space:pre;
+    content:"APONAR NIHON";
     position:absolute!important;
     top:0!important;
     left:0!important;
@@ -119,11 +122,12 @@ const MAZII_MENU_STYLE = `
     background:url('/logo.png') 20px center/48px 48px no-repeat,rgba(255,255,255,.055)!important;
     border-bottom:1px solid rgba(255,255,255,.13)!important;
     color:#fff!important;
-    font-family:'Noto Sans Bengali','Inter',sans-serif!important;
-    font-size:17px!important;
-    line-height:1.55!important;
+    font-family:'Inter','Noto Sans Bengali',sans-serif!important;
+    font-size:19px!important;
+    line-height:1.2!important;
     font-weight:900!important;
-    letter-spacing:.01em!important;
+    letter-spacing:.04em!important;
+    white-space:nowrap!important;
   }
 
   .navbar.app-classic-header .nav-menu li{
@@ -136,7 +140,6 @@ const MAZII_MENU_STYLE = `
     transform:none!important;
     transition:none!important;
   }
-
   .navbar.app-classic-header .nav-menu li:nth-child(6),
   .navbar.app-classic-header .nav-menu li:nth-child(14){
     margin-top:12px!important;
@@ -171,7 +174,6 @@ const MAZII_MENU_STYLE = `
   .navbar.app-classic-header .nav-menu a:hover,
   .navbar.app-classic-header .nav-menu a.active{background:rgba(255,255,255,.115)!important}
   .navbar.app-classic-header .nav-menu a:active{background:rgba(255,255,255,.18)!important;transform:scale(.985)!important}
-
   .navbar.app-classic-header .nav-menu a i{
     flex:0 0 35px!important;
     width:35px!important;
@@ -215,7 +217,6 @@ const MAZII_MENU_STYLE = `
   .navbar.app-classic-header .app-classic-menu-btn.active .hamburger{width:25px!important;height:20px!important}
   .navbar.app-classic-header .app-classic-menu-btn.active .hamburger span{height:3px!important;background:#fff!important}
 }
-
 @media(max-width:370px){
   .navbar.app-classic-header .nav-menu{width:84vw!important;min-width:0!important;padding-left:14px!important;padding-right:14px!important}
   .navbar.app-classic-header .nav-menu a,.navbar.app-classic-header .nav-menu a:hover,.navbar.app-classic-header .nav-menu a.active{font-size:14px!important;min-height:50px!important;padding:9px 10px!important;gap:12px!important}
@@ -236,7 +237,7 @@ function injectHomeEnhancements(html){
   }
   if(!html.includes('id="important-section-compact-v3"') && html.includes('</head>')){
     html = html.replace('</head>',COMPACT_HOME_STYLE + '\n' + MAZII_MENU_STYLE + '\n</head>');
-  }else if(!html.includes('id="aponar-mazii-menu-v1"') && html.includes('</head>')){
+  }else if(!html.includes('id="aponar-mazii-menu-v2"') && html.includes('</head>')){
     html = html.replace('</head>',MAZII_MENU_STYLE + '\n</head>');
   }
   return html;
@@ -273,9 +274,7 @@ async function trimCache(cacheName,maxItems){
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(STATIC_CACHE).then(cache=>Promise.allSettled(STATIC_ASSETS.map(asset=>cache.add(asset))))
-  );
+  event.waitUntil(caches.open(STATIC_CACHE).then(cache=>Promise.allSettled(STATIC_ASSETS.map(asset=>cache.add(asset)))));
 });
 
 self.addEventListener('activate',event=>{
