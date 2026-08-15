@@ -1,0 +1,40 @@
+name: CV Storage Reset
+on:
+  push:
+    paths:
+      - '.github/workflows/cv-storage-reset.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reset legacy CV storage and cache
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('cv-builder.html')
+          s = p.read_text(encoding='utf-8')
+          old = "const KEY='aponarNihonCvV4',OLD=['aponarNihonCvV3','aponarNihonCvV2'];"
+          new = "const KEY='aponarNihonCvV5',OLD=['aponarNihonCvV4','aponarNihonCvV3','aponarNihonCvV2'];OLD.forEach(k=>localStorage.removeItem(k));"
+          if old not in s:
+              raise SystemExit('CV storage marker not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+
+          sw = Path('sw.js')
+          t = sw.read_text(encoding='utf-8')
+          t = t.replace('aponar-nihon-static-v12','aponar-nihon-static-v13')
+          t = t.replace('aponar-nihon-dynamic-v12','aponar-nihon-dynamic-v13')
+          sw.write_text(t, encoding='utf-8')
+          PY
+      - name: Commit fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cv-builder.html sw.js
+          git diff --cached --quiet && exit 0
+          git commit -m "Stop auto-loading legacy CV personal data"
+          git push
