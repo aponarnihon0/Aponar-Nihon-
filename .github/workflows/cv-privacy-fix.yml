@@ -1,0 +1,67 @@
+name: CV Privacy Fix
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/cv-privacy-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove sample identity data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('cv-builder.html')
+          s = p.read_text(encoding='utf-8')
+
+          # Remove the Sample button completely.
+          s = re.sub(r'<button class="topbtn" id="sampleBtn">.*?</button>', '', s, count=1, flags=re.S)
+
+          # Remove personal/example names from field placeholders.
+          s = s.replace('placeholder="SAMMIR MD"', 'placeholder="氏名を入力してください"')
+          s = s.replace('placeholder="サミル エムディー"', 'placeholder="フリガナを入力してください"')
+
+          # Remove the JS sample-data loader.
+          s = re.sub(
+              r";\$\('sampleBtn'\)\.onclick=\(\)=>\{state=\{.*?\};save\(\);load\(\);showStep\(1\)\};window\.addEventListener",
+              ";window.addEventListener",
+              s,
+              count=1,
+              flags=re.S,
+          )
+
+          # Clean only known hard-coded demo identities from existing browser storage.
+          old = "try{state={template:'standard',photo:'',edu:[],work:[],qual:[],...(JSON.parse(raw||'{}'))}}catch(e){}state.created=tokyoToday();"
+          new = "try{state={template:'standard',photo:'',edu:[],work:[],qual:[],...(JSON.parse(raw||'{}'))}}catch(e){}if(['SAMPLE USER','John Doe'].includes(state.name)||['sample@example.com','john.doe.dev@email.com'].includes(state.email)){state={template:'standard',photo:'',edu:[{year:'',month:'',text:''}],work:[{year:'',month:'',text:''}],qual:[{year:'',month:'',text:''}]};}state.created=tokyoToday();"
+          if old in s:
+              s = s.replace(old, new, 1)
+          else:
+              raise SystemExit('Could not find load() insertion point')
+
+          # Safety checks: no demo identity should remain in source.
+          for forbidden in ['SAMPLE USER', 'John Doe', 'john.doe.dev@email.com', 'sample@example.com', 'SAMMIR MD', 'サミル エムディー']:
+              # Allowed only inside the sanitizer for the two legacy identities/emails.
+              if forbidden in ['SAMPLE USER','John Doe','john.doe.dev@email.com','sample@example.com']:
+                  continue
+              if forbidden in s:
+                  raise SystemExit(f'Forbidden personal placeholder still present: {forbidden}')
+
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit privacy fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cv-builder.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Remove sample identity from CV builder"
+          git push
