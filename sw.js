@@ -1,15 +1,63 @@
-const STATIC_CACHE = "aponar-nihon-static-v3";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v3";
+const STATIC_CACHE = "aponar-nihon-static-v4";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v4";
 
 const STATIC_ASSETS = [
   "/",
   "/index.html",
   "/manifest.json",
   "/logo.png",
-  "/aponar-nihon(1).png"
+  "/aponar-nihon(1).png",
+  "/ebook-library.html"
 ];
 
 const MAX_DYNAMIC_CACHE_ITEMS = 120;
+
+const EBOOK_TOOL_MARKER = `        <a class="app-tool-item gray" href="#guide">
+          <span class="app-tool-icon"><i class="fa-solid fa-compass"></i></span>
+          <strong>স্টাডি গাইড</strong><small>শেখার রোডম্যাপ</small>
+        </a>`;
+
+const EBOOK_TOOL_CARD = `        <a class="app-tool-item cyan" href="ebook-library.html" aria-label="E-Book Library">
+          <span class="app-tool-icon"><i class="fa-solid fa-book-open-reader"></i></span>
+          <strong>E-Book</strong><small>স্টাডি লাইব্রেরি</small>
+        </a>\n`;
+
+// Keep the current homepage intact and add E-Book inside the existing
+// “সব গুরুত্বপূর্ণ সেকশন” grid. This avoids removing or replacing any tool.
+async function enhanceHomeHtml(response, requestUrl) {
+  if (!response || !response.ok) return response;
+
+  const url = new URL(requestUrl);
+  const isHome = url.origin === self.location.origin &&
+    (url.pathname === "/" || url.pathname === "/index.html");
+
+  if (!isHome) return response;
+
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("text/html")) return response;
+
+  try {
+    let html = await response.text();
+
+    if (!html.includes('href="ebook-library.html"') && html.includes(EBOOK_TOOL_MARKER)) {
+      html = html.replace(EBOOK_TOOL_MARKER, EBOOK_TOOL_CARD + EBOOK_TOOL_MARKER);
+    }
+
+    const headers = new Headers(response.headers);
+    headers.delete("content-length");
+    headers.delete("content-encoding");
+    headers.delete("etag");
+
+    return new Response(html, {
+      status: response.status,
+      statusText: response.statusText,
+      headers
+    });
+  } catch (error) {
+    console.warn("Homepage enhancement skipped:", error);
+    return response;
+  }
+}
 
 // Cache size limit
 async function trimCache(cacheName, maxItems) {
@@ -75,24 +123,28 @@ self.addEventListener("fetch", (event) => {
   ) {
     event.respondWith(
       fetch(request)
-        .then((networkResponse) => {
-          if (isSameOrigin && networkResponse && networkResponse.ok) {
-            const copy = networkResponse.clone();
+        .then(async (networkResponse) => {
+          const finalResponse = await enhanceHomeHtml(networkResponse, request.url);
+
+          if (isSameOrigin && finalResponse && finalResponse.ok) {
+            const copy = finalResponse.clone();
             caches.open(DYNAMIC_CACHE).then((cache) => {
               cache.put(request, copy);
               trimCache(DYNAMIC_CACHE, MAX_DYNAMIC_CACHE_ITEMS);
             });
           }
 
-          return networkResponse;
+          return finalResponse;
         })
         .catch(() => {
-          return caches.match(request).then((cached) => {
-            return (
+          return caches.match(request).then(async (cached) => {
+            const fallback =
               cached ||
-              caches.match("/index.html") ||
-              caches.match("/")
-            );
+              await caches.match("/index.html") ||
+              await caches.match("/");
+
+            if (!fallback) return fallback;
+            return enhanceHomeHtml(fallback, request.url);
           });
         })
     );
