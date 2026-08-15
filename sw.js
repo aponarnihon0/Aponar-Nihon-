@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v5";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v5";
+const STATIC_CACHE = "aponar-nihon-static-v6";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v6";
 
 const STATIC_ASSETS = [
   "/",
@@ -24,7 +24,7 @@ const EBOOK_TOOL_CARD = `        <a class="app-tool-item cyan" href="ebook-libra
 
 const COMPACT_HOME_STYLE = `
 <style id="important-section-compact-v2">
-/* Mobile quick tools: compact 13 items into 3 rows (5 + 5 + 3). */
+/* Mobile quick tools: compact 13 items into 4 rows (4 + 4 + 4 + 1). */
 @media (max-width: 767px) {
   .app-home-screen {
     padding-left: 10px !important;
@@ -59,7 +59,7 @@ const COMPACT_HOME_STYLE = `
   }
 
   .app-tools-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     column-gap: 3px !important;
     row-gap: 10px !important;
     align-items: start !important;
@@ -118,7 +118,7 @@ const COMPACT_HOME_STYLE = `
   }
 
   .app-tools-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     column-gap: 2px !important;
     row-gap: 9px !important;
   }
