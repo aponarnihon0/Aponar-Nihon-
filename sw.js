@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v4";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v4";
+const STATIC_CACHE = "aponar-nihon-static-v5";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v5";
 
 const STATIC_ASSETS = [
   "/",
@@ -22,8 +22,132 @@ const EBOOK_TOOL_CARD = `        <a class="app-tool-item cyan" href="ebook-libra
           <strong>E-Book</strong><small>স্টাডি লাইব্রেরি</small>
         </a>\n`;
 
+const COMPACT_HOME_STYLE = `
+<style id="important-section-compact-v2">
+/* Mobile quick tools: compact 13 items into 3 rows (5 + 5 + 3). */
+@media (max-width: 767px) {
+  .app-home-screen {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .app-tools-card {
+    margin-top: 14px !important;
+    padding: 16px 8px 13px !important;
+    border-radius: 22px !important;
+  }
+
+  .app-card-heading {
+    padding: 0 5px 10px !important;
+  }
+
+  .app-card-heading span {
+    font-size: 9px !important;
+  }
+
+  .app-card-heading h2 {
+    margin-top: 1px !important;
+    font-size: 17px !important;
+    line-height: 1.16 !important;
+  }
+
+  .app-card-heading > a {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 11px !important;
+  }
+
+  .app-tools-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    column-gap: 3px !important;
+    row-gap: 10px !important;
+    align-items: start !important;
+  }
+
+  .app-tool-item {
+    min-width: 0 !important;
+    gap: 0 !important;
+  }
+
+  .app-tool-icon {
+    width: 47px !important;
+    height: 47px !important;
+    border-radius: 14px !important;
+    margin-bottom: 5px !important;
+    font-size: 18px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 6px 13px rgba(38,62,89,.14) !important;
+  }
+
+  .app-tool-icon b {
+    font-size: 15px !important;
+    letter-spacing: -.35px !important;
+  }
+
+  .app-tool-item strong {
+    width: 100% !important;
+    min-height: 22px !important;
+    margin: 0 !important;
+    font-size: 9.6px !important;
+    line-height: 1.1 !important;
+    font-weight: 800 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+  }
+
+  .app-tool-item small {
+    width: 100% !important;
+    min-height: 15px !important;
+    margin-top: 1px !important;
+    font-size: 7.1px !important;
+    line-height: 1.08 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .app-tools-card {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+
+  .app-tools-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    column-gap: 2px !important;
+    row-gap: 9px !important;
+  }
+
+  .app-tool-icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 13px !important;
+    font-size: 17px !important;
+  }
+
+  .app-tool-icon b {
+    font-size: 14px !important;
+  }
+
+  .app-tool-item strong {
+    font-size: 9px !important;
+    min-height: 21px !important;
+  }
+
+  .app-tool-item small {
+    font-size: 6.8px !important;
+    min-height: 14px !important;
+  }
+}
+</style>`;
+
 // Keep the current homepage intact and add E-Book inside the existing
-// “সব গুরুত্বপূর্ণ সেকশন” grid. This avoids removing or replacing any tool.
+// “সব গুরুত্বপূর্ণ সেকশন” grid. Also inject the compact mobile layout.
 async function enhanceHomeHtml(response, requestUrl) {
   if (!response || !response.ok) return response;
 
@@ -41,6 +165,10 @@ async function enhanceHomeHtml(response, requestUrl) {
 
     if (!html.includes('href="ebook-library.html"') && html.includes(EBOOK_TOOL_MARKER)) {
       html = html.replace(EBOOK_TOOL_MARKER, EBOOK_TOOL_CARD + EBOOK_TOOL_MARKER);
+    }
+
+    if (!html.includes('id="important-section-compact-v2"') && html.includes("</head>")) {
+      html = html.replace("</head>", COMPACT_HOME_STYLE + "\n</head>");
     }
 
     const headers = new Headers(response.headers);
