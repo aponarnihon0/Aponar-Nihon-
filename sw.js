@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v11";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v11";
+const STATIC_CACHE = "aponar-nihon-static-v12";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v12";
 
 const STATIC_ASSETS = [
   "/",
@@ -9,6 +9,7 @@ const STATIC_ASSETS = [
   "/aponar-nihon(1).png",
   "/ebook-library.html",
   "/student-tools.html",
+  "/cv-builder.html",
   "/speak-japanese-today-bangla-ebook.html",
   "/japanese-conversation-bangla-ebook.html",
   "/ebook-data/sjt-pack-1.txt",
@@ -46,8 +47,13 @@ const STUDENT_TOOL_CARD = `        <a class="app-tool-item toolkit" data-tool="s
           <strong>Student Toolkit</strong><small>28h + বাজেট</small>
         </a>\n`;
 
+const CV_TOOL_CARD = `        <a class="app-tool-item cvbuilder" data-tool="cv-builder" href="cv-builder.html" aria-label="Japan CV Builder">
+          <span class="app-tool-icon"><i class="fa-solid fa-file-signature"></i></span>
+          <strong>Japan CV Builder</strong><small>履歴書 তৈরি</small>
+        </a>\n`;
+
 const NAV_ABOUT_MARKER = `      <li><a href="#about" class="nav-item-link"><i class="fas fa-circle-info"></i><span>আমাদের সম্পর্কে</span></a></li>`;
-const NAV_EXTRA_ITEMS = `      <li class="an-menu-extra"><a href="tutor-section.html" class="nav-item-link"><i class="fas fa-robot"></i><span>AI টিউটর</span></a></li>\n      <li class="an-menu-extra"><a href="mock-test.html" class="nav-item-link"><i class="fas fa-file-circle-check"></i><span>Mock Test</span></a></li>\n      <li class="an-menu-extra"><a href="ebook-library.html" class="nav-item-link"><i class="fas fa-book-open-reader"></i><span>E-Book Library</span></a></li>\n      <li class="an-menu-extra"><a href="student-tools.html#toolkit" class="nav-item-link"><i class="fas fa-toolbox"></i><span>Student Toolkit</span></a></li>\n`;
+const NAV_EXTRA_ITEMS = `      <li class="an-menu-extra"><a href="tutor-section.html" class="nav-item-link"><i class="fas fa-robot"></i><span>AI টিউটর</span></a></li>\n      <li class="an-menu-extra"><a href="mock-test.html" class="nav-item-link"><i class="fas fa-file-circle-check"></i><span>Mock Test</span></a></li>\n      <li class="an-menu-extra"><a href="ebook-library.html" class="nav-item-link"><i class="fas fa-book-open-reader"></i><span>E-Book Library</span></a></li>\n      <li class="an-menu-extra"><a href="student-tools.html#toolkit" class="nav-item-link"><i class="fas fa-toolbox"></i><span>Student Toolkit</span></a></li>\n      <li class="an-menu-extra"><a href="cv-builder.html" class="nav-item-link"><i class="fas fa-file-signature"></i><span>Japan CV Builder</span></a></li>\n`;
 
 const COMPACT_HOME_STYLE = `
 <style id="important-section-compact-v3">
@@ -74,6 +80,7 @@ const COMPACT_HOME_STYLE = `
   .app-tool-item small{font-size:6.8px!important;min-height:14px!important}
 }
 .app-tool-item.toolkit .app-tool-icon{background:linear-gradient(145deg,#14b8a6 0%,#0f766e 100%)!important;color:#fff!important}
+.app-tool-item.cvbuilder .app-tool-icon{background:linear-gradient(145deg,#2563eb 0%,#173f68 100%)!important;color:#fff!important}
 </style>`;
 
 const MAZII_MENU_STYLE = `
@@ -231,6 +238,9 @@ function injectHomeEnhancements(html){
   }
   if(!html.includes('data-tool="student-toolkit"') && html.includes(GUIDE_MARKER)){
     html = html.replace(GUIDE_MARKER,STUDENT_TOOL_CARD + GUIDE_MARKER);
+  }
+  if(!html.includes('data-tool="cv-builder"') && html.includes(GUIDE_MARKER)){
+    html = html.replace(GUIDE_MARKER,CV_TOOL_CARD + GUIDE_MARKER);
   }
   if(!html.includes('class="an-menu-extra"') && html.includes(NAV_ABOUT_MARKER)){
     html = html.replace(NAV_ABOUT_MARKER,NAV_EXTRA_ITEMS + NAV_ABOUT_MARKER);
