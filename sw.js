@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v12";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v12";
+const STATIC_CACHE = "aponar-nihon-static-v13";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v13";
 
 const STATIC_ASSETS = [
   "/",
