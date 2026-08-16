@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v13";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v13";
+const STATIC_CACHE = "aponar-nihon-static-v14";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v14";
 
 const STATIC_ASSETS = [
   "/",
@@ -10,6 +10,8 @@ const STATIC_ASSETS = [
   "/ebook-library.html",
   "/student-tools.html",
   "/cv-builder.html",
+  "/cv-parttime-v2.css",
+  "/cv-parttime-v2.js",
   "/speak-japanese-today-bangla-ebook.html",
   "/japanese-conversation-bangla-ebook.html",
   "/ebook-data/sjt-pack-1.txt",
