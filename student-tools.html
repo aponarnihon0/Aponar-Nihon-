@@ -15,6 +15,7 @@
 @media(max-width:800px){.tabs{grid-template-columns:repeat(3,1fr)}.grid,.grid3,.tool-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:6px}.metric{grid-template-columns:1fr 1fr 1fr}}
 @media(max-width:480px){.wrap{width:min(100% - 20px,1160px)}.hero{padding-top:22px}.hero-box{border-radius:24px;padding:26px 20px}.tabs{gap:6px}.tab{padding:9px 5px}.tab b{font-size:17px}.tab span{font-size:8px}.card{padding:15px;border-radius:18px}.jp-line{font-size:22px}.srs-buttons{grid-template-columns:1fr 1fr}.metric{grid-template-columns:1fr}.emergency{grid-template-columns:1fr}}
 </style>
+<link rel="stylesheet" href="/student-time-manager.css?v=1">
 </head>
 <body>
 <header class="top"><div class="wrap nav"><a class="brand" href="index.html"><img src="/logo.png" alt="আপনার নিহোন"><span><strong>আপনার নিহোন</strong><small>STUDENT POWER TOOLS</small></span></a><div class="spacer"></div><a class="home" href="index.html">← হোম</a></div></header>
@@ -129,5 +130,6 @@ function convertName(){let s=romaName.value.toLowerCase().trim();const map=[['ky
 function saveCity(){const o={};document.querySelectorAll('[data-city]').forEach(x=>o[x.dataset.city]=x.checked);set(LS.city,o)}function loadCity(){const o=get(LS.city,{});document.querySelectorAll('[data-city]').forEach(x=>{x.checked=!!o[x.dataset.city];x.onchange=saveCity})}
 const today=new Date().toISOString().slice(0,10);shiftDate.value=today;planDate.value=planDate.value||'';renderMistakes();renderShifts();loadCity();
 </script>
+<script src="/student-time-manager.js?v=1"></script>
 </body>
 </html>

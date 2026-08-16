@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v14";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v14";
+const STATIC_CACHE = "aponar-nihon-static-v15";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v15";
 
 const STATIC_ASSETS = [
   "/",
@@ -9,6 +9,8 @@ const STATIC_ASSETS = [
   "/aponar-nihon(1).png",
   "/ebook-library.html",
   "/student-tools.html",
+  "/student-time-manager.css",
+  "/student-time-manager.js",
   "/cv-builder.html",
   "/cv-parttime-v2.css",
   "/cv-parttime-v2.js",
