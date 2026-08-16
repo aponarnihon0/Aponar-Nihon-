@@ -1,0 +1,40 @@
+name: Student Toolkit Time Manager
+on:
+  push:
+    paths:
+      - '.github/workflows/student-time-manager.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Integrate time manager
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('student-tools.html')
+          s=p.read_text(encoding='utf-8')
+          if '/student-time-manager.css' not in s:
+              s=s.replace('</head>','<link rel="stylesheet" href="/student-time-manager.css?v=1">\n</head>',1)
+          if '/student-time-manager.js' not in s:
+              s=s.replace('</body>','<script src="/student-time-manager.js?v=1"></script>\n</body>',1)
+          p.write_text(s,encoding='utf-8')
+          sw=Path('sw.js')
+          if sw.exists():
+              t=sw.read_text(encoding='utf-8')
+              t=t.replace('aponar-nihon-static-v14','aponar-nihon-static-v15').replace('aponar-nihon-dynamic-v14','aponar-nihon-dynamic-v15')
+              anchor='  "/student-tools.html",'
+              if '"/student-time-manager.css"' not in t and anchor in t:
+                  t=t.replace(anchor,anchor+'\n  "/student-time-manager.css",\n  "/student-time-manager.js",',1)
+              sw.write_text(t,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add student-tools.html sw.js
+          git diff --cached --quiet || git commit -m "Upgrade Student Toolkit with part-time time manager"
+          git push
