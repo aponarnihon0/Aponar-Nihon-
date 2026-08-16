@@ -1,0 +1,42 @@
+name: CV JIS Format
+on:
+  push:
+    paths:
+      - '.github/workflows/cv-jis-format.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Integrate uploaded resume format
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('cv-builder.html')
+          s=p.read_text(encoding='utf-8')
+          if 'cv-jis-format.css' not in s:
+              s=s.replace('</head>','<link rel="stylesheet" href="/cv-jis-format.css?v=1">\n</head>',1)
+          if 'cv-jis-format.js' not in s:
+              s=s.replace('</body>','<script src="/cv-jis-format.js?v=1"></script>\n</body>',1)
+          p.write_text(s,encoding='utf-8')
+
+          sw=Path('sw.js')
+          if sw.exists():
+              t=sw.read_text(encoding='utf-8')
+              import re
+              t=re.sub(r'aponar-nihon-static-v\d+','aponar-nihon-static-v16',t)
+              t=re.sub(r'aponar-nihon-dynamic-v\d+','aponar-nihon-dynamic-v16',t)
+              if '"/cv-jis-format.css"' not in t:
+                  t=t.replace('"/cv-builder.html",','"/cv-builder.html",\n  "/cv-jis-format.css",\n  "/cv-jis-format.js",',1)
+              sw.write_text(t,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add cv-builder.html sw.js
+          git diff --cached --quiet || git commit -m "Switch CV Builder to uploaded two-page resume format"
+          git push
