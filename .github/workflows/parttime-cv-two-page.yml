@@ -10,62 +10,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Update part-time CV template
+      - name: Integrate two-page template
         shell: bash
         run: |
-          python3 <<'PY'
+          python3 - <<'PY'
           from pathlib import Path
-          p=Path('cv-builder.html')
-          s=p.read_text(encoding='utf-8')
-
-          css='''
-/* Part-time / アルバイト 2-page resume */
-.parttime-rireki{display:none;width:210mm;height:297mm;min-height:297mm;padding:12mm 18mm 15mm;overflow:hidden;font-family:"MS Gothic","Noto Sans JP","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;font-size:10.5pt;line-height:1.35}
-.pt-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;padding:0 2px}.pt-title{font:700 20pt/1.2 "Yu Mincho","Hiragino Mincho ProN","MS Mincho",serif;letter-spacing:6px}.pt-date{font-size:10pt}.pt-table{width:100%;border-collapse:collapse;border:1.5px solid #000}.pt-table td,.pt-table th{border:1px solid #000;padding:2px 5px;vertical-align:middle;font-size:10pt}.pt-table .pt-label{text-align:center;font-size:9pt;white-space:nowrap;width:65px}.pt-photo{width:85px;height:105px;text-align:center;vertical-align:middle;font-size:9pt;color:#666;padding:0}.pt-photo img{width:80px;height:100px;object-fit:cover}.pt-photo .photo-placeholder{width:80px;height:100px}.pt-name{font:700 14pt/1.2 "Yu Mincho","Hiragino Mincho ProN","MS Mincho",serif;letter-spacing:2px;height:32px}.pt-kana{font-size:9.5pt;height:22px}.pt-dob{height:26px}.pt-gender{width:55px;text-align:center}.pt-circle{display:inline-block;width:18px;height:18px;line-height:16px;border:1px solid #000;border-radius:50%;text-align:center;font-size:9pt;margin-left:2px}.pt-addr-kana{font-size:8.5pt;height:20px}.pt-addr{height:26px}.pt-history,.pt-qual{margin-top:8px}.pt-history th,.pt-qual th{text-align:center;font-size:9pt;font-weight:400;height:22px}.pt-year{width:42px;text-align:center}.pt-month{width:32px;text-align:center}.pt-history-content{text-align:left;padding-left:8px!important}.pt-section{text-align:center;font-weight:700;font-size:10pt;height:24px}.pt-right{text-align:right!important;padding-right:12px!important}.pt-empty td{height:26px}.pt-motive{margin-top:10px;border:1.5px solid #000}.pt-box-title{border-bottom:1px solid #000;padding:3px 6px;font-size:9pt;font-weight:700}.pt-motive-body{padding:8px 10px;font-size:10pt;line-height:1.5;min-height:100px;white-space:pre-wrap}.pt-bottom{margin-top:10px;border:1.5px solid #000;display:table;width:100%}.pt-bottom-left,.pt-bottom-right{display:table-cell;width:50%;vertical-align:top}.pt-bottom-left{border-right:1px solid #000}.pt-bottom-head{border-bottom:1px solid #000;padding:3px 6px;font-size:9pt;font-weight:700}.pt-bottom-body{padding:6px 8px;font-size:9.5pt;line-height:1.45;min-height:80px;white-space:pre-wrap}
-@media print{.parttime-rireki.print-me{display:block!important;height:297mm;min-height:297mm;padding:12mm 18mm 15mm;overflow:hidden;page-break-after:always}}
-'''
-          if '/* Part-time / アルバイト 2-page resume */' not in s:
-              s=s.replace('</style>',''+css+'\n</style>',1)
-
-          marker='<div class="page career-page print-career" id="careerDoc" style="display:none">'
-          markup='''<div class="page parttime-rireki print-rireki-parttime" id="ptRireki1" style="display:none"><div class="pt-header"><div class="pt-title">履　歴　書</div><div class="pt-date" id="ptDate1"></div></div><table class="pt-table"><tr><td class="pt-label">フリガナ</td><td colspan="2" class="pt-kana" id="ptFuri"></td><td rowspan="3" class="pt-photo" id="ptPhoto"><div class="photo-placeholder">写　真</div></td></tr><tr><td class="pt-label">氏 名</td><td colspan="2" class="pt-name" id="ptName"></td></tr><tr><td class="pt-label">生年月日</td><td class="pt-dob" id="ptDob"></td><td class="pt-gender" id="ptGender">男・女</td></tr><tr><td class="pt-label">フリガナ</td><td colspan="3" class="pt-addr-kana" id="ptAddressKana"></td></tr><tr><td class="pt-label">現住所</td><td colspan="3" class="pt-addr" id="ptAddress"></td></tr><tr><td class="pt-label">携 帯</td><td style="width:140px" id="ptPhone"></td><td class="pt-label" style="width:50px">国籍</td><td id="ptNationality"></td></tr><tr><td class="pt-label">Email</td><td colspan="2" id="ptEmail"></td><td><span style="font-size:8pt">在留資格</span><br><span id="ptVisa"></span></td></tr></table><table class="pt-table pt-history"><tr><th class="pt-year">年</th><th class="pt-month">月</th><th>学　歴・職　歴（各別にまとめて書く）</th></tr><tbody id="ptHistory1"></tbody></table></div><div class="page parttime-rireki print-rireki-parttime" id="ptRireki2" style="display:none"><div class="pt-header"><div class="pt-title">履　歴　書</div><div class="pt-date" id="ptDate2"></div></div><table class="pt-table pt-history"><tr><th class="pt-year">年</th><th class="pt-month">月</th><th>学　歴・職　歴（各別にまとめて書く）　（続き）</th></tr><tbody id="ptHistory2"></tbody></table><table class="pt-table pt-qual"><tr><th class="pt-year">年</th><th class="pt-month">月</th><th>免　許・資　格</th></tr><tbody id="ptQual"></tbody></table><div class="pt-motive"><div class="pt-box-title">志望動機、特技、アピールポイントなど</div><div class="pt-motive-body" id="ptMotive"></div></div><div class="pt-bottom"><div class="pt-bottom-left"><div class="pt-bottom-head">希望勤務日・時間帯</div><div class="pt-bottom-body" id="ptAvailability"></div></div><div class="pt-bottom-right"><div class="pt-bottom-head">本人希望記入欄（職種、店舗、その他）</div><div class="pt-bottom-body" id="ptRequest"></div></div></div></div>'''
-          if 'id="ptRireki1"' not in s:
-              s=s.replace(marker,markup+marker,1)
-
-          old_sync="function syncTemplate(){const part=state.template==='parttime';$('parttimeBox').classList.toggle('show',part);$('parttimePreview').style.display=part?'table':'none'}"
-          new_sync="function syncTemplate(){const part=state.template==='parttime';$('parttimeBox').classList.toggle('show',part);$('parttimePreview').style.display='none';const active=document.querySelector('.preview-tools button.active')?.dataset.preview||'rireki';$('rirekiDoc').style.display=active==='rireki'&&!part?'block':'none';document.querySelectorAll('.parttime-rireki').forEach(p=>p.style.display=active==='rireki'&&part?'block':'none')}"
-          if old_sync in s:
-              s=s.replace(old_sync,new_sync,1)
-
-          helper='''function ptRow(y='',m='',txt='',cls=''){return `<tr class="${cls==='empty'?'pt-empty':''}"><td class="pt-year">${esc(y)}</td><td class="pt-month">${esc(m)}</td><td class="${cls==='section'?'pt-section':cls==='right'?'pt-right':'pt-history-content'}">${esc(txt)}</td></tr>`}function renderParttime(){if(!$('ptRireki1'))return;$('ptDate1').textContent=jpDate(state.created);$('ptDate2').textContent=jpDate(state.created);$('ptFuri').textContent=state.furigana||'';$('ptName').textContent=state.name||'';$('ptAddressKana').textContent=state.addressKana||'';$('ptAddress').textContent=state.address||'';$('ptPhone').textContent=state.phone||'';$('ptNationality').textContent=state.nationality||'';$('ptEmail').textContent=state.email||'';$('ptVisa').textContent=state.visa||'';$('ptDob').textContent=state.dob?`${state.dob.slice(0,4)}年${+state.dob.slice(5,7)}月${+state.dob.slice(8,10)}日生（満${age(state.dob)}歳）`:'';if(state.gender==='男')$('ptGender').innerHTML='<span class="pt-circle">男</span>・女';else if(state.gender==='女')$('ptGender').innerHTML='男・<span class="pt-circle">女</span>';else $('ptGender').textContent=state.gender||'男・女';if(state.photo)$('ptPhoto').innerHTML=`<img src="${state.photo}">`;else $('ptPhoto').innerHTML='<div class="photo-placeholder">写　真</div>';let rows=[ptRow('','','学歴','section')];state.edu.filter(x=>x.year||x.month||x.text).forEach(x=>rows.push(ptRow(x.year,x.month,x.text)));rows.push(ptRow('','','職歴','section'));state.work.filter(x=>x.year||x.month||x.text).forEach(x=>rows.push(ptRow(x.year,x.month,x.text)));if(state.work.some(x=>x.year||x.month||x.text))rows.push(ptRow('','','現在に至る','right'));rows.push(ptRow('','','以上','right'));const cap1=15;let r1=rows.slice(0,cap1),r2=rows.slice(cap1);while(r1.length<cap1)r1.push(ptRow('','','','empty'));while(r2.length<14)r2.push(ptRow('','','','empty'));$('ptHistory1').innerHTML=r1.join('');$('ptHistory2').innerHTML=r2.join('');let q=state.qual.filter(x=>x.year||x.month||x.text).map(x=>ptRow(x.year,x.month,x.text));while(q.length<8)q.push(ptRow('','','','empty'));$('ptQual').innerHTML=q.join('');$('ptMotive').textContent=state.motive||'';let av=[];if(state.schoolTime)av.push(`学校授業時間：${state.schoolTime}`);if(state.availability)av.push(state.availability);$('ptAvailability').textContent=av.join('\n');$('ptRequest').textContent=state.request||''}'''
-          if 'function renderParttime()' not in s:
-              s=s.replace('function render(){',helper+'function render(){',1)
-          if '}save();fit()}function fit(){' in s:
-              s=s.replace('}save();fit()}function fit(){','}renderParttime();save();fit()}function fit(){',1)
-
-          old_preview="function preview(kind){document.querySelectorAll('.preview-tools button').forEach(b=>b.classList.toggle('active',b.dataset.preview===kind));$('rirekiDoc').style.display=kind==='rireki'?'block':'none';$('careerDoc').style.display=kind==='career'?'block':'none';fit()}"
-          new_preview="function preview(kind){document.querySelectorAll('.preview-tools button').forEach(b=>b.classList.toggle('active',b.dataset.preview===kind));const part=state.template==='parttime';$('rirekiDoc').style.display=kind==='rireki'&&!part?'block':'none';document.querySelectorAll('.parttime-rireki').forEach(p=>p.style.display=kind==='rireki'&&part?'block':'none');$('careerDoc').style.display=kind==='career'?'block':'none';fit()}"
-          if old_preview in s:
-              s=s.replace(old_preview,new_preview,1)
-
-          old_print="function printDoc(kind){state.created=tokyoToday();save();render();document.querySelectorAll('.page').forEach(p=>p.classList.remove('print-me'));document.querySelectorAll(kind==='career'?'.print-career':'.print-rireki').forEach(p=>p.classList.add('print-me'));setTimeout(()=>window.print(),60)}"
-          new_print="function printDoc(kind){state.created=tokyoToday();save();render();document.querySelectorAll('.page').forEach(p=>p.classList.remove('print-me'));if(kind==='career')document.querySelectorAll('.print-career').forEach(p=>p.classList.add('print-me'));else if(state.template==='parttime')document.querySelectorAll('.print-rireki-parttime').forEach(p=>p.classList.add('print-me'));else document.querySelectorAll('.print-rireki').forEach(p=>p.classList.add('print-me'));setTimeout(()=>window.print(),60)}"
-          if old_print in s:
-              s=s.replace(old_print,new_print,1)
-
-          s=s.replace('const KEY=\'aponarNihonCvV5\'','const KEY=\'aponarNihonCvV6\'',1)
-          s=s.replace("OLD=['aponarNihonCvV4','aponarNihonCvV3','aponarNihonCvV2']","OLD=['aponarNihonCvV5','aponarNihonCvV4','aponarNihonCvV3','aponarNihonCvV2']",1)
-          p.write_text(s,encoding='utf-8')
-
-          sw=Path('sw.js')
+          p = Path('cv-builder.html')
+          s = p.read_text(encoding='utf-8')
+          css = '<link rel="stylesheet" href="/cv-parttime-v2.css?v=2">'
+          js = '<script src="/cv-parttime-v2.js?v=2"></script>'
+          if css not in s:
+              s = s.replace('</head>', css + '\n</head>', 1)
+          if js not in s:
+              s = s.replace('</body>', js + '\n</body>', 1)
+          p.write_text(s, encoding='utf-8')
+          sw = Path('sw.js')
           if sw.exists():
-              t=sw.read_text(encoding='utf-8').replace('aponar-nihon-static-v13','aponar-nihon-static-v14').replace('aponar-nihon-dynamic-v13','aponar-nihon-dynamic-v14')
-              sw.write_text(t,encoding='utf-8')
+              t = sw.read_text(encoding='utf-8')
+              t = t.replace('aponar-nihon-static-v13', 'aponar-nihon-static-v14')
+              t = t.replace('aponar-nihon-dynamic-v13', 'aponar-nihon-dynamic-v14')
+              if '"/cv-parttime-v2.css"' not in t:
+                  t = t.replace('  "/cv-builder.html",', '  "/cv-builder.html",\n  "/cv-parttime-v2.css",\n  "/cv-parttime-v2.js",', 1)
+              sw.write_text(t, encoding='utf-8')
           PY
       - name: Commit
         run: |
           git config user.name "Aponar Nihon Bot"
           git config user.email "actions@users.noreply.github.com"
           git add cv-builder.html sw.js
-          git diff --cached --quiet || git commit -m "Upgrade part-time CV to two-page Japanese resume"
+          git diff --cached --quiet || git commit -m "Integrate two-page part-time CV template"
           git push
