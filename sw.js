@@ -269,9 +269,6 @@ function injectGlobalActivity(html){
 }
 
 function injectHomeEnhancements(html){
-  if(!html.includes('id="an-account-ui-style"') && html.includes('</head>')){
-    html = html.replace('</head>',HOME_ACCOUNT_UI + '\n</head>');
-  }
   if(!html.includes('data-tool="ebook-library"') && html.includes(GUIDE_MARKER)){
     html = html.replace(GUIDE_MARKER,EBOOK_TOOL_CARD + GUIDE_MARKER);
   }
