@@ -14,6 +14,10 @@
       @media(max-width:520px){.navbar .nav-container{gap:8px!important}.navbar .logo{min-width:0!important;flex:1 1 auto!important}#${ACCOUNT_ID}{width:42px!important;height:42px!important;min-width:42px!important;padding:0!important}.an-account-label{display:none!important}}
       @media(max-width:370px){#${ACCOUNT_ID}{width:38px!important;height:38px!important;min-width:38px!important;border-radius:12px!important}#${ACCOUNT_ID} .an-header-avatar-fallback{width:24px!important;height:24px!important;border-radius:8px!important}}
 
+      .app-tool-item.muslim-japan .app-tool-icon{background:linear-gradient(145deg,#22a879 0%,#08735f 100%)!important;color:#fff!important}
+      .app-tool-item.grammar-vs .app-tool-icon{background:linear-gradient(145deg,#8b5cf6 0%,#5b36a6 100%)!important;color:#fff!important}
+      .app-tool-item.money-bd .app-tool-icon{background:linear-gradient(145deg,#19a8c7 0%,#1766a6 100%)!important;color:#fff!important}
+
       #${INSTALL_ID}{position:relative;overflow:hidden;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:13px;width:calc(100% - 20px);max-width:1180px;margin:16px auto 18px;padding:16px 17px;border:1px solid rgba(47,108,166,.13);border-radius:24px;background:linear-gradient(120deg,#fff 0%,#f7fbff 54%,#edf6ff 100%);box-shadow:0 14px 38px rgba(28,72,112,.09);font-family:'Noto Sans Bengali','Inter',system-ui,sans-serif;color:#183d61;isolation:isolate}
       #${INSTALL_ID}:before{content:'';position:absolute;width:160px;height:160px;border-radius:50%;right:74px;top:-82px;background:rgba(255,107,107,.10);z-index:-1}
       .an-install-logo{width:58px;height:58px;border-radius:18px;background:#fff;display:grid;place-items:center;box-shadow:0 8px 22px rgba(20,74,117,.10);border:1px solid #e5edf4;overflow:hidden}
@@ -41,6 +45,37 @@
     if(profile){profile.href='/profile.html';profile.setAttribute('aria-label','Profile');const i=profile.querySelector('i');if(i)i.className='fa-solid fa-circle-user';const l=profile.querySelector('.app-nav-label');if(l)l.textContent='Profile'}
   }
 
+  function mountSuperFeatures(){
+    if(!/^\/$|\/index\.html$/i.test(location.pathname))return;
+    const grid=document.querySelector('.app-tools-grid');
+    if(grid){
+      const guide=grid.querySelector('a[href="#guide"]');
+      const items=[
+        {key:'grammar-vs',cls:'grammar-vs',href:'/grammar-vs.html',icon:'fa-code-compare',title:'Grammar VS',sub:'N5 · N4 · N3'},
+        {key:'muslim-japan',cls:'muslim-japan',href:'/muslim-japan.html',icon:'fa-mosque',title:'Muslim Japan',sub:'নামাজ · হালাল'},
+        {key:'money-bd',cls:'money-bd',href:'/jpy-bdt-remittance.html',icon:'fa-money-bill-transfer',title:'JPY ↔ BDT',sub:'রেট · রেমিট্যান্স'}
+      ];
+      items.forEach(x=>{
+        if(grid.querySelector(`[data-tool="${x.key}"]`))return;
+        const a=document.createElement('a');a.className=`app-tool-item ${x.cls}`;a.dataset.tool=x.key;a.href=x.href;a.setAttribute('aria-label',x.title);a.innerHTML=`<span class="app-tool-icon"><i class="fa-solid ${x.icon}"></i></span><strong>${x.title}</strong><small>${x.sub}</small>`;
+        guide?grid.insertBefore(a,guide):grid.appendChild(a);
+      });
+    }
+    const nav=document.querySelector('.nav-menu');
+    if(nav){
+      const about=nav.querySelector('a[href="#about"]')?.closest('li');
+      const links=[
+        ['grammar-vs','/grammar-vs.html','fa-code-compare','Grammar VS'],
+        ['muslim-japan','/muslim-japan.html','fa-mosque','Muslim Japan'],
+        ['money-bd','/jpy-bdt-remittance.html','fa-money-bill-transfer','JPY ↔ BDT']
+      ];
+      links.forEach(([key,href,icon,label])=>{
+        if(nav.querySelector(`[data-an-feature="${key}"]`))return;
+        const li=document.createElement('li');li.className='an-menu-extra';li.dataset.anFeature=key;li.innerHTML=`<a href="${href}" class="nav-item-link"><i class="fas ${icon}"></i><span>${label}</span></a>`;about?nav.insertBefore(li,about):nav.appendChild(li);
+      });
+    }
+  }
+
   function cleanupLegacy(){
     document.querySelectorAll('#anAccountWidget,#anHeaderAccount,.an-account-pill,.an-account-inline,[data-an-header-account]').forEach(el=>el.remove());
   }
@@ -55,13 +90,12 @@
 
   async function renderAccount(){
     if(!window.AN)return;
-    cleanupLegacy();updateBottomNav();
+    cleanupLegacy();updateBottomNav();mountSuperFeatures();
     const menu=document.querySelector('.app-classic-menu-btn,#menuToggle');
     if(!menu||!menu.parentNode)return;
     const s=await AN.session();
     toggleMenuAccount(!!s);
 
-    // Logged-in users use Profile from bottom navigation/menu; no duplicate header icon.
     if(s){
       cleanupLegacy();
       try{await AN.ensureProfile()}catch(_){ }
@@ -92,7 +126,7 @@
   }
   window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;mountInstallCard()});
   window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;document.getElementById(INSTALL_ID)?.remove();try{localStorage.removeItem('anInstallDismissedAt')}catch(_){ }});
-  function boot(){addStyles();updateBottomNav();setTimeout(()=>renderAccount().catch(()=>{}),80);setTimeout(()=>renderAccount().catch(()=>{}),650);setTimeout(()=>renderAccount().catch(()=>{}),1600);setTimeout(mountInstallCard,180);setTimeout(mountInstallCard,1200)}
+  function boot(){addStyles();updateBottomNav();mountSuperFeatures();setTimeout(mountSuperFeatures,450);setTimeout(mountSuperFeatures,1500);setTimeout(()=>renderAccount().catch(()=>{}),80);setTimeout(()=>renderAccount().catch(()=>{}),650);setTimeout(()=>renderAccount().catch(()=>{}),1600);setTimeout(mountInstallCard,180);setTimeout(mountInstallCard,1200)}
   window.addEventListener('an-auth-changed',()=>renderAccount().catch(()=>{}));window.addEventListener('an-profile-updated',()=>renderAccount().catch(()=>{}));
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
