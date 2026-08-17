@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v18";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v18";
+const STATIC_CACHE = "aponar-nihon-static-v19";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v19";
 
 const STATIC_ASSETS = [
   "/",
@@ -255,6 +255,19 @@ const MAZII_MENU_STYLE = `
 }
 </style>`;
 
+const GLOBAL_ACTIVITY_SCRIPTS = `
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script src="/account.js"></script>
+<script src="/activity-tracker.js"></script>`;
+
+function injectGlobalActivity(html){
+  if(!html.includes('/activity-tracker.js') && html.includes('</body>')){
+    html = html.replace('</body>',GLOBAL_ACTIVITY_SCRIPTS + '\n</body>');
+  }
+  return html;
+}
+
 function injectHomeEnhancements(html){
   if(!html.includes('id="an-account-ui-style"') && html.includes('</head>')){
     html = html.replace('</head>',HOME_ACCOUNT_UI + '\n</head>');
@@ -287,7 +300,9 @@ async function enhanceHomeHtml(response,requestUrl){
   const contentType = response.headers.get('content-type') || '';
   if(!contentType.includes('text/html')) return response;
   try{
-    const html = injectHomeEnhancements(await response.text());
+    let html = await response.text();
+    html = injectGlobalActivity(html);
+    html = injectHomeEnhancements(html);
     const headers = new Headers(response.headers);
     headers.delete('content-length');
     headers.delete('content-encoding');
