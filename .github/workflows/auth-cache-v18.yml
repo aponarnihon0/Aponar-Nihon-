@@ -1,0 +1,31 @@
+name: Auth Cache V18
+on:
+  push:
+    paths:
+      - '.github/workflows/auth-cache-v18.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refresh account assets cache
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('sw.js')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('aponar-nihon-static-v17','aponar-nihon-static-v18').replace('aponar-nihon-dynamic-v17','aponar-nihon-dynamic-v18')
+          anchor='  "/account.js",\n'
+          add='  "/account-widget.js",\n  "/activity-tracker.js",\n'
+          if '/account-widget.js' not in s.split('];',1)[0]: s=s.replace(anchor,anchor+add,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add sw.js
+          git diff --cached --quiet || git commit -m "Refresh auth cache to v18"
+          git push
