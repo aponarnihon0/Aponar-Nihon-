@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v21";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v21";
+const STATIC_CACHE = "aponar-nihon-static-v22";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v22";
 
 const STATIC_ASSETS = [
   "/",
@@ -16,6 +16,10 @@ const STATIC_ASSETS = [
   "/profile.html",
   "/privacy-policy.html",
   "/delete-account.html",
+  "/muslim-japan.html",
+  "/jpy-bdt-remittance.html",
+  "/grammar-vs.html",
+  "/google-maps-config.js",
 
   "/admin.html",
   "/supabase-config.js",
