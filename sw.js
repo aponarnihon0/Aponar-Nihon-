@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v26";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v26";
+const STATIC_CACHE = "aponar-nihon-static-v27";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v27";
 
 const STATIC_ASSETS = [
   "/",
@@ -21,6 +21,7 @@ const STATIC_ASSETS = [
   "/grammar-vs.html",
   "/n3-vocabulary.html",
   "/n3-vocabulary-original.css",
+  "/n3-vocabulary-parts-v2.js",
 
   "/admin.html",
   "/supabase-config.js",
