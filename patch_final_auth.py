@@ -1,6 +1,7 @@
 from pathlib import Path
 import re
 
+# Final one-time production repair.
 sw = Path('sw.js')
 s = sw.read_text(encoding='utf-8')
 
