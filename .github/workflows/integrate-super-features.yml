@@ -1,0 +1,43 @@
+name: Integrate Super App Features
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/integrate-super-features.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch cache and sitemap
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          sw=Path('sw.js')
+          s=sw.read_text(encoding='utf-8')
+          s=s.replace('aponar-nihon-static-v21','aponar-nihon-static-v22').replace('aponar-nihon-dynamic-v21','aponar-nihon-dynamic-v22')
+          marker='  "/delete-account.html",\n'
+          additions='  "/muslim-japan.html",\n  "/jpy-bdt-remittance.html",\n  "/grammar-vs.html",\n  "/google-maps-config.js",\n'
+          if '"/muslim-japan.html"' not in s and marker in s:
+              s=s.replace(marker,marker+additions)
+          sw.write_text(s,encoding='utf-8')
+
+          sm=Path('sitemap.xml')
+          x=sm.read_text(encoding='utf-8')
+          block='''  <!-- Super App Features -->\n  <url><loc>https://aponar-nihon.eu.cc/muslim-japan.html</loc><lastmod>2026-08-17</lastmod><priority>0.9</priority></url>\n  <url><loc>https://aponar-nihon.eu.cc/jpy-bdt-remittance.html</loc><lastmod>2026-08-17</lastmod><priority>0.9</priority></url>\n  <url><loc>https://aponar-nihon.eu.cc/grammar-vs.html</loc><lastmod>2026-08-17</lastmod><priority>0.9</priority></url>\n\n'''
+          if 'muslim-japan.html' not in x:
+              x=x.replace('  <!-- E-Books -->',block+'  <!-- E-Books -->')
+          sm.write_text(x,encoding='utf-8')
+          PY
+      - name: Commit integration
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add sw.js sitemap.xml
+          git diff --cached --quiet || git commit -m "Integrate Muslim Japan, JPY BDT and Grammar VS"
+          git push
