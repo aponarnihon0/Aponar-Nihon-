@@ -1,0 +1,47 @@
+name: Play Policy UI Integration
+on:
+  push:
+    paths:
+      - '.github/workflows/play-policy-ui.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add account deletion link and cache assets
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('profile.html')
+          if p.exists():
+              s=p.read_text(encoding='utf-8')
+              if '/delete-account.html' not in s:
+                  marker='<button id="logoutBtn" class="nav-btn logout" type="button">Logout</button>'
+                  repl=marker+'<a class="nav-btn logout" href="/delete-account.html" title="Delete account">Delete Account</a>'
+                  if marker in s:
+                      s=s.replace(marker,repl,1)
+                  else:
+                      s=s.replace('</body>','<p style="text-align:center"><a href="/delete-account.html">Delete Account</a> · <a href="/privacy-policy.html">Privacy Policy</a></p></body>')
+                  p.write_text(s,encoding='utf-8')
+
+          p=Path('sw.js')
+          if p.exists():
+              s=p.read_text(encoding='utf-8')
+              import re
+              s=re.sub(r'aponar-nihon-static-v\d+','aponar-nihon-static-v21',s)
+              s=re.sub(r'aponar-nihon-dynamic-v\d+','aponar-nihon-dynamic-v21',s)
+              anchor='  "/profile.html",'
+              add='  "/privacy-policy.html",\n  "/delete-account.html",\n'
+              if '/delete-account.html' not in s and anchor in s:
+                  s=s.replace(anchor,anchor+'\n'+add)
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add profile.html sw.js
+          git diff --cached --quiet || git commit -m "Add account deletion entry and Play policy pages to app cache"
+          git push
