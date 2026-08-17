@@ -1,0 +1,84 @@
+name: Generate Play Store Assets
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/play-store-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+
+      - name: Generate icon and feature graphic
+        run: |
+          python - <<'PY'
+          from PIL import Image, ImageDraw, ImageFont
+          from pathlib import Path
+          out=Path('play-store/assets'); out.mkdir(parents=True,exist_ok=True)
+          logo=Image.open('logo.png').convert('RGBA')
+          icon=Image.new('RGBA',(512,512),'white')
+          logo.thumbnail((430,430),Image.Resampling.LANCZOS)
+          icon.alpha_composite(logo,((512-logo.width)//2,(512-logo.height)//2))
+          icon.convert('RGB').save(out/'app-icon-512.png',quality=95)
+          W,H=1024,500
+          img=Image.new('RGB',(W,H),(238,247,255)); d=ImageDraw.Draw(img)
+          for x in range(W):
+              t=x/(W-1); c=(int(24+(44-24)*t),int(94+(141-94)*t),int(157+(213-157)*t)); d.line((x,0,x,H),fill=c)
+          lg=Image.open('logo.png').convert('RGBA'); lg.thumbnail((260,260),Image.Resampling.LANCZOS); img.paste(lg,(70,(H-lg.height)//2),lg)
+          try: font1=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',62); font2=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',30)
+          except: font1=font2=None
+          d=ImageDraw.Draw(img); d.text((380,145),'APONAR NIHON',font=font1,fill='white'); d.text((382,230),'Japanese Learning for Bangla Speakers',font=font2,fill=(225,242,255)); d.text((382,280),'JLPT • Mock Test • CV Builder • Student Toolkit',font=font2,fill=(225,242,255))
+          img.save(out/'feature-graphic-1024x500.png',quality=95)
+          PY
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.54.2
+          npx playwright install --with-deps chromium
+
+      - name: Capture phone screenshots
+        run: |
+          mkdir -p play-store/assets/screenshots
+          cat > /tmp/shots.mjs <<'JS'
+          import { chromium } from 'playwright';
+          const browser=await chromium.launch({headless:true});
+          const context=await browser.newContext({viewport:{width:1080,height:1920},deviceScaleFactor:1,isMobile:true,hasTouch:true,locale:'bn-BD'});
+          const pages=[
+            ['01-home.png','https://aponar-nihon.eu.cc/'],
+            ['02-student-toolkit.png','https://aponar-nihon.eu.cc/student-tools.html#toolkit'],
+            ['03-cv-builder.png','https://aponar-nihon.eu.cc/cv-builder.html'],
+            ['04-ebook-library.png','https://aponar-nihon.eu.cc/ebook-library.html']
+          ];
+          for(const [file,url] of pages){
+            const page=await context.newPage();
+            await page.goto(url,{waitUntil:'networkidle',timeout:90000});
+            await page.waitForTimeout(2200);
+            await page.screenshot({path:'play-store/assets/screenshots/'+file,fullPage:false});
+            await page.close();
+          }
+          await browser.close();
+          JS
+          node /tmp/shots.mjs
+
+      - name: Commit generated Play assets
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add play-store/assets
+          git diff --cached --quiet || git commit -m "Generate Google Play listing assets"
+          git push
