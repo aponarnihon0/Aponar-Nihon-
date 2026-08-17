@@ -1,0 +1,51 @@
+name: Auth Home UI
+on: [push]
+permissions:
+  contents: write
+jobs:
+  patch:
+    if: github.event.head_commit.message == 'Add one-time workflow to surface student accounts on home'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch home account UI
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('sw.js')
+          s=p.read_text()
+          s=s.replace('  "/cv-builder.html",','  "/cv-builder.html",\n  "/auth.html",\n  "/profile.html",\n  "/admin.html",\n  "/supabase-config.js",\n  "/account.js",')
+          s=s.replace("const STATIC_CACHE = \"aponar-nihon-static-v16\";","const STATIC_CACHE = \"aponar-nihon-static-v17\";")
+          s=s.replace("const DYNAMIC_CACHE = \"aponar-nihon-dynamic-v16\";","const DYNAMIC_CACHE = \"aponar-nihon-dynamic-v17\";")
+          marker='const COMPACT_HOME_STYLE = `'
+          if 'const HOME_ACCOUNT_UI = `' not in s:
+              ui=r'''const HOME_ACCOUNT_UI = `
+<style id="an-account-ui-style">
+.an-account-pill{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;min-height:42px!important;padding:0 12px!important;border:1px solid #d7e4ef!important;border-radius:13px!important;background:#fff!important;color:#17436f!important;text-decoration:none!important;font:800 11px/1 'Inter','Noto Sans Bengali',sans-serif!important;box-shadow:0 5px 15px rgba(23,59,94,.08)!important;white-space:nowrap!important}
+@media(max-width:620px){.an-account-pill{min-height:38px!important;padding:0 9px!important;font-size:9px!important}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script src="/account.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded',async()=>{try{const btn=document.querySelector('.app-classic-menu-btn');if(!btn||document.querySelector('.an-account-pill'))return;const a=document.createElement('a');a.className='an-account-pill';const s=await AN.session();if(!s){a.href='/auth.html';a.textContent='Login / Register'}else{const p=await AN.profile();a.href='/profile.html';a.textContent=p?.full_name?('👤 '+p.full_name.split(' ')[0]):'👤 Profile'}btn.parentNode.insertBefore(a,btn);await AN.log('home_view',{module:'home'})}catch(e){}})
+</script>`;
+
+'''
+              s=s.replace(marker,ui+marker)
+          old='  if(!html.includes(\'id="important-section-compact-v3"\') && html.includes(\'</head>\')){'
+          if "an-account-ui-style" not in s.split('function injectHomeEnhancements')[1]:
+              add="  if(!html.includes('id=\"an-account-ui-style\"') && html.includes('</head>')){\n    html = html.replace('</head>',HOME_ACCOUNT_UI + '\\n</head>');\n  }\n"
+              s=s.replace(old,add+old)
+          # add menu items before about marker through NAV_EXTRA_ITEMS
+          if 'auth.html' not in s.split('const NAV_EXTRA_ITEMS')[1].split(';',1)[0]:
+              s=s.replace('<li class="an-menu-extra"><a href="cv-builder.html" class="nav-item-link"><i class="fas fa-file-signature"></i><span>Japan CV Builder</span></a></li>\\n`;', '<li class="an-menu-extra"><a href="cv-builder.html" class="nav-item-link"><i class="fas fa-file-signature"></i><span>Japan CV Builder</span></a></li>\\n      <li class="an-menu-extra"><a href="profile.html" class="nav-item-link"><i class="fas fa-user-circle"></i><span>Student Profile</span></a></li>\\n      <li class="an-menu-extra"><a href="auth.html" class="nav-item-link"><i class="fas fa-right-to-bracket"></i><span>Login / Register</span></a></li>\\n`;')
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "MD SAMMIR"
+          git config user.email "sammir160432@gmail.com"
+          git add sw.js
+          git commit -m "Add student account access to home and menu" || exit 0
+          git push
