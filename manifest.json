@@ -2,10 +2,11 @@
   "id": "/",
   "name": "Aponar Nihon — আপনার নিহোন",
   "short_name": "Aponar Nihon",
-  "description": "JLPT N5, N4, N3, Interview ও Quiz শেখার বাংলা জাপানি ভাষা প্ল্যাটফর্ম",
+  "description": "JLPT N5, N4, N3, Interview, Mock Test, CV Builder ও Student Toolkit সহ বাংলা জাপানি ভাষা শেখার প্ল্যাটফর্ম",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#fffdf8",
   "theme_color": "#244a7c",
   "orientation": "portrait-primary",
@@ -17,7 +18,19 @@
       "src": "/logo.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.aponarnihon.app"
+    }
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {"name":"Student Toolkit","short_name":"Toolkit","url":"/student-tools.html#toolkit"},
+    {"name":"Japan CV Builder","short_name":"CV Builder","url":"/cv-builder.html"},
+    {"name":"Mock Test","short_name":"Mock Test","url":"/mock-test.html"}
   ]
 }
