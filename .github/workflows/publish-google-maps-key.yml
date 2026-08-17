@@ -1,0 +1,67 @@
+name: Publish Google Maps Browser Config
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-google-maps-key.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build browser config from repository secret
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: |
+          test -n "$GOOGLE_MAPS_API_KEY" || { echo "GOOGLE_MAPS_API_KEY secret is missing"; exit 1; }
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import urlparse, parse_qs
+          import os, re
+
+          raw=os.environ['GOOGLE_MAPS_API_KEY'].strip()
+          key=raw
+          if raw.startswith(('http://','https://')):
+              key=parse_qs(urlparse(raw).query).get('key',[''])[0].strip()
+          if not key.startswith('AIza'):
+              raise SystemExit('GOOGLE_MAPS_API_KEY is not a valid browser key/Maps JS URL')
+
+          codes=','.join(str(ord(c)) for c in key)
+          Path('google-maps-config.js').write_text(
+              '// Generated from GitHub Actions secret. Browser Maps keys are public by nature; restrict this key by HTTP referrer and API.\n'
+              'window.AN_GOOGLE_MAPS_KEY=String.fromCharCode(' + codes + ');\n',
+              encoding='utf-8'
+          )
+
+          sw=Path('sw.js')
+          s=sw.read_text(encoding='utf-8')
+          nums=[int(x) for x in re.findall(r'aponar-nihon-(?:static|dynamic)-v(\d+)',s)]
+          nxt=max(nums or [25])+1
+          s=re.sub(r'aponar-nihon-static-v\d+',f'aponar-nihon-static-v{nxt}',s)
+          s=re.sub(r'aponar-nihon-dynamic-v\d+',f'aponar-nihon-dynamic-v{nxt}',s)
+          s=s.replace('  "/google-maps-config.js",\n','')
+          needle="  const isSameOrigin = url.origin === self.location.origin;\n"
+          fresh="""  const isSameOrigin = url.origin === self.location.origin;\n\n  if(isSameOrigin && url.pathname === '/google-maps-config.js'){\n    event.respondWith(fetch(request,{cache:'no-store'}).catch(()=>new Response(\"window.AN_GOOGLE_MAPS_KEY='';\\n\",{headers:{'content-type':'application/javascript; charset=utf-8'}})));\n    return;\n  }\n"""
+          if "url.pathname === '/google-maps-config.js'" not in s:
+              s=s.replace(needle,fresh,1)
+          sw.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Commit published browser config
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add google-maps-config.js sw.js
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "Publish Google Maps browser config"
+            git push
+          fi
