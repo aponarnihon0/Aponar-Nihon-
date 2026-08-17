@@ -1,0 +1,34 @@
+name: Integrate N3 Vocabulary Cache
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/n3-vocabulary-cache.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  integrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update service worker cache
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('sw.js')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('aponar-nihon-static-v22','aponar-nihon-static-v23').replace('aponar-nihon-dynamic-v22','aponar-nihon-dynamic-v23')
+          if '"/n3-vocabulary.html"' not in s:
+              s=s.replace('  "/grammar-vs.html",','  "/grammar-vs.html",\n  "/n3-vocabulary.html",')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit cache update
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add sw.js
+          git diff --cached --quiet || git commit -m "Cache new N3 vocabulary experience"
+          git push
