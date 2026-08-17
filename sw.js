@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v16";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v16";
+const STATIC_CACHE = "aponar-nihon-static-v17";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v17";
 
 const STATIC_ASSETS = [
   "/",
@@ -12,6 +12,11 @@ const STATIC_ASSETS = [
   "/student-time-manager.css",
   "/student-time-manager.js",
   "/cv-builder.html",
+  "/auth.html",
+  "/profile.html",
+  "/admin.html",
+  "/supabase-config.js",
+  "/account.js",
   "/cv-jis-format.css",
   "/cv-jis-format.js",
   "/cv-parttime-v2.css",
@@ -59,7 +64,17 @@ const CV_TOOL_CARD = `        <a class="app-tool-item cvbuilder" data-tool="cv-b
         </a>\n`;
 
 const NAV_ABOUT_MARKER = `      <li><a href="#about" class="nav-item-link"><i class="fas fa-circle-info"></i><span>আমাদের সম্পর্কে</span></a></li>`;
-const NAV_EXTRA_ITEMS = `      <li class="an-menu-extra"><a href="tutor-section.html" class="nav-item-link"><i class="fas fa-robot"></i><span>AI টিউটর</span></a></li>\n      <li class="an-menu-extra"><a href="mock-test.html" class="nav-item-link"><i class="fas fa-file-circle-check"></i><span>Mock Test</span></a></li>\n      <li class="an-menu-extra"><a href="ebook-library.html" class="nav-item-link"><i class="fas fa-book-open-reader"></i><span>E-Book Library</span></a></li>\n      <li class="an-menu-extra"><a href="student-tools.html#toolkit" class="nav-item-link"><i class="fas fa-toolbox"></i><span>Student Toolkit</span></a></li>\n      <li class="an-menu-extra"><a href="cv-builder.html" class="nav-item-link"><i class="fas fa-file-signature"></i><span>Japan CV Builder</span></a></li>\n`;
+const NAV_EXTRA_ITEMS = `      <li class="an-menu-extra"><a href="tutor-section.html" class="nav-item-link"><i class="fas fa-robot"></i><span>AI টিউটর</span></a></li>\n      <li class="an-menu-extra"><a href="mock-test.html" class="nav-item-link"><i class="fas fa-file-circle-check"></i><span>Mock Test</span></a></li>\n      <li class="an-menu-extra"><a href="ebook-library.html" class="nav-item-link"><i class="fas fa-book-open-reader"></i><span>E-Book Library</span></a></li>\n      <li class="an-menu-extra"><a href="student-tools.html#toolkit" class="nav-item-link"><i class="fas fa-toolbox"></i><span>Student Toolkit</span></a></li>\n      <li class="an-menu-extra"><a href="cv-builder.html" class="nav-item-link"><i class="fas fa-file-signature"></i><span>Japan CV Builder</span></a></li>\n      <li class="an-menu-extra"><a href="profile.html" class="nav-item-link"><i class="fas fa-user-circle"></i><span>Student Profile</span></a></li>\n      <li class="an-menu-extra"><a href="auth.html" class="nav-item-link"><i class="fas fa-right-to-bracket"></i><span>Login / Register</span></a></li>\n`;
+
+const HOME_ACCOUNT_UI = `
+<style id="an-account-ui-style">
+.an-account-pill{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;min-height:42px!important;padding:0 12px!important;border:1px solid #d7e4ef!important;border-radius:13px!important;background:#fff!important;color:#17436f!important;text-decoration:none!important;font:800 11px/1 'Inter','Noto Sans Bengali',sans-serif!important;box-shadow:0 5px 15px rgba(23,59,94,.08)!important;white-space:nowrap!important}
+@media(max-width:620px){.an-account-pill{min-height:38px!important;padding:0 9px!important;font-size:9px!important}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script src="/account.js"></script>
+<script>window.addEventListener('DOMContentLoaded',async()=>{try{const btn=document.querySelector('.app-classic-menu-btn');if(!btn||document.querySelector('.an-account-pill'))return;const a=document.createElement('a');a.className='an-account-pill';const ss=await AN.session();if(!ss){a.href='/auth.html';a.textContent='Login / Register'}else{const p=await AN.profile();a.href='/profile.html';a.textContent=p?.full_name?('👤 '+p.full_name.split(' ')[0]):'👤 Profile'}btn.parentNode.insertBefore(a,btn);await AN.log('home_view',{module:'home'})}catch(e){}})</script>`;
 
 const COMPACT_HOME_STYLE = `
 <style id="important-section-compact-v3">
@@ -239,6 +254,9 @@ const MAZII_MENU_STYLE = `
 </style>`;
 
 function injectHomeEnhancements(html){
+  if(!html.includes('id="an-account-ui-style"') && html.includes('</head>')){
+    html = html.replace('</head>',HOME_ACCOUNT_UI + '\n</head>');
+  }
   if(!html.includes('data-tool="ebook-library"') && html.includes(GUIDE_MARKER)){
     html = html.replace(GUIDE_MARKER,EBOOK_TOOL_CARD + GUIDE_MARKER);
   }
