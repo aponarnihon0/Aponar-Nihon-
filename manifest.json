@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Aponar Nihon — আপনার নিহোন",
   "short_name": "Aponar Nihon",
-  "description": "JLPT N5, N4, N3, Interview, Mock Test, CV Builder ও Student Toolkit সহ বাংলা জাপানি ভাষা শেখার প্ল্যাটফর্ম",
+  "description": "বাংলাভাষীদের জন্য Japan student super app — JLPT N5–N3, Grammar VS, Muslim Japan, Student Toolkit, CV Builder, E-Book ও Japan life guide।",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -14,21 +14,15 @@
   "dir": "ltr",
   "categories": ["education", "books", "productivity"],
   "icons": [
-    {
-      "src": "/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+    {"src":"/logo.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ],
   "related_applications": [
-    {
-      "platform": "play",
-      "id": "com.aponarnihon.app"
-    }
+    {"platform":"play","id":"com.aponarnihon.app"}
   ],
   "prefer_related_applications": false,
   "shortcuts": [
+    {"name":"Grammar VS","short_name":"Grammar VS","url":"/grammar-vs.html"},
+    {"name":"Muslim Japan","short_name":"Muslim Japan","url":"/muslim-japan.html"},
     {"name":"Student Toolkit","short_name":"Toolkit","url":"/student-tools.html#toolkit"},
     {"name":"Japan CV Builder","short_name":"CV Builder","url":"/cv-builder.html"},
     {"name":"Mock Test","short_name":"Mock Test","url":"/mock-test.html"}
