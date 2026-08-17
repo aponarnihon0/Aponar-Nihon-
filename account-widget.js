@@ -42,8 +42,7 @@
   }
 
   function cleanupLegacy(){
-    document.getElementById('anAccountWidget')?.remove();
-    document.querySelectorAll('.an-account-pill,.an-account-inline').forEach(el=>{if(el.id!==ACCOUNT_ID)el.remove()});
+    document.querySelectorAll('#anAccountWidget,#anHeaderAccount,.an-account-pill,.an-account-inline,[data-an-header-account]').forEach(el=>el.remove());
   }
 
   function toggleMenuAccount(loggedIn){
@@ -62,11 +61,12 @@
     const s=await AN.session();
     toggleMenuAccount(!!s);
 
-    // Logged-in users already have Profile in the bottom navigation/menu.
-    // Keep the header clean by removing the extra account icon completely.
+    // Logged-in users use Profile from bottom navigation/menu; no duplicate header icon.
     if(s){
-      document.getElementById(ACCOUNT_ID)?.remove();
+      cleanupLegacy();
       try{await AN.ensureProfile()}catch(_){ }
+      setTimeout(cleanupLegacy,350);
+      setTimeout(cleanupLegacy,1200);
       return;
     }
 
@@ -77,87 +77,22 @@
     a.innerHTML='<span class="an-header-avatar-fallback"><i class="fa-solid fa-user" aria-hidden="true"></i></span><span class="an-account-label">Login</span>';
   }
 
-  function isStandalone(){
-    return window.matchMedia?.('(display-mode: standalone)').matches || window.navigator.standalone===true;
-  }
-
-  function recentlyDismissed(){
-    try{
-      const at=Number(localStorage.getItem('anInstallDismissedAt')||0);
-      return at && Date.now()-at < 7*24*60*60*1000;
-    }catch(_){return false}
-  }
-
-  function installMessage(note){
-    if(!note)return;
-    note.textContent=/iphone|ipad|ipod/i.test(navigator.userAgent)
-      ? 'Safari-এর Share বাটন চাপুন → “Add to Home Screen” নির্বাচন করুন।'
-      : 'Browser menu (⋮) খুলে “Install app” অথবা “Add to Home screen” নির্বাচন করুন।';
-    note.classList.add('show');
-  }
-
+  function isStandalone(){return window.matchMedia?.('(display-mode: standalone)').matches || window.navigator.standalone===true}
+  function recentlyDismissed(){try{const at=Number(localStorage.getItem('anInstallDismissedAt')||0);return at&&Date.now()-at<7*24*60*60*1000}catch(_){return false}}
+  function installMessage(note){if(!note)return;note.textContent=/iphone|ipad|ipod/i.test(navigator.userAgent)?'Safari-এর Share বাটন চাপুন → “Add to Home Screen” নির্বাচন করুন।':'Browser menu (⋮) খুলে “Install app” অথবা “Add to Home screen” নির্বাচন করুন।';note.classList.add('show')}
   function mountInstallCard(){
     if(isStandalone()||recentlyDismissed()||document.getElementById(INSTALL_ID))return;
     if(!/^\/$|\/index\.html$/i.test(location.pathname))return;
-
-    const card=document.createElement('section');
-    card.id=INSTALL_ID;
-    card.setAttribute('aria-label','Aponar Nihon app install');
-    card.innerHTML=`
-      <div class="an-install-logo"><img src="/logo.png" alt="আপনার নিহোন"></div>
-      <div class="an-install-copy"><strong>আপনার নিহোন App ইনস্টল করুন</strong><span>Play Store ছাড়াই ফোনের Home Screen থেকে অ্যাপের মতো দ্রুত ব্যবহার করুন।</span></div>
-      <div class="an-install-art" aria-hidden="true"><span class="an-install-sun"></span><span class="an-install-mountain">🗻</span></div>
-      <button class="an-install-btn" type="button">Install করুন</button>
-      <button class="an-install-close" type="button" aria-label="Install banner বন্ধ করুন">×</button>
-      <div class="an-install-note" role="status"></div>`;
-
-    const tools=document.querySelector('.app-tools-card');
-    const home=document.querySelector('.app-home-screen,main');
-    if(tools?.parentNode) tools.parentNode.insertBefore(card,tools);
-    else if(home) home.prepend(card);
-    else document.body.appendChild(card);
-
-    const installBtn=card.querySelector('.an-install-btn');
-    const closeBtn=card.querySelector('.an-install-close');
-    const note=card.querySelector('.an-install-note');
-
-    installBtn?.addEventListener('click',async()=>{
-      if(deferredInstallPrompt){
-        try{
-          deferredInstallPrompt.prompt();
-          const choice=await deferredInstallPrompt.userChoice;
-          if(choice?.outcome==='accepted') card.remove();
-          deferredInstallPrompt=null;
-        }catch(_){installMessage(note)}
-      }else installMessage(note);
-    });
-
-    closeBtn?.addEventListener('click',()=>{
-      try{localStorage.setItem('anInstallDismissedAt',String(Date.now()))}catch(_){ }
-      card.remove();
-    });
+    const card=document.createElement('section');card.id=INSTALL_ID;card.setAttribute('aria-label','Aponar Nihon app install');
+    card.innerHTML=`<div class="an-install-logo"><img src="/logo.png" alt="আপনার নিহোন"></div><div class="an-install-copy"><strong>আপনার নিহোন App ইনস্টল করুন</strong><span>Play Store ছাড়াই ফোনের Home Screen থেকে অ্যাপের মতো দ্রুত ব্যবহার করুন।</span></div><div class="an-install-art" aria-hidden="true"><span class="an-install-sun"></span><span class="an-install-mountain">🗻</span></div><button class="an-install-btn" type="button">Install করুন</button><button class="an-install-close" type="button" aria-label="Install banner বন্ধ করুন">×</button><div class="an-install-note" role="status"></div>`;
+    const tools=document.querySelector('.app-tools-card');const home=document.querySelector('.app-home-screen,main');if(tools?.parentNode)tools.parentNode.insertBefore(card,tools);else if(home)home.prepend(card);else document.body.appendChild(card);
+    const installBtn=card.querySelector('.an-install-btn'),closeBtn=card.querySelector('.an-install-close'),note=card.querySelector('.an-install-note');
+    installBtn?.addEventListener('click',async()=>{if(deferredInstallPrompt){try{deferredInstallPrompt.prompt();const choice=await deferredInstallPrompt.userChoice;if(choice?.outcome==='accepted')card.remove();deferredInstallPrompt=null}catch(_){installMessage(note)}}else installMessage(note)});
+    closeBtn?.addEventListener('click',()=>{try{localStorage.setItem('anInstallDismissedAt',String(Date.now()))}catch(_){ }card.remove()});
   }
-
-  window.addEventListener('beforeinstallprompt',e=>{
-    e.preventDefault();
-    deferredInstallPrompt=e;
-    mountInstallCard();
-  });
-  window.addEventListener('appinstalled',()=>{
-    deferredInstallPrompt=null;
-    document.getElementById(INSTALL_ID)?.remove();
-    try{localStorage.removeItem('anInstallDismissedAt')}catch(_){ }
-  });
-
-  function boot(){
-    addStyles();updateBottomNav();
-    setTimeout(()=>renderAccount().catch(()=>{}),80);
-    setTimeout(()=>renderAccount().catch(()=>{}),650);
-    setTimeout(mountInstallCard,180);
-    setTimeout(mountInstallCard,1200);
-  }
-
-  window.addEventListener('an-auth-changed',()=>renderAccount().catch(()=>{}));
-  window.addEventListener('an-profile-updated',()=>renderAccount().catch(()=>{}));
+  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstallPrompt=e;mountInstallCard()});
+  window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;document.getElementById(INSTALL_ID)?.remove();try{localStorage.removeItem('anInstallDismissedAt')}catch(_){ }});
+  function boot(){addStyles();updateBottomNav();setTimeout(()=>renderAccount().catch(()=>{}),80);setTimeout(()=>renderAccount().catch(()=>{}),650);setTimeout(()=>renderAccount().catch(()=>{}),1600);setTimeout(mountInstallCard,180);setTimeout(mountInstallCard,1200)}
+  window.addEventListener('an-auth-changed',()=>renderAccount().catch(()=>{}));window.addEventListener('an-profile-updated',()=>renderAccount().catch(()=>{}));
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
