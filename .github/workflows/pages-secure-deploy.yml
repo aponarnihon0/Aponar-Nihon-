@@ -1,0 +1,66 @@
+name: Secure Pages Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'android/**'
+      - 'play-store/**'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare static site
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+        run: |
+          test -n "$GOOGLE_MAPS_API_KEY" || { echo "GOOGLE_MAPS_API_KEY secret is missing"; exit 1; }
+          mkdir -p _site
+          rsync -a ./ _site/ \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '_site/' \
+            --exclude 'android/' \
+            --exclude 'play-store/' \
+            --exclude 'node_modules/'
+          python - <<'PY'
+          import json, os, pathlib
+          key = os.environ['GOOGLE_MAPS_API_KEY']
+          pathlib.Path('_site/google-maps-config.js').write_text(
+              'window.AN_GOOGLE_MAPS_KEY = ' + json.dumps(key) + ';\n',
+              encoding='utf-8'
+          )
+          PY
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
