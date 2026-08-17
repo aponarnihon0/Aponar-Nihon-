@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Harden N3 vocabulary renderer
+      - name: Repair and harden N3 vocabulary renderer
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -24,6 +24,12 @@ jobs:
 
           p = Path('n3-vocabulary.html')
           s = p.read_text(encoding='utf-8')
+
+          # Fix the malformed final Part 3 word entry: the words array was missing one closing bracket.
+          broken = "['やっとN3の勉強が終わりました。','やっとえぬさんのべんきょうがおわりました。','অবশেষে N3-এর পড়া শেষ হলো।','স্টাডি']]]}\n];"
+          fixed  = "['やっとN3の勉強が終わりました。','やっとえぬさんのべんきょうがおわりました。','অবশেষে N3-এর পড়া শেষ হলো।','স্টাডি']]]]}\n];"
+          if broken in s:
+              s = s.replace(broken, fixed, 1)
 
           old = "const learned=new Set(JSON.parse(localStorage.getItem(STORE)||'[]'));"
           new = "let learned;try{const raw=localStorage.getItem(STORE),saved=raw?JSON.parse(raw):[];learned=new Set(Array.isArray(saved)?saved:[])}catch(_){learned=new Set();try{localStorage.removeItem(STORE)}catch(__){}}"
