@@ -1,0 +1,15 @@
+# Android signing secrets
+*.jks
+*.keystore
+android/key.properties
+
+# Android/Gradle build outputs
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+
+# Editor/OS
+.DS_Store
+.idea/
+*.iml
