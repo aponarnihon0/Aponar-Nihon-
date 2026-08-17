@@ -42,7 +42,16 @@ jobs:
             --exclude 'node_modules/'
           python - <<'PY'
           import json, os, pathlib
-          key = os.environ['GOOGLE_MAPS_API_KEY']
+          from urllib.parse import urlparse, parse_qs
+
+          raw = os.environ['GOOGLE_MAPS_API_KEY'].strip()
+          key = raw
+          if raw.startswith(('http://', 'https://')):
+              key = parse_qs(urlparse(raw).query).get('key', [''])[0].strip()
+
+          if not key.startswith('AIza'):
+              raise SystemExit('GOOGLE_MAPS_API_KEY must be a Google Maps browser key or a Maps JS URL containing ?key=...')
+
           pathlib.Path('_site/google-maps-config.js').write_text(
               'window.AN_GOOGLE_MAPS_KEY = ' + json.dumps(key) + ';\n',
               encoding='utf-8'
