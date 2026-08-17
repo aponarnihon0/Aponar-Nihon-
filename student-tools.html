@@ -131,5 +131,11 @@ function saveCity(){const o={};document.querySelectorAll('[data-city]').forEach(
 const today=new Date().toISOString().slice(0,10);shiftDate.value=today;planDate.value=planDate.value||'';renderMistakes();renderShifts();loadCity();
 </script>
 <script src="/student-time-manager.js?v=1"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/supabase-config.js"></script>
+<script src="/account.js"></script>
+<script src="/account-widget.js"></script>
+<script src="/activity-tracker.js"></script>
 </body>
 </html>
