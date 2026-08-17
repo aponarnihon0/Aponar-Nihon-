@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v20";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v20";
+const STATIC_CACHE = "aponar-nihon-static-v21";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v21";
 
 const STATIC_ASSETS = [
   "/",
@@ -269,9 +269,6 @@ function injectGlobalActivity(html){
 }
 
 function injectHomeEnhancements(html){
-  if(!html.includes('id="an-account-ui-style"') && html.includes('</head>')){
-    html = html.replace('</head>',HOME_ACCOUNT_UI + '\n</head>');
-  }
   if(!html.includes('data-tool="ebook-library"') && html.includes(GUIDE_MARKER)){
     html = html.replace(GUIDE_MARKER,EBOOK_TOOL_CARD + GUIDE_MARKER);
   }
@@ -382,19 +379,16 @@ self.addEventListener('fetch',event=>{
 
   if(isSameOrigin && (url.pathname.endsWith('.css') || url.pathname.endsWith('.js'))){
     event.respondWith(
-      caches.match(request).then(cached=>{
-        const fresh = fetch(request).then(response=>{
-          if(response && response.ok){
-            const copy = response.clone();
-            caches.open(DYNAMIC_CACHE).then(cache=>{
-              cache.put(request,copy);
-              trimCache(DYNAMIC_CACHE,MAX_DYNAMIC_CACHE_ITEMS);
-            });
-          }
-          return response;
-        }).catch(()=>cached);
-        return cached || fresh;
-      })
+      fetch(request).then(response=>{
+        if(response && response.ok){
+          const copy=response.clone();
+          caches.open(DYNAMIC_CACHE).then(cache=>{
+            cache.put(request,copy);
+            trimCache(DYNAMIC_CACHE,MAX_DYNAMIC_CACHE_ITEMS);
+          });
+        }
+        return response;
+      }).catch(()=>caches.match(request))
     );
     return;
   }
