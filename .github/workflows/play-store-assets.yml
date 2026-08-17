@@ -48,13 +48,13 @@ jobs:
       - name: Install Playwright
         run: |
           npm init -y >/dev/null 2>&1
-          npm install playwright@1.54.2
+          npm install playwright@latest
           npx playwright install --with-deps chromium
 
       - name: Capture phone screenshots
         run: |
           mkdir -p play-store/assets/screenshots
-          cat > /tmp/shots.mjs <<'JS'
+          cat > shots.mjs <<'JS'
           import { chromium } from 'playwright';
           const browser=await chromium.launch({headless:true});
           const context=await browser.newContext({viewport:{width:1080,height:1920},deviceScaleFactor:1,isMobile:true,hasTouch:true,locale:'bn-BD'});
@@ -66,14 +66,16 @@ jobs:
           ];
           for(const [file,url] of pages){
             const page=await context.newPage();
-            await page.goto(url,{waitUntil:'networkidle',timeout:90000});
-            await page.waitForTimeout(2200);
+            await page.goto(url,{waitUntil:'domcontentloaded',timeout:90000});
+            await page.waitForTimeout(3500);
             await page.screenshot({path:'play-store/assets/screenshots/'+file,fullPage:false});
             await page.close();
           }
           await browser.close();
           JS
-          node /tmp/shots.mjs
+          node shots.mjs
+          rm -f shots.mjs package.json package-lock.json
+          rm -rf node_modules
 
       - name: Commit generated Play assets
         run: |
