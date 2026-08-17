@@ -1,0 +1,53 @@
+name: Student Account Platform
+on:
+  push:
+    paths:
+      - '.github/workflows/student-account-platform.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add account scripts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=['index.html','student-tools.html','cv-builder.html','ebook-library.html']
+          scripts='''\n<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n<script src="/supabase-config.js"></script>\n<script src="/account.js"></script>\n<script src="/account-widget.js"></script>\n<script src="/activity-tracker.js"></script>\n'''
+          for f in files:
+            p=Path(f)
+            if not p.exists(): continue
+            s=p.read_text(encoding='utf-8')
+            if '/account-widget.js' not in s:
+              s=s.replace('</body>',scripts+'</body>')
+              p.write_text(s,encoding='utf-8')
+          # auth hash -> register tab
+          p=Path('auth.html')
+          if p.exists():
+            s=p.read_text(encoding='utf-8')
+            old="(async()=>{if(await AN.session())location.href='/profile.html'})();"
+            new="if(location.hash==='#register')show('reg');(async()=>{if(await AN.session())location.href='/profile.html'})();"
+            s=s.replace(old,new)
+            p.write_text(s,encoding='utf-8')
+          # service worker cache bump + assets
+          p=Path('sw.js')
+          if p.exists():
+            s=p.read_text(encoding='utf-8')
+            import re
+            s=re.sub(r'aponar-nihon-static-v\d+','aponar-nihon-static-v17',s)
+            s=re.sub(r'aponar-nihon-dynamic-v\d+','aponar-nihon-dynamic-v17',s)
+            anchor='  "/cv-builder.html",'
+            add='''  "/auth.html",\n  "/profile.html",\n  "/admin.html",\n  "/supabase-config.js",\n  "/account.js",\n  "/account-widget.js",\n  "/activity-tracker.js",\n'''
+            if '/auth.html' not in s and anchor in s:
+              s=s.replace(anchor,add+anchor)
+            p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html student-tools.html cv-builder.html ebook-library.html auth.html sw.js || true
+          git diff --cached --quiet || git commit -m "Integrate student login profile activity tracking"
+          git push
