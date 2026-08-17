@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Restore original N3 design language
+      - name: Apply original design without touching vocabulary data
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -26,51 +26,33 @@ jobs:
 
           p = Path('n3-vocabulary.html')
           s = p.read_text(encoding='utf-8')
-
           s = s.replace('<meta name="theme-color" content="#7c3aed">', '<meta name="theme-color" content="#101828">')
-
-          marker = '<style id="n3-original-design-restore">'
-          if marker not in s:
-              css = r'''
-<style id="n3-original-design-restore">
-/* Restore the original Aponar Nihon / N3 visual language. Keep vocabulary data and Part accordion intact. */
-:root{--n3-bg:#f3f5f8;--n3-paper:#fff;--n3-ink:#101828;--n3-muted:#687386;--n3-line:#e3e7ee;--n3-blue:#465fff;--n3-navy:#17213a;--n3-acid:#c9ff55;--n3-mint:#2ed3a6;--n3-shadow:0 16px 45px rgba(18,29,57,.08)}
-body{background:radial-gradient(circle at 4% 0,rgba(70,95,255,.08),transparent 28rem),radial-gradient(circle at 100% 22%,rgba(46,211,166,.06),transparent 27rem),var(--n3-bg)!important;color:var(--n3-ink)!important}
-.wrap{width:min(1080px,calc(100% - 22px))!important}
-.top{position:sticky!important;top:0!important;background:linear-gradient(128deg,#0d1424 0%,#13213d 58%,#172b50 100%)!important;border-bottom:1px solid rgba(255,255,255,.10)!important;box-shadow:0 8px 24px rgba(13,20,36,.12)!important}
-.nav{height:66px!important}.brand{color:#fff!important}.brand img{background:#fff!important;border-radius:12px!important;padding:2px!important}.nav-btn{border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.08)!important;color:#fff!important}
-.hero{padding:18px 0 14px!important}.hero-card{background:radial-gradient(circle at 82% -10%,rgba(201,255,85,.18),transparent 26rem),linear-gradient(128deg,#0d1424 0%,#13213d 54%,#172b50 100%)!important;border:1px solid rgba(255,255,255,.08)!important;border-radius:25px!important;box-shadow:0 22px 55px rgba(18,29,57,.18)!important}.hero-card:after{color:#fff!important;opacity:.045!important}.kicker{color:var(--n3-acid)!important;opacity:1!important}.hero p{color:rgba(255,255,255,.72)!important}.hero-badges span{background:rgba(255,255,255,.065)!important;border-color:rgba(255,255,255,.11)!important;color:#e9eef9!important}.hero-badges span:first-child{color:#17213a!important;background:var(--n3-acid)!important;border-color:var(--n3-acid)!important}
-.search-wrap{background:rgba(243,245,248,.94)!important}.search i{color:#667287!important}.search input{border-color:#dce1e9!important;border-radius:13px!important;box-shadow:0 7px 20px rgba(22,34,63,.05)!important;color:var(--n3-ink)!important}.search input:focus{border-color:#8795ff!important;box-shadow:0 0 0 4px rgba(70,95,255,.11)!important}
-.summary{color:#687386!important}.progress{color:var(--n3-blue)!important}
-.parts{gap:9px!important}.part{border:1px solid var(--n3-line)!important;border-radius:18px!important;background:var(--n3-paper)!important;box-shadow:0 10px 30px rgba(22,34,63,.055)!important}.part-toggle{background:#fff!important;padding:14px!important}.part-no{width:46px!important;height:46px!important;border-radius:13px!important;background:var(--n3-navy)!important;color:var(--n3-acid)!important;box-shadow:0 10px 23px rgba(23,33,58,.18)!important}.part-copy strong{color:#15203a!important}.part-copy span{color:#758095!important}.part-arrow{border:1px solid #dfe4ec!important;background:#f6f8fb!important;color:#46536a!important}.part.open .part-arrow{background:var(--n3-blue)!important;border-color:var(--n3-blue)!important;color:#fff!important}
-.part-body{background:#fafbfc!important;border-top:1px solid #edf0f4!important}.tip{background:#f5f8ff!important;border-color:#dce3ff!important;color:#3f4e69!important}.tip b{color:#3049d7!important}
-.word-list{gap:9px!important}.word-card{border:1px solid var(--n3-line)!important;border-radius:16px!important;background:#fff!important;box-shadow:0 7px 22px rgba(22,34,63,.035)!important}.word-head{background:linear-gradient(135deg,#f5f7ff,#fbfcff)!important;padding:13px!important}.word{color:#17213a!important}.word rt{color:#5966a9!important}.meaning{color:#354159!important}.tag{background:#edf2ff!important;color:#3f51c6!important}.scene-tag{background:#ecfaf5!important;color:#08745a!important}.round{border:1px solid #dfe4ec!important;color:#4352c6!important;box-shadow:none!important}.round.learned{background:var(--n3-mint)!important;border-color:var(--n3-mint)!important;color:#fff!important}
-.examples{gap:7px!important}.example{border-color:#e6eaf0!important;border-radius:13px!important}.ex-no{background:var(--n3-navy)!important;color:var(--n3-acid)!important}.sentence{color:#1c2940!important}.reading{background:#f2f4ff!important;color:#5362a1!important}.bn{color:#526077!important}
-@media(max-width:680px){.hero-card{border-radius:21px!important}.hero h1{font-size:30px!important}.hero p{font-size:11px!important}.part{border-radius:16px!important}.part-toggle{padding:12px!important}.part-no{width:42px!important;height:42px!important}.word-card{border-radius:15px!important}}
-</style>
-'''
-              s = s.replace('</head>', css + '\n</head>', 1)
-
+          link = '<link rel="stylesheet" href="/n3-vocabulary-original.css?v=1">'
+          if link not in s:
+              s = s.replace('</head>', link + '\n</head>', 1)
           p.write_text(s, encoding='utf-8')
 
           sw = Path('sw.js')
-          if sw.exists():
-              t = sw.read_text(encoding='utf-8')
-              nums = [int(x) for x in re.findall(r'aponar-nihon-(?:static|dynamic)-v(\d+)', t)]
-              nxt = max(nums or [23]) + 1
-              t = re.sub(r'aponar-nihon-static-v\d+', f'aponar-nihon-static-v{nxt}', t)
-              t = re.sub(r'aponar-nihon-dynamic-v\d+', f'aponar-nihon-dynamic-v{nxt}', t)
-              sw.write_text(t, encoding='utf-8')
+          t = sw.read_text(encoding='utf-8')
+          nums = [int(x) for x in re.findall(r'aponar-nihon-(?:static|dynamic)-v(\d+)', t)]
+          nxt = max(nums or [23]) + 1
+          t = re.sub(r'aponar-nihon-static-v\d+', f'aponar-nihon-static-v{nxt}', t)
+          t = re.sub(r'aponar-nihon-dynamic-v\d+', f'aponar-nihon-dynamic-v{nxt}', t)
+          if '"/n3-vocabulary-original.css"' not in t and "'/n3-vocabulary-original.css'" not in t:
+              anchor = '  "/n3-vocabulary.html",'
+              if anchor in t:
+                  t = t.replace(anchor, anchor + '\n  "/n3-vocabulary-original.css",', 1)
+          sw.write_text(t, encoding='utf-8')
           PY
 
-      - name: Commit restored design
+      - name: Commit restored N3 vocabulary design
         run: |
           git config user.name "Aponar Nihon Bot"
           git config user.email "actions@users.noreply.github.com"
-          git add n3-vocabulary.html sw.js
+          git add n3-vocabulary.html n3-vocabulary-original.css sw.js
           if git diff --cached --quiet; then
             echo "No changes needed"
           else
-            git commit -m "Restore original N3 vocabulary design"
+            git commit -m "Restore original N3 vocabulary layout"
             git push
           fi
