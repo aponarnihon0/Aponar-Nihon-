@@ -1,0 +1,71 @@
+name: Fix N3 Vocabulary Render
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-n3-vocab-render.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Harden N3 vocabulary renderer
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('n3-vocabulary.html')
+          s = p.read_text(encoding='utf-8')
+
+          old = "const learned=new Set(JSON.parse(localStorage.getItem(STORE)||'[]'));"
+          new = "let learned;try{const raw=localStorage.getItem(STORE),saved=raw?JSON.parse(raw):[];learned=new Set(Array.isArray(saved)?saved:[])}catch(_){learned=new Set();try{localStorage.removeItem(STORE)}catch(__){}}"
+          if old in s:
+              s = s.replace(old, new, 1)
+
+          old_render = "render();\n</script>"
+          new_render = "try{render()}catch(err){console.error('N3 vocabulary render failed',err);partsEl.innerHTML='<div class=\"empty\">Part list load হতে সমস্যা হয়েছে। Page reload করুন।</div>'}\n</script>"
+          if old_render in s:
+              s = s.replace(old_render, new_render, 1)
+
+          p.write_text(s, encoding='utf-8')
+
+          sw = Path('sw.js')
+          if sw.exists():
+              t = sw.read_text(encoding='utf-8')
+              nums = [int(x) for x in re.findall(r'aponar-nihon-(?:static|dynamic)-v(\d+)', t)]
+              nxt = max(nums or [24]) + 1
+              t = re.sub(r'aponar-nihon-static-v\d+', f'aponar-nihon-static-v{nxt}', t)
+              t = re.sub(r'aponar-nihon-dynamic-v\d+', f'aponar-nihon-dynamic-v{nxt}', t)
+              sw.write_text(t, encoding='utf-8')
+          PY
+
+      - name: Check inline JavaScript syntax
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('n3-vocabulary.html').read_text(encoding='utf-8')
+          blocks=re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>',s,re.S)
+          Path('/tmp/n3-inline.js').write_text('\n'.join(blocks),encoding='utf-8')
+          PY
+          node --check /tmp/n3-inline.js
+
+      - name: Commit fix
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add n3-vocabulary.html sw.js
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "Fix N3 vocabulary part rendering"
+            git push
+          fi
