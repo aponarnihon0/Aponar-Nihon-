@@ -1,1 +1,208 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Admin Panel | Aponar Nihon</title><link rel="icon" href="/logo.png"><style>*{box-sizing:border-box}body{margin:0;background:#f4f7fb;color:#173b5e;font-family:system-ui,"Noto Sans Bengali",sans-serif}.wrap{width:min(1180px,calc(100% - 22px));margin:auto}.top{background:#102f4d;color:#fff}.nav{height:68px;display:flex;align-items:center;gap:10px}.nav img{width:40px}.nav a{margin-left:auto;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px 10px;text-decoration:none}.hero{padding:26px 0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat,.card{background:#fff;border:1px solid #dfe7ef;border-radius:18px;padding:16px;box-shadow:0 8px 25px rgba(23,59,94,.05)}.stat b{display:block;font-size:28px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.filters input,.filters select{border:1px solid #d8e3ec;border-radius:10px;padding:10px}.table{overflow:auto}.row{display:grid;grid-template-columns:1.3fr 1.6fr .7fr .8fr .9fr .7fr;gap:8px;padding:10px;border-bottom:1px solid #edf1f4;align-items:center;min-width:820px}.row.head{font-weight:900;background:#f4f8fb}.row button{border:0;background:#eaf4fb;color:#176fa8;border-radius:9px;padding:7px;font-weight:800}.detail{margin-top:14px;display:none}.activity{display:grid;gap:7px}.activity div{border:1px solid #e0e7ee;border-radius:10px;padding:9px}@media(max-width:800px){.stats{grid-template-columns:1fr 1fr}}</style></head><body><header class="top"><div class="wrap nav"><img src="/logo.png"><b>APONAR NIHON · ADMIN</b><a href="/profile.html">Profile</a></div></header><main class="wrap"><section class="hero"><h1>Student Activity Dashboard</h1><p>Registration, JLPT target, last active এবং learning/tool activity। CV-এর personal content এখানে দেখানো হয় না।</p></section><div class="stats"><div class="stat"><b id="total">0</b><small>Total students</small></div><div class="stat"><b id="activeToday">0</b><small>Active today</small></div><div class="stat"><b id="n5">0</b><small>N5</small></div><div class="stat"><b id="n4n3">0</b><small>N4 + N3</small></div></div><div class="filters"><input id="search" placeholder="নাম বা email খুঁজুন"><select id="level"><option value="">সব level</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select></div><section class="card table"><div class="row head"><div>Name</div><div>Email</div><div>Level</div><div>Activities</div><div>Last active</div><div>View</div></div><div id="rows"></div></section><section class="card detail" id="detail"><h2 id="dname"></h2><div id="dactivity" class="activity"></div></section></main><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js"></script><script src="/account.js"></script><script>let students=[];const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));async function load(){const s=await AN.session();if(!s)return location.href='/auth.html';const me=await AN.profile();if(!me||me.role!=='admin')return location.href='/profile.html';const{data,error}=await AN.sb.rpc('admin_student_overview');if(error){rows.innerHTML='<div style="padding:14px">'+esc(error.message)+'</div>';return}students=data||[];render();await AN.log('admin_view',{module:'admin'})}function render(){const q=search.value.toLowerCase(),lv=level.value;const f=students.filter(x=>(!lv||x.jlpt_level===lv)&&(!q||(x.full_name||'').toLowerCase().includes(q)||(x.email||'').toLowerCase().includes(q)));total.textContent=students.length;const today=new Date().toISOString().slice(0,10);activeToday.textContent=students.filter(x=>x.last_active_at&&x.last_active_at.slice(0,10)===today).length;n5.textContent=students.filter(x=>x.jlpt_level==='N5').length;n4n3.textContent=students.filter(x=>['N4','N3'].includes(x.jlpt_level)).length;rows.innerHTML=f.map(x=>`<div class="row"><div>${esc(x.full_name||'—')}</div><div>${esc(x.email||'')}</div><div>${esc(x.jlpt_level||'—')}</div><div>${x.activity_count||0}</div><div>${x.last_active_at?new Date(x.last_active_at).toLocaleDateString():'—'}</div><div><button onclick="viewStudent('${x.id}')">View</button></div></div>`).join('')}async function viewStudent(id){const x=students.find(s=>s.id===id);dname.textContent=x?.full_name||x?.email||'Student';detail.style.display='block';const{data,error}=await AN.sb.rpc('admin_student_activity',{target_user:id});const a=data||[];dactivity.innerHTML=error?`<div>${esc(error.message)}</div>`:a.length?a.map(v=>`<div><b>${esc(v.event_type)}</b><br><small>${esc(v.module||'')}${v.item_key?' · '+esc(v.item_key):''} · ${new Date(v.created_at).toLocaleString()}</small></div>`).join(''):'<div>No activity</div>';detail.scrollIntoView({behavior:'smooth'})}search.oninput=render;level.onchange=render;load();</script></body></html>
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b2540">
+  <title>Admin Panel | Aponar Nihon</title>
+  <link rel="icon" href="/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    :root{--navy:#102f4d;--blue:#1677bd;--blue2:#1b8bd2;--ink:#173b5e;--muted:#7d91a4;--line:#e2ebf2;--bg:#f4f8fc;--card:#fff;--green:#15a37a;--orange:#f59e0b;--red:#e85b63;--shadow:0 16px 44px rgba(20,60,94,.08)}
+    html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#edf6fd 0,#f8fbfe 340px,#f4f8fc 100%);color:var(--ink);font-family:'Noto Sans Bengali','Inter',system-ui,sans-serif;min-height:100vh}
+    button,input,select{font:inherit}.wrap{width:min(1260px,calc(100% - 28px));margin:auto}
+    .topbar{position:sticky;top:0;z-index:100;background:rgba(10,35,58,.94);backdrop-filter:blur(18px);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{min-height:72px;display:flex;align-items:center;gap:13px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#fff;min-width:0}.brand img{width:45px;height:45px;border-radius:14px;background:#fff;object-fit:contain}.brand-copy strong{display:block;font:900 15px/1.1 'Inter',sans-serif;letter-spacing:.05em}.brand-copy span{display:block;margin-top:4px;font-size:9px;font-weight:800;letter-spacing:.14em;color:#9dc5e4}.nav-spacer{flex:1}
+    .admin-chip{display:flex;align-items:center;gap:8px;min-width:0;padding:7px 10px;border:1px solid rgba(255,255,255,.13);border-radius:14px;background:rgba(255,255,255,.07)}.admin-avatar{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#3aa0e3,#2266b5);display:grid;place-items:center;font-size:12px;font-weight:900}.admin-meta{min-width:0}.admin-meta b{display:block;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:800 10px 'Inter',sans-serif}.admin-meta small{display:block;color:#9fc3de;font-size:8px;font-weight:800}
+    .nav-btn{height:40px;min-width:40px;padding:0 12px;border:1px solid rgba(255,255,255,.14);border-radius:13px;background:rgba(255,255,255,.08);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;font-size:10px;font-weight:900}.nav-btn:hover{background:rgba(255,255,255,.13)}
+    .hero{padding:29px 0 18px}.hero-row{display:flex;align-items:end;justify-content:space-between;gap:18px}.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:#e5f3fd;color:#176fa8;font-size:9px;font-weight:900;letter-spacing:.08em}.hero h1{margin:9px 0 5px;font-size:clamp(25px,4vw,39px);line-height:1.08;letter-spacing:-.02em}.hero p{margin:0;color:#74889a;font-size:11px;font-weight:600;line-height:1.6}.hero-actions{display:flex;gap:8px;flex-wrap:wrap}.action{height:43px;padding:0 14px;border-radius:13px;border:1px solid #d9e6ef;background:#fff;color:#24577d;display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:900;cursor:pointer;box-shadow:0 7px 20px rgba(27,67,98,.05)}.action.primary{border:0;background:linear-gradient(135deg,#1684ca,#1767a5);color:#fff;box-shadow:0 10px 25px rgba(23,111,168,.20)}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}.stat{position:relative;overflow:hidden;background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:var(--shadow)}.stat-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.stat-icon{width:39px;height:39px;border-radius:13px;display:grid;place-items:center;background:#eaf6ff;color:#1778b9;font-size:16px}.stat:nth-child(2) .stat-icon{background:#e9faf4;color:#15956f}.stat:nth-child(3) .stat-icon{background:#fff6e5;color:#dd8c08}.stat:nth-child(4) .stat-icon{background:#f2ecff;color:#7657d3}.stat b{display:block;margin-top:11px;font:900 27px/1 'Inter',sans-serif;color:#153957}.stat span{display:block;margin-top:5px;color:#7e91a2;font-size:9px;font-weight:800}.stat small{position:absolute;right:15px;bottom:14px;color:#a2b1bd;font-size:8px;font-weight:800}
+    .grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(310px,.7fr);gap:14px}.card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}.card-pad{padding:18px}.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.card-title{display:flex;align-items:center;gap:10px}.title-icon{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:#edf7fe;color:#1977b5}.card h2{margin:0;font-size:16px;line-height:1.15}.sub{margin-top:3px;color:#8a9aa8;font-size:8.5px;font-weight:700}
+    .filters{display:grid;grid-template-columns:minmax(180px,1fr) 120px 135px;gap:8px;margin-bottom:13px}.input-wrap{position:relative}.input-wrap i{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#91a4b4;font-size:12px}.control{width:100%;height:42px;border:1px solid #dce7ef;border-radius:12px;background:#fafdff;color:#234d6e;outline:none;padding:0 11px;font-size:10px;font-weight:700}.input-wrap .control{padding-left:33px}.control:focus{background:#fff;border-color:#7db7dc;box-shadow:0 0 0 4px rgba(48,136,195,.07)}
+    .table-wrap{overflow:auto;border:1px solid #e8eef3;border-radius:16px}.table{min-width:820px}.tr{display:grid;grid-template-columns:minmax(185px,1.25fr) minmax(190px,1.2fr) 90px 90px 105px 90px;align-items:center;gap:8px;min-height:61px;padding:8px 12px;border-bottom:1px solid #edf2f5}.tr:last-child{border-bottom:0}.tr.head{min-height:43px;background:#f4f8fb;color:#6e8394;font-size:8.5px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}.student{display:flex;align-items:center;gap:9px;min-width:0}.avatar{width:37px;height:37px;border-radius:12px;object-fit:cover;background:linear-gradient(135deg,#e3f3ff,#d9e9f6);display:grid;place-items:center;color:#2275ad;font:900 12px 'Inter',sans-serif;flex:0 0 auto}.student-copy{min-width:0}.student-copy b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px}.student-copy small{display:block;margin-top:3px;color:#97a7b4;font-size:8px}.email{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 9px 'Inter',sans-serif;color:#5f778b}.pill{display:inline-flex;align-items:center;justify-content:center;min-width:42px;padding:5px 8px;border-radius:999px;background:#eaf6ff;color:#1472af;font:900 8.5px 'Inter',sans-serif}.pill.N4{background:#eaf0ff;color:#3d63c4}.pill.N3{background:#fff0e8;color:#d86b2c}.pill.N2,.pill.N1{background:#f3ebff;color:#7557c5}.metric{font:800 10px 'Inter',sans-serif;color:#345f80}.date{color:#6e8292;font-size:8.5px;font-weight:700}.view-btn{height:32px;border:0;border-radius:10px;background:#eaf5fc;color:#176fa8;padding:0 10px;font-size:8.5px;font-weight:900;cursor:pointer}.view-btn:hover{background:#dceefa}
+    .empty{padding:24px;text-align:center;color:#899aa8;font-size:10px}.loading{padding:28px;text-align:center;color:#6f8798;font-size:10px;font-weight:800}.spinner{width:24px;height:24px;border:3px solid #e3edf4;border-top-color:#1780c3;border-radius:50%;margin:0 auto 9px;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .side-stack{display:grid;gap:14px;align-content:start}.dist{display:grid;gap:11px}.dist-row{display:grid;grid-template-columns:38px 1fr 28px;align-items:center;gap:8px}.dist-label{font:900 9px 'Inter',sans-serif}.bar{height:8px;border-radius:999px;background:#edf2f6;overflow:hidden}.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2189ca,#2e6dcc);width:0;transition:width .35s ease}.dist-row:nth-child(2) .bar span{background:linear-gradient(90deg,#6a5bdd,#8f63dc)}.dist-row:nth-child(3) .bar span{background:linear-gradient(90deg,#ff8a38,#ef6d31)}.dist-row:nth-child(4) .bar span,.dist-row:nth-child(5) .bar span{background:linear-gradient(90deg,#20ad83,#159b76)}.dist-count{font:800 9px 'Inter',sans-serif;text-align:right;color:#6d8293}
+    .week{display:grid;grid-template-columns:repeat(7,1fr);align-items:end;gap:6px;height:128px;margin-top:5px}.day{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px}.day b{font:800 8px 'Inter',sans-serif;color:#74889a}.daybar{width:100%;max-width:24px;min-height:5px;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,#2b99d6,#2467b3)}.day span{font-size:7.5px;color:#9aa9b5;font-weight:800}
+    .feed{display:grid;gap:8px;max-height:320px;overflow:auto}.feed-item{display:flex;gap:9px;padding:9px;border:1px solid #e8eef3;border-radius:13px;background:#fcfeff}.feed-icon{width:31px;height:31px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;background:#edf7fd;color:#2077ad;font-size:11px}.feed-copy{min-width:0}.feed-copy b{display:block;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.feed-copy span{display:block;color:#8193a2;font-size:8px;margin-top:2px;line-height:1.4}.feed-copy small{display:block;color:#a0adb7;font-size:7px;margin-top:3px}
+    .drawer-backdrop{position:fixed;inset:0;background:rgba(8,23,38,.46);z-index:500;opacity:0;pointer-events:none;transition:.22s}.drawer-backdrop.show{opacity:1;pointer-events:auto}.drawer{position:fixed;z-index:510;right:0;top:0;bottom:0;width:min(500px,100%);background:#f7fbfe;transform:translateX(102%);transition:.28s cubic-bezier(.22,.8,.25,1);box-shadow:-20px 0 70px rgba(8,34,56,.22);overflow:auto}.drawer.show{transform:none}.drawer-top{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:10px;padding:15px;background:rgba(255,255,255,.94);backdrop-filter:blur(15px);border-bottom:1px solid #e4edf3}.drawer-close{margin-left:auto;width:38px;height:38px;border:0;border-radius:12px;background:#edf3f7;color:#5f7789;font-size:18px;cursor:pointer}.drawer-body{padding:14px}.profile-card{padding:19px;border-radius:22px;color:#fff;background:linear-gradient(135deg,#116eaf,#208dca 58%,#43a8d7);box-shadow:0 18px 45px rgba(18,102,159,.20)}.profile-top{display:flex;align-items:center;gap:13px}.profile-avatar{width:64px;height:64px;border-radius:20px;object-fit:cover;border:2px solid rgba(255,255,255,.7);background:rgba(255,255,255,.16);display:grid;place-items:center;font:900 20px 'Inter',sans-serif}.profile-copy{min-width:0}.profile-copy h3{margin:0;font-size:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profile-copy p{margin:4px 0 0;font:600 9px 'Inter',sans-serif;opacity:.8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profile-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.profile-badges span{padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.17);font-size:8px;font-weight:900}.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.info{padding:11px;border-radius:14px;background:#fff;border:1px solid #e4edf3}.info small{display:block;color:#8fa0ad;font-size:7.5px;font-weight:800}.info b{display:block;margin-top:3px;font-size:9.5px;word-break:break-word}.drawer-section{margin-top:13px;background:#fff;border:1px solid #e3ecf2;border-radius:19px;padding:15px}.drawer-section h4{margin:0 0 10px;font-size:13px}.progress-list,.timeline{display:grid;gap:8px}.progress-item,.timeline-item{padding:10px;border-radius:13px;border:1px solid #e7eef3;background:#fcfeff}.progress-line{display:flex;justify-content:space-between;gap:8px;font-size:8.5px;font-weight:800}.progress-track{height:6px;margin-top:7px;background:#edf2f5;border-radius:999px;overflow:hidden}.progress-track span{display:block;height:100%;background:linear-gradient(90deg,#1f8dca,#2a64bd);border-radius:999px}.timeline-item b{font-size:9px}.timeline-item span{display:block;color:#8294a3;font-size:8px;margin-top:2px}.timeline-item small{display:block;color:#a1aeba;font-size:7px;margin-top:3px}
+    .toast{position:fixed;z-index:800;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:#173b5e;color:#fff;border-radius:13px;padding:11px 14px;font-size:9px;font-weight:800;box-shadow:0 14px 36px rgba(15,48,73,.22);transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}.toast.bad{background:#a84750}
+    footer{padding:22px 0 32px;text-align:center;color:#94a4b0;font-size:8px;font-weight:700}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}.side-stack{grid-template-columns:1fr 1fr}.side-stack .card:last-child{grid-column:1/-1}}
+    @media(max-width:760px){.wrap{width:min(100% - 18px,1260px)}.nav{min-height:64px}.brand img{width:39px;height:39px}.brand-copy strong{font-size:13px}.brand-copy span{font-size:7px}.admin-meta{display:none}.admin-chip{padding:5px}.admin-avatar{width:29px;height:29px}.nav-btn span{display:none}.nav-btn{padding:0;width:39px}.hero{padding-top:18px}.hero-row{align-items:flex-start;flex-direction:column}.hero-actions{width:100%}.hero-actions .action{flex:1}.stats{grid-template-columns:1fr 1fr}.grid{gap:11px}.card{border-radius:19px}.card-pad{padding:14px}.filters{grid-template-columns:1fr 1fr}.filters .input-wrap{grid-column:1/-1}.side-stack{grid-template-columns:1fr}.side-stack .card:last-child{grid-column:auto}.drawer{width:100%}.info-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:390px){.stats{gap:8px}.stat{padding:14px;border-radius:18px}.stat b{font-size:23px}.stat small{display:none}.filters{grid-template-columns:1fr}.filters .input-wrap{grid-column:auto}.info-grid{grid-template-columns:1fr}.hero h1{font-size:24px}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="/"><img src="/logo.png" alt="Aponar Nihon"><div class="brand-copy"><strong>APONAR NIHON</strong><span>ADMIN CONTROL CENTER</span></div></a>
+      <div class="nav-spacer"></div>
+      <div class="admin-chip"><div class="admin-avatar" id="adminInitial">A</div><div class="admin-meta"><b id="adminEmail">Admin</b><small>Administrator</small></div></div>
+      <a class="nav-btn" href="/" aria-label="Home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a class="nav-btn" href="/profile.html" aria-label="Profile"><i class="fa-solid fa-circle-user"></i><span>Profile</span></a>
+      <button class="nav-btn" id="logoutBtn" type="button" aria-label="Logout"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-row">
+        <div><span class="eyebrow"><i class="fa-solid fa-shield-halved"></i> SECURE ADMIN AREA</span><h1>Student Management Dashboard</h1><p>Account, learning activity, JLPT target এবং progress — এক জায়গা থেকে পরিষ্কারভাবে দেখুন।</p></div>
+        <div class="hero-actions"><button class="action" id="exportBtn" type="button"><i class="fa-solid fa-file-arrow-down"></i> Export CSV</button><button class="action primary" id="refreshBtn" type="button"><i class="fa-solid fa-rotate"></i> Refresh Data</button></div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <article class="stat"><div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-users"></i></div></div><b id="totalStudents">0</b><span>Total Students</span><small>Registered accounts</small></article>
+      <article class="stat"><div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-bolt"></i></div></div><b id="activeToday">0</b><span>Active Today</span><small>Last 24h activity</small></article>
+      <article class="stat"><div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-calendar-week"></i></div></div><b id="activeWeek">0</b><span>Active 7 Days</span><small>Unique students</small></article>
+      <article class="stat"><div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div></div><b id="eventsWeek">0</b><span>7 Day Activities</span><small>Tracked learning events</small></article>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <div class="card-pad">
+          <div class="card-head"><div class="card-title"><div class="title-icon"><i class="fa-solid fa-user-graduate"></i></div><div><h2>Students</h2><div class="sub" id="resultCount">Loading student accounts…</div></div></div></div>
+          <div class="filters">
+            <div class="input-wrap"><i class="fa-solid fa-magnifying-glass"></i><input class="control" id="searchInput" placeholder="নাম, email, city বা school খুঁজুন"></div>
+            <select class="control" id="levelFilter"><option value="">সব JLPT</option><option>N5</option><option>N4</option><option>N3</option><option>N2</option><option>N1</option></select>
+            <select class="control" id="activityFilter"><option value="">সব activity</option><option value="today">Active today</option><option value="week">Active 7 days</option><option value="inactive">Inactive 7+ days</option></select>
+          </div>
+          <div class="table-wrap">
+            <div class="table">
+              <div class="tr head"><div>Student</div><div>Email</div><div>JLPT</div><div>Activity</div><div>Last Active</div><div>Action</div></div>
+              <div id="studentRows"><div class="loading"><div class="spinner"></div>Dashboard data loading…</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-stack">
+        <section class="card"><div class="card-pad"><div class="card-head"><div class="card-title"><div class="title-icon"><i class="fa-solid fa-layer-group"></i></div><div><h2>JLPT Distribution</h2><div class="sub">Student target overview</div></div></div></div><div class="dist" id="levelDistribution"></div></div></section>
+        <section class="card"><div class="card-pad"><div class="card-head"><div class="card-title"><div class="title-icon"><i class="fa-solid fa-chart-column"></i></div><div><h2>Last 7 Days</h2><div class="sub">Learning activity volume</div></div></div></div><div class="week" id="weekChart"></div></div></section>
+        <section class="card"><div class="card-pad"><div class="card-head"><div class="card-title"><div class="title-icon"><i class="fa-solid fa-clock-rotate-left"></i></div><div><h2>Recent Activity</h2><div class="sub">Latest platform events</div></div></div></div><div class="feed" id="recentFeed"><div class="loading"><div class="spinner"></div>Loading…</div></div></div></section>
+      </aside>
+    </div>
+    <footer>APONAR NIHON Admin Panel · Student data is protected by Supabase Row Level Security</footer>
+  </main>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="studentDrawer" aria-label="Student details">
+    <div class="drawer-top"><b>Student Details</b><button class="drawer-close" id="drawerClose" type="button" aria-label="Close">×</button></div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/supabase-config.js"></script>
+  <script src="/account.js?v=20260817-6"></script>
+  <script>
+    const state={me:null,profiles:[],events:[],progress:[],students:[]};
+    const $=id=>document.getElementById(id);
+    const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const fmt=d=>{if(!d)return '—';try{return new Date(d).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}catch(_){return '—'}};
+    const daysAgo=n=>Date.now()-n*86400000;
+    const initials=name=>String(name||'S').trim().split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'S';
+    const eventLabel=e=>String(e||'activity').replaceAll('_',' ').replace(/\b\w/g,m=>m.toUpperCase());
+
+    function toast(msg,bad=false){const t=$('toast');t.textContent=msg;t.className='toast show'+(bad?' bad':'');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.className='toast',2400)}
+    function closeDrawer(){$('studentDrawer').classList.remove('show');$('drawerBackdrop').classList.remove('show');document.body.style.overflow=''}
+    $('drawerClose').onclick=closeDrawer;$('drawerBackdrop').onclick=closeDrawer;
+
+    function aggregate(){
+      const eventCount=new Map(),lastEvent=new Map(),progressByUser=new Map();
+      for(const e of state.events){eventCount.set(e.user_id,(eventCount.get(e.user_id)||0)+1);const prev=lastEvent.get(e.user_id);if(!prev||new Date(e.created_at)>new Date(prev))lastEvent.set(e.user_id,e.created_at)}
+      for(const p of state.progress){if(!progressByUser.has(p.user_id))progressByUser.set(p.user_id,[]);progressByUser.get(p.user_id).push(p)}
+      state.students=state.profiles.filter(p=>p.role!=='admin').map(p=>({...p,activity_count:eventCount.get(p.id)||0,last_seen:lastEvent.get(p.id)||p.last_active_at||null,progress_items:progressByUser.get(p.id)||[]}));
+    }
+
+    function renderStats(){
+      const now=Date.now(),todayCut=now-86400000,weekCut=daysAgo(7);
+      $('totalStudents').textContent=state.students.length;
+      $('activeToday').textContent=state.students.filter(s=>s.last_seen&&new Date(s.last_seen).getTime()>=todayCut).length;
+      $('activeWeek').textContent=state.students.filter(s=>s.last_seen&&new Date(s.last_seen).getTime()>=weekCut).length;
+      $('eventsWeek').textContent=state.events.filter(e=>new Date(e.created_at).getTime()>=weekCut).length;
+    }
+
+    function renderDistribution(){
+      const levels=['N5','N4','N3','N2','N1'];const total=Math.max(1,state.students.length);
+      $('levelDistribution').innerHTML=levels.map(l=>{const n=state.students.filter(s=>(s.jlpt_target||'N5')===l).length;const pct=Math.round(n/total*100);return `<div class="dist-row"><div class="dist-label">${l}</div><div class="bar"><span style="width:${pct}%"></span></div><div class="dist-count">${n}</div></div>`}).join('');
+    }
+
+    function renderWeek(){
+      const arr=[];for(let i=6;i>=0;i--){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-i);const next=new Date(d);next.setDate(next.getDate()+1);const count=state.events.filter(e=>{const t=new Date(e.created_at);return t>=d&&t<next}).length;arr.push({d,count})}
+      const max=Math.max(1,...arr.map(x=>x.count));
+      $('weekChart').innerHTML=arr.map(x=>`<div class="day"><b>${x.count}</b><div class="daybar" style="height:${Math.max(5,Math.round(x.count/max*88))}px"></div><span>${x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)}</span></div>`).join('');
+    }
+
+    function renderFeed(){
+      const byId=new Map(state.profiles.map(p=>[p.id,p]));const list=state.events.slice(0,10);
+      $('recentFeed').innerHTML=list.length?list.map(e=>{const p=byId.get(e.user_id)||{};const module=e.metadata?.module||e.page||'';return `<div class="feed-item"><div class="feed-icon"><i class="fa-solid fa-bolt"></i></div><div class="feed-copy"><b>${esc(p.full_name||p.email||'Student')}</b><span>${esc(eventLabel(e.event_type))}${module?' · '+esc(module):''}</span><small>${esc(fmt(e.created_at))}</small></div></div>`}).join(''):'<div class="empty">এখনও কোনো activity নেই।</div>';
+    }
+
+    function filteredStudents(){
+      const q=$('searchInput').value.trim().toLowerCase(),lv=$('levelFilter').value,af=$('activityFilter').value,now=Date.now();
+      return state.students.filter(s=>{
+        if(lv&&(s.jlpt_target||'N5')!==lv)return false;
+        const text=[s.full_name,s.email,s.city,s.school,s.nationality].join(' ').toLowerCase();if(q&&!text.includes(q))return false;
+        const last=s.last_seen?new Date(s.last_seen).getTime():0;
+        if(af==='today'&&last<now-86400000)return false;
+        if(af==='week'&&last<daysAgo(7))return false;
+        if(af==='inactive'&&last>=daysAgo(7))return false;
+        return true;
+      });
+    }
+
+    function avatarHTML(s){return s.avatar_url?`<img class="avatar" src="${esc(s.avatar_url)}" alt="">`:`<div class="avatar">${esc(initials(s.full_name||s.email))}</div>`}
+    function renderTable(){
+      const f=filteredStudents();$('resultCount').textContent=`${f.length} of ${state.students.length} students`;
+      $('studentRows').innerHTML=f.length?f.map(s=>`<div class="tr"><div class="student">${avatarHTML(s)}<div class="student-copy"><b>${esc(s.full_name||'Unnamed student')}</b><small>${esc(s.city||s.nationality||'Student account')}</small></div></div><div class="email">${esc(s.email||'—')}</div><div><span class="pill ${esc(s.jlpt_target||'N5')}">${esc(s.jlpt_target||'N5')}</span></div><div class="metric">${s.activity_count}</div><div class="date">${esc(fmt(s.last_seen))}</div><div><button class="view-btn" type="button" onclick="openStudent('${s.id}')">View</button></div></div>`).join(''):'<div class="empty">এই filter-এ কোনো student পাওয়া যায়নি।</div>';
+    }
+
+    function profileInfo(label,value){return `<div class="info"><small>${esc(label)}</small><b>${esc(value||'—')}</b></div>`}
+    window.openStudent=function(id){
+      const s=state.students.find(x=>x.id===id);if(!s)return;
+      const events=state.events.filter(e=>e.user_id===id).slice(0,30);const prog=s.progress_items.slice().sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at)).slice(0,16);
+      const avatar=s.avatar_url?`<img class="profile-avatar" src="${esc(s.avatar_url)}" alt="">`:`<div class="profile-avatar">${esc(initials(s.full_name||s.email))}</div>`;
+      $('drawerBody').innerHTML=`
+        <section class="profile-card"><div class="profile-top">${avatar}<div class="profile-copy"><h3>${esc(s.full_name||'Unnamed student')}</h3><p>${esc(s.email||'')}</p><div class="profile-badges"><span>JLPT ${esc(s.jlpt_target||'N5')}</span><span>${s.activity_count} activities</span></div></div></div></section>
+        <div class="info-grid">${profileInfo('City',s.city)}${profileInfo('Nationality',s.nationality)}${profileInfo('School / Institution',s.school)}${profileInfo('Daily Study',s.daily_study_minutes?`${s.daily_study_minutes} min`:'—')}${profileInfo('Preferred Language',s.preferred_language)}${profileInfo('Joined',s.created_at?new Date(s.created_at).toLocaleDateString():'—')}${profileInfo('Phone',s.phone)}${profileInfo('Last Active',fmt(s.last_seen))}</div>
+        <section class="drawer-section"><h4>Study Goal</h4><div style="color:#71879a;font-size:9px;line-height:1.65">${esc(s.study_goal||s.bio||'No study goal added yet.')}</div></section>
+        <section class="drawer-section"><h4>Learning Progress</h4><div class="progress-list">${prog.length?prog.map(p=>{const val=Math.max(0,Math.min(100,Number(p.progress)||0));return `<div class="progress-item"><div class="progress-line"><span>${esc(p.module||'Learning')} · ${esc(p.item_key||'')}</span><span>${Math.round(val)}%</span></div><div class="progress-track"><span style="width:${val}%"></span></div></div>`}).join(''):'<div class="empty">No saved progress yet.</div>'}</div></section>
+        <section class="drawer-section"><h4>Recent Activity</h4><div class="timeline">${events.length?events.map(e=>`<div class="timeline-item"><b>${esc(eventLabel(e.event_type))}</b><span>${esc(e.metadata?.module||e.page||'Platform')}</span><small>${esc(fmt(e.created_at))}</small></div>`).join(''):'<div class="empty">No activity yet.</div>'}</div></section>`;
+      $('studentDrawer').classList.add('show');$('drawerBackdrop').classList.add('show');document.body.style.overflow='hidden';
+    }
+
+    function exportCSV(){
+      const rows=[['Name','Email','JLPT','City','School','Activities','Last Active']];
+      filteredStudents().forEach(s=>rows.push([s.full_name||'',s.email||'',s.jlpt_target||'',s.city||'',s.school||'',s.activity_count,s.last_seen||'']));
+      const csv=rows.map(r=>r.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='aponar-nihon-students.csv';a.click();URL.revokeObjectURL(a.href);toast('CSV export তৈরি হয়েছে।')
+    }
+
+    async function loadData(showMessage=false){
+      $('refreshBtn').disabled=true;$('refreshBtn').innerHTML='<i class="fa-solid fa-rotate fa-spin"></i> Loading';
+      try{
+        const session=await AN.session();if(!session){location.replace('/auth.html');return}
+        const me=await AN.profile();if(!me||me.role!=='admin'){location.replace('/profile.html');return}
+        state.me=me;$('adminEmail').textContent=me.email||session.user.email||'Admin';$('adminInitial').textContent=initials(me.full_name||me.email||'Admin').slice(0,1);
+        const [pRes,eRes,prRes]=await Promise.all([
+          AN.sb.from('profiles').select('id,email,full_name,school,nationality,jlpt_target,study_goal,role,created_at,updated_at,last_active_at,avatar_url,phone,city,preferred_language,daily_study_minutes,bio').order('created_at',{ascending:false}),
+          AN.sb.from('activity_events').select('id,user_id,event_type,page,metadata,created_at').order('created_at',{ascending:false}).limit(2000),
+          AN.sb.from('student_progress').select('id,user_id,module,item_key,progress,score,metadata,updated_at').order('updated_at',{ascending:false}).limit(2000)
+        ]);
+        if(pRes.error)throw pRes.error;if(eRes.error)throw eRes.error;if(prRes.error)throw prRes.error;
+        state.profiles=pRes.data||[];state.events=eRes.data||[];state.progress=prRes.data||[];aggregate();renderStats();renderDistribution();renderWeek();renderFeed();renderTable();
+        if(showMessage)toast('Dashboard data updated.');
+        try{await AN.log('admin_view',{module:'admin'})}catch(_){ }
+      }catch(e){$('studentRows').innerHTML=`<div class="empty">${esc(e.message||'Dashboard load failed')}</div>`;toast(e.message||'Dashboard load failed',true)}finally{$('refreshBtn').disabled=false;$('refreshBtn').innerHTML='<i class="fa-solid fa-rotate"></i> Refresh Data'}
+    }
+
+    $('searchInput').addEventListener('input',renderTable);$('levelFilter').addEventListener('change',renderTable);$('activityFilter').addEventListener('change',renderTable);$('refreshBtn').onclick=()=>loadData(true);$('exportBtn').onclick=exportCSV;$('logoutBtn').onclick=()=>AN.logout();
+    loadData(false);
+  </script>
+</body>
+</html>
