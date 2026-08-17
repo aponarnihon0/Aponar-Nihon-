@@ -1,0 +1,35 @@
+name: Sitewide Activity Tracking
+on:
+  push:
+    paths:
+      - '.github/workflows/sitewide-activity-tracking.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject tracker into all HTML responses
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('sw.js')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('aponar-nihon-static-v18','aponar-nihon-static-v19').replace('aponar-nihon-dynamic-v18','aponar-nihon-dynamic-v19')
+          marker="function injectHomeEnhancements(html){"
+          block='''const GLOBAL_ACTIVITY_SCRIPTS = `\n<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n<script src="/supabase-config.js"></script>\n<script src="/account.js"></script>\n<script src="/activity-tracker.js"></script>`;\n\nfunction injectGlobalActivity(html){\n  if(!html.includes('/activity-tracker.js') && html.includes('</body>')){\n    html = html.replace('</body>',GLOBAL_ACTIVITY_SCRIPTS + '\\n</body>');\n  }\n  return html;\n}\n\n'''
+          if 'function injectGlobalActivity(html)' not in s:
+            s=s.replace(marker,block+marker)
+          old="""    const html = injectHomeEnhancements(await response.text());"""
+          new="""    let html = await response.text();\n    html = injectGlobalActivity(html);\n    html = injectHomeEnhancements(html);"""
+          s=s.replace(old,new)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add sw.js
+          git diff --cached --quiet || git commit -m "Track signed-in student activity across HTML pages"
+          git push
