@@ -1,0 +1,9 @@
+Aponar Nihon-এর প্রথম Android release।
+
+• JLPT N5/N4/N3 learning sections
+• Quiz ও Mock Test
+• AI Tutor ও E-Book Library
+• Japan CV Builder
+• Student Toolkit ও Part-time Time Manager
+• Login, Student Profile ও learning progress
+• Japan Life, Interview ও SSW guides
