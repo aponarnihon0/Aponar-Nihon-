@@ -1,5 +1,5 @@
-const STATIC_CACHE = "aponar-nihon-static-v25";
-const DYNAMIC_CACHE = "aponar-nihon-dynamic-v25";
+const STATIC_CACHE = "aponar-nihon-static-v26";
+const DYNAMIC_CACHE = "aponar-nihon-dynamic-v26";
 
 const STATIC_ASSETS = [
   "/",
@@ -21,7 +21,6 @@ const STATIC_ASSETS = [
   "/grammar-vs.html",
   "/n3-vocabulary.html",
   "/n3-vocabulary-original.css",
-  "/google-maps-config.js",
 
   "/admin.html",
   "/supabase-config.js",
@@ -351,6 +350,11 @@ self.addEventListener('fetch',event=>{
   if(request.method !== 'GET') return;
   const url = new URL(request.url);
   const isSameOrigin = url.origin === self.location.origin;
+
+  if(isSameOrigin && url.pathname === '/google-maps-config.js'){
+    event.respondWith(fetch(request,{cache:'no-store'}).catch(()=>new Response("window.AN_GOOGLE_MAPS_KEY='';\n",{headers:{'content-type':'application/javascript; charset=utf-8'}})));
+    return;
+  }
 
   if(isSameOrigin && url.pathname.startsWith('/ebook-data/')){
     const cleanRequest = new Request(url.origin + url.pathname,{method:'GET',credentials:'same-origin'});
