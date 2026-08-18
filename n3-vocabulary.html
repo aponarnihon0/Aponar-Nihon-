@@ -19,7 +19,8 @@
     let html=await response.text();
     if(!html.includes('data-vocab-row')) throw new Error('Vocabulary source invalid');
     html=html.replace('</head>','<link rel="stylesheet" href="/n3-vocabulary-all.css?v=3">\n</head>');
-    html=html.replace('</body>','<script src="/n3-vocabulary-all.js?v=3"><\\/script>\n</body>');
+    const enhancement='<script src="/n3-vocabulary-all.js?v=3"></scr'+'ipt>\n</body>';
+    html=html.replace('</body>',enhancement);
     document.open();
     document.write(html);
     document.close();
