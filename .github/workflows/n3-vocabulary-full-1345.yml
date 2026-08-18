@@ -1,0 +1,86 @@
+name: N3 Vocabulary Full 1345
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/n3-vocabulary-full-1345.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: n3-vocabulary-full
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore the complete 1,345-word N3 source
+        run: |
+          set -euo pipefail
+          # This is the last complete original N3 vocabulary file before it was deleted.
+          git show 3447a8347e48d4f0adee6d4347ddb372937ffa31:n3-vocabulary.html > n3-vocabulary.html
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('n3-vocabulary.html')
+          s=p.read_text(encoding='utf-8')
+          count=s.count('data-vocab-row')
+          print('Vocabulary rows:', count)
+          if count != 1345:
+              raise SystemExit(f'Expected exactly 1345 vocabulary rows, found {count}')
+
+          css='<link rel="stylesheet" href="/n3-vocabulary-all.css?v=1">'
+          js='<script src="/n3-vocabulary-all.js?v=1"></script>'
+          if css not in s:
+              s=s.replace('</head>',f'  {css}\n</head>',1)
+          if js not in s:
+              s=s.replace('</body>',f'  {js}\n</body>',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Validate the examples engine
+        run: |
+          node --check n3-vocabulary-all.js
+          test -s n3-vocabulary-all.css
+          grep -q 'n3-vocabulary-all.js' n3-vocabulary.html
+          grep -q 'n3-vocabulary-all.css' n3-vocabulary.html
+          test "$(grep -o 'data-vocab-row' n3-vocabulary.html | wc -l)" -eq 1345
+
+      - name: Refresh PWA cache
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('sw.js')
+          s=p.read_text(encoding='utf-8')
+          nums=[int(x) for x in re.findall(r'aponar-nihon-(?:static|dynamic)-v(\d+)',s)]
+          nxt=max(nums or [27])+1
+          s=re.sub(r'aponar-nihon-static-v\d+',f'aponar-nihon-static-v{nxt}',s)
+          s=re.sub(r'aponar-nihon-dynamic-v\d+',f'aponar-nihon-dynamic-v{nxt}',s)
+          for asset in ['/n3-vocabulary-all.css','/n3-vocabulary-all.js']:
+              if f'"{asset}"' not in s:
+                  anchor='  "/n3-vocabulary.html",'
+                  s=s.replace(anchor,anchor+f'\n  "{asset}",',1)
+          p.write_text(s,encoding='utf-8')
+          print('Cache version:',nxt)
+          PY
+
+      - name: Commit complete N3 vocabulary
+        run: |
+          git config user.name "Aponar Nihon Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add n3-vocabulary.html n3-vocabulary-all.js n3-vocabulary-all.css sw.js
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Restore all 1345 N3 vocabulary with four examples each"
+            git push
+          fi
